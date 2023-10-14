@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/node": "^18.17.1",
+    "nuxt": "^3.6.5",
+    "nuxt-plotly": "^1.0.12",
+    "nuxt3-leaflet": "^1.0.12"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "axios": "^1.5.1",
+    "chart.js": "^4.4.0",
+    "nuxt-proxy": "^0.4.1",
+    "nuxt-swiper": "^1.2.2",
+    "pinia": "^2.1.6",
+    "vue-chartjs": "^5.2.0"
+  },
+  "overrides": {
+    "vue": "latest"
+  }
+}

@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'IRANSansWeb';
+    font-style: normal;
+    font-weight: 400;
+    src: url("~/assets/fonts/iransansXpro/woff2/IRANSansX-Regular.woff2") format('woff2');
+}
+@font-face {
+    font-family: 'Morabaa';
+    font-style: normal;
+    font-weight: 400;
+    src: url("~/assets/fonts/morabaa/woff2/Morabba-Regular.woff2") format('woff2');
+}
+
+* {
+font-family: IRANSansWeb !important;
+}
+.font-morabaa {
+    font-family: Morabaa !important;
+}
+.bg-sky-custom {
+    background: rgba(27, 158, 178, 1)
+}
+.text-blue-custom {
+    color: rgba(27, 158, 178, 1)
+}
+.border-blue-custom {
+    border: 1px solid rgba(27, 158, 178, 1);
+}
