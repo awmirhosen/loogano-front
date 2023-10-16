@@ -25,7 +25,7 @@
                 <img src="/images/home/top_right_hero_stroke.png" alt="right_bottom_hero_stroke" width="310">
               </div>
               <div class="absolute bottom-0 -right-[310px] hidden md:block sm:w-auto">
-                <img src="/images/home/hero_icon.png" alt="arrow_design">
+<!--                <img src="/images/home/hero_icon.png" alt="arrow_design">-->
               </div>
             </div>
             <!----right bottom hero image------->
