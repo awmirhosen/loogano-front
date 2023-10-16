@@ -1,6 +1,7 @@
 <template>
 <div class="w-full h-screen">
   <div class="w-full flex pt-28 h-screen">
+
     <!----- left side----->
     <div class="w-full mt-24">
       <!----- tabs button-------->
@@ -22,12 +23,24 @@
             شماره موبایل را وارد کنید
           </p>
 
-          <div class="w-full mt-4">
-            <input type="text" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2" placeholder="98933...">
+          <div class="flex items-center gap-2">
+            <div>
+              <img src="/images/auth/irans_icon.png" class="mt-4" alt="irans_icon" width="35">
+            </div>
+            <div class="flex items-center mt-4">
+              +98
+            </div>
+            <div class="w-full mt-4">
+              <input type="text" @input="onchangePhoneNumber" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2" placeholder="9330869519" v-model="phoneNumber">
+            </div>
+          </div>
+
+          <div class="bg-red-600 rounded-md text-white py-2 text-center w-full mt-2" v-if="!authStore.phoneNumberLoginExistMessage === ''">
+            <p>{{ authStore.phoneNumberLoginExistMessage }}</p>
           </div>
 
           <div class="w-full">
-            <button @click.prevent="authStore.enteredMobile()" class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
+            <button @click.prevent="authStore.enteredMobile(phoneNumber)" class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
           </div>
         </div>
 
@@ -39,10 +52,10 @@
           </p>
 
           <div class="w-full mt-4">
-            <input type="password" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2">
+            <input type="password" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2" v-model="loginPassword" >
           </div>
 
-          <div class="w-full">
+          <div class="w-full" @click.prevent="authStore.loginWithPassword(loginPassword)" >
             <button class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
           </div>
           <p @click="authStore.loginSmsOtp" class="text-center w-full text-[17px] cursor-pointer hover:text-zinc-600 mt-4 text-zinc-500">ورود با رمز یکبار مصرف
@@ -179,6 +192,13 @@
 import {useAuthStore} from "~/store/auth";
 
 const authStore = useAuthStore();
+
+const phoneNumber = ref("");
+const loginPassword = ref("");
+
+const onchangePhoneNumber = () => {
+  console.log(phoneNumber.value)
+}
 
 </script>
 

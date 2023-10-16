@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrappper w-full">
     <NuxtLoadingIndicator color="#1B9DB1" throttle="0" />
-    <NuxtLayout name="default">
+    <NuxtLayout :name="layoutStore.layouts">
       <NuxtPage/>
     </NuxtLayout>
   </div>
@@ -9,6 +9,9 @@
 
 <script setup>
 
+import {useLayoutStore} from "~/store/layout";
+
+const layoutStore = useLayoutStore();
 
 
 </script>

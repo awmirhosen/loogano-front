@@ -4,9 +4,9 @@
     <Loader />
   </div>
   <div class="bg-[#F8F8F8]" v-else>
-    <div class="w-full flex flex-row flex-col justify-center max-w-[1512px] mx-auto py-36 gap-4">
+    <div class="w-full flex lg:flex-row flex-col justify-center max-w-[1512px] mx-auto py-36 gap-4">
       <!-----left side ----->
-      <div class="max-w-[490px] px-2 rounded-t-xl mt-10">
+      <div class="max-w-[490px] lg:w-[490px] px-2 rounded-t-xl mt-10">
         <!--title-->
         <div class="bg-white rounded-t-xl">
           <p class="w-100 text-center text-zinc-500 py-3 text-[18px]">صورت حساب</p>
@@ -40,7 +40,7 @@
 
       </div>
       <!---- right side ----->
-      <div class="max-w-[680px] px-2 rounded-t-xl mt-10">
+      <div class="max-w-[680px] lg:w-[680px] px-2 rounded-t-xl mt-10">
         <!--title-->
         <div class="bg-white rounded-t-xl">
           <p class="w-100 text-center text-zinc-500 py-3 border-">پیش فاکتور</p>
