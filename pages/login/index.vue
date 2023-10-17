@@ -35,8 +35,11 @@
             </div>
           </div>
 
-          <div class="bg-red-600 rounded-md text-white py-2 text-center w-full mt-2" v-if="!authStore.phoneNumberLoginExistMessage === ''">
-            <p>{{ authStore.phoneNumberLoginExistMessage }}</p>
+          <div class="bg-red-600 rounded-md text-white py-2 text-center w-full mt-2"
+               v-if="authStore.phoneNumberLoginExistFlag">
+            <p>
+              شماره ی مورد نظر ثبت نشده
+            </p>
           </div>
 
           <div class="w-full">
@@ -53,6 +56,10 @@
 
           <div class="w-full mt-4">
             <input type="password" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2" v-model="loginPassword" >
+          </div>
+
+          <div class="bg-red-600 rounded-md text-white py-2 text-center w-full mt-2" v-if="authStore.passwordLoginErrorFlag">
+            <p>کلمه ی عبور شما صحیح نمیباشد</p>
           </div>
 
           <div class="w-full" @click.prevent="authStore.loginWithPassword(loginPassword)" >

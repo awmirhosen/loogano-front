@@ -5,8 +5,11 @@ export const useAuthStore = defineStore("auth", {
         return {
             stepLogin: 1,
             baseUrl: "http://api.loogano.com/api/",
-            phoneNumberLoginExistMessage: "",
+            phoneNumberLoginExistMessage: "شماره ی مورد نظر ",
+            phoneNumberLoginExistFlag: false,
             loginPhoneNumber: "",
+            passwordLoginErrorFlag: false,
+            loading : false,
         }
     },
     actions: {
@@ -17,23 +20,30 @@ export const useAuthStore = defineStore("auth", {
             console.log(error.value);
             console.log(verified.value);
             if (verified.value.code === -1) {
-                this.phoneNumberLoginExistMessage = "شماره ی وارد شده موجود نمیباشد"
+                console.log("-1");
+                this.phoneNumberLoginExistFlag = true
             }else if (verified.value.code === 100) {
                 this.stepLogin = 2;
-                this.loginPhoneNumbered = mobile;
+                this.loginPhoneNumber = mobile;
             }
         },
         async loginWithPassword(password) {
-            const { data: verified, error, refresh, pending } = await useFetch( () => `/auth/check-mobile?mobile=${mobile}`, {
+
+            console.log(password, this.loginPhoneNumber)
+            const { data: verified, error, refresh, pending } = await useFetch( () => `/auth/login`, {
                 method: "POST",
-                data: {
+                body: {
                     mobile: this.loginPhoneNumber,
                     password: password,
                 },
                 baseURL: this.baseUrl,
             });
-            console.log(verified);
-            console.log(error)
+            if (error.value) {
+             if (error.value.data.code === 99) {
+                 this.passwordLoginErrorFlag = true;
+             }
+            }
+
 
         },
         loginSmsOtp(data) {
