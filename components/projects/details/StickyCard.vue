@@ -123,10 +123,6 @@
         شروع سرمایه گذاری
       </div>
 
-      <div @click.prevent="test" class="w-full text-[#1B9DB1] hover:bg-sky-600 p-3 border border-[#1B9DB1] mt-8 rounded-lg text-center cursor-pointer">
-ddddd
-      </div>
-
     </div>
 
   </div>

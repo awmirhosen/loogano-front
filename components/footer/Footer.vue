@@ -15,6 +15,7 @@
     <div class="absolute w-full h-full hidden lg:flex top-0 items-center justify-between">
       <div class="w-full h-full flex justify-between items-center px-12 flex-row-reverse gap-48 mt-24">
         <div class="flex flex-col w-4/12 ">
+
           <div class="w-full flex justify-center">
             <img src="/images/home/loogano_logo.png" alt="ff">
           </div>
@@ -23,6 +24,11 @@
             سرمایه‌گذاری ملکی لوگانو به عنوان یک نقطه آغاز برای رسیدن به آینده‌ی مالی پایدار، به شما کمک می‌کند تا با
             سرمایه‌ی کم به دنیای سرمایه‌گذاری ملکی وارد شوید.
           </p>
+
+          <div class="text-sm w-10/12 mx-auto text-right text-white w-100 justify-center mt-3 flex">
+            <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd" alt="" style="cursor:pointer" id="famE1evKQ2jNA9Bhl8Hd">
+            </a>
+          </div>
 
         </div>
 

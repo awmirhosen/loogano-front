@@ -54,6 +54,13 @@ import {useProjectStore} from "~/store/projects";
 const projectStore = useProjectStore();
 projectStore.fetchSliderProjectList();
 
+useHead({
+  title: "لوگانو - loogano - پلتفرم سرمایه گذاری ملکی",
+  meta: [
+    { name: 'description', content: 'در لوگانو شما هم می‌توانید با هر میزان سرمایه ای از سود بازار ملک و املاک و سود ساخت '  }
+  ]
+})
+
 </script>
 
 <style scoped>

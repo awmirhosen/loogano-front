@@ -4,33 +4,46 @@ export const useAuthStore = defineStore("auth", {
     state: () => {
         return {
             stepLogin: 1,
+            stepSignup: 1,
             baseUrl: "http://api.loogano.com/api/",
             phoneNumberLoginExistMessage: "شماره ی مورد نظر ",
-            phoneNumberLoginExistFlag: false,
+            phoneNumberSignupExistFlag: false,
             loginPhoneNumber: "",
+            signupPhoneNumber: "",
             passwordLoginErrorFlag: false,
-            loading : false,
+            loading: false,
         }
     },
     actions: {
-        async enteredMobile(mobile) {
-            const { data: verified, error, refresh, pending } = await useFetch( () => `/auth/check-mobile?mobile=${mobile}`, {
+        async verifyMobile(mobile) {
+            const {
+                data: verified,
+                error,
+                refresh,
+                pending
+            } = await useFetch(() => `/auth/check-mobile?mobile=${mobile}`, {
                 baseURL: this.baseUrl,
             });
             console.log(error.value);
             console.log(verified.value);
             if (verified.value.code === -1) {
-                console.log("-1");
-                this.phoneNumberLoginExistFlag = true
-            }else if (verified.value.code === 100) {
+                this.phoneNumberLoginExistFlag = true;
+                this.stepSignup = 2;
+                this.signupPhoneNumber = mobile;
+            } else if (verified.value.code === 100) {
+                console.log("100")
                 this.stepLogin = 2;
+                this.phoneNumberSignupExistFlag = true;
                 this.loginPhoneNumber = mobile;
             }
+        },
+        async sendOtpRequest(phoneNumber) {
+
         },
         async loginWithPassword(password) {
 
             console.log(password, this.loginPhoneNumber)
-            const { data: verified, error, refresh, pending } = await useFetch( () => `/auth/login`, {
+            const {data: verified, error, refresh, pending} = await useFetch(() => `/auth/login`, {
                 method: "POST",
                 body: {
                     mobile: this.loginPhoneNumber,
@@ -39,11 +52,13 @@ export const useAuthStore = defineStore("auth", {
                 baseURL: this.baseUrl,
             });
             if (error.value) {
-             if (error.value.data.code === 99) {
-                 this.passwordLoginErrorFlag = true;
-             }
+                if (error.value.data.code === 99) {
+                    this.passwordLoginErrorFlag = true;
+                }
             }
 
+        },
+        async signupMobileEntered(phoneNumber) {
 
         },
         loginSmsOtp(data) {

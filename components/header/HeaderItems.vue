@@ -21,7 +21,8 @@
         <div class="flex flex-col gap-10 items-center justify-center w-full mt-10">
           <NuxtLink to="/" >خانه</NuxtLink>
           <NuxtLink to="/services">خدمات</NuxtLink>
-          <NuxtLink to="/investment">سرمایه گذاری</NuxtLink>
+          <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
+          <NuxtLink to="/blogs">بلاگ ها</NuxtLink>
           <NuxtLink to="/projects">سوالات متداول</NuxtLink>
         </div>
       </div>
@@ -40,7 +41,8 @@
         <div class="flex gap-10 items-center flex-row-reverse">
           <NuxtLink to="/" >خانه</NuxtLink>
           <NuxtLink to="/services">خدمات</NuxtLink>
-          <NuxtLink to="/investment">سرمایه گذاری</NuxtLink>
+          <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
+          <NuxtLink to="/blogs">بلاگ ها</NuxtLink>
           <NuxtLink to="/projects">سوالات متداول</NuxtLink>
         </div>
 

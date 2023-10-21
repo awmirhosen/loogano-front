@@ -43,7 +43,7 @@
           </div>
 
           <div class="w-full">
-            <button @click.prevent="authStore.enteredMobile(phoneNumber)" class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
+            <button @click.prevent="authStore.verifyMobile(phoneNumber)" class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
           </div>
         </div>
 
