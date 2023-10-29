@@ -1,9 +1,13 @@
 <template>
-  <div class="w-full fixed top-0 bg-gray-custom max-w-[1900px] mx-auto" style="z-index: 3334">
+  <div class="w-full fixed top-0 bg-gray-custom max-w-[1900px] mx-auto" style="z-index: 100">
 
     <div class="w-full block md:hidden">
       <div class="w-full flex justify-between gap-4 px-4 py-3">
-        <img src="/images/header/loogano_mobile_logo.svg" alt="loogano_mobile_logo">
+        <!----- loogano logo ------>
+        <NuxtLink to="/" >
+          <img src="/images/header/loogano_mobile_logo.svg" alt="loogano_mobile_logo">
+        </NuxtLink>
+
         <div @click="onChangeMobileMenu" v-if="!mobileMenuFlag">
           <img src="/images/header/menu-hamburger.png" alt="burgut_menu_icon" class="w-8">
         </div>
@@ -19,11 +23,11 @@
     <Transition name="translateX">
       <div class="w-full h-screen" v-show="mobileMenuFlag">
         <div class="flex flex-col gap-10 items-center justify-center w-full mt-10">
-          <NuxtLink to="/" >خانه</NuxtLink>
-          <NuxtLink to="/services">خدمات</NuxtLink>
-          <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
-          <NuxtLink to="/blogs">بلاگ ها</NuxtLink>
-          <NuxtLink to="/projects">سوالات متداول</NuxtLink>
+          <NuxtLink to="/" @click="closeMobileMenu" >خانه</NuxtLink>
+<!--          <NuxtLink to="/services">خدمات</NuxtLink>-->
+          <NuxtLink to="/projects" @click="closeMobileMenu" >سرمایه گذاری</NuxtLink>
+          <NuxtLink to="/blog" @click="closeMobileMenu" >بلاگ ها</NuxtLink>
+<!--          <NuxtLink to="/projects">سوالات متداول</NuxtLink>-->
         </div>
       </div>
     </Transition>
@@ -35,21 +39,23 @@
 
         <div>
           <!--logo-->
-          <img src="/images/home/loogano_logo.png" alt="loogano_logo" width="100">
+          <NuxtLink to="/" >
+            <img src="/images/home/loogano_logo.png" alt="loogano_logo" width="100">
+          </NuxtLink>
         </div>
         <!---- items ----->
         <div class="flex gap-10 items-center flex-row-reverse">
           <NuxtLink to="/" >خانه</NuxtLink>
-          <NuxtLink to="/services">خدمات</NuxtLink>
+<!--          <NuxtLink to="/services">خدمات</NuxtLink>-->
           <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
-          <NuxtLink to="/blogs">بلاگ ها</NuxtLink>
-          <NuxtLink to="/projects">سوالات متداول</NuxtLink>
+          <NuxtLink to="/blog">بلاگ ها</NuxtLink>
+<!--          <NuxtLink to="/projects">سوالات متداول</NuxtLink>-->
         </div>
 
       </div>
 
       <!----- sigin button ----->
-      <NuxtLink>
+      <NuxtLink to="/register">
         <button class="py-2 bg-sky-custom px-6 rounded-md text-white">ثبت نام</button>
       </NuxtLink>
 
@@ -68,6 +74,10 @@ const onChangeMobileMenu = () => {
   } else {
     mobileMenuFlag.value = true;
   }
+}
+
+const closeMobileMenu = () => {
+  mobileMenuFlag.value = false;
 }
 
 </script>

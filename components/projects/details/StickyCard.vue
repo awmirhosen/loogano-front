@@ -123,6 +123,11 @@
         شروع سرمایه گذاری
       </div>
 
+      <div @click.prevent="test" class="w-full text-[#1B9DB1] hover:bg-sky-600 p-3 border border-[#1B9DB1] mt-8 rounded-lg text-center cursor-pointer">
+        eee
+      </div>
+
+
     </div>
 
   </div>
@@ -301,6 +306,8 @@ const invest = () => {
 const axios = useNuxtApp().$Axios
 const test = () => {
 
+  projectStore.axTest();
+
   // axios.get("http://localhost:3000/api/projects").then(res => {
   //   console.log(res)
   // }).catch(err => {
@@ -316,14 +323,7 @@ const test = () => {
   //   console.log(err);
   // })
 
-  axios.post("/panel/buy", {
-    "project_id": 1,
-    "area": 3,
-  }).then(res => {
-    console.log(res)
-  }).catch(err => {
-    console.log(err)
-  })
+
 
 }
 

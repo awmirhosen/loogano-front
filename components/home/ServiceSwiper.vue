@@ -21,7 +21,7 @@
          }"
     >
       <swiper-slide class="rounded-[30px] w-[300px]">
-        <div class="w-full text-center p-5  relative">
+        <div class="w-full text-center p-5  relative" dir="rtl">
           <p class="md:text-[30px] text-[22px] mt-24 font-morabaa md:mt-24">مشاور حرفه ای</p>
           <div class="w-10/12 mx-auto mt-10">
             <div class="absolute p-5  rounded-[30px] bg-[#D1E7EB] md:-top-8 -top-12 left-1/2 -translate-x-1/2 mt-16">
@@ -36,7 +36,7 @@
       </swiper-slide>
 
       <swiper-slide class="rounded-[30px] w-[300px]">
-        <div class="w-full text-center p-5 h-auto relative">
+        <div class="w-full text-center p-5 h-auto relative" dir="rtl">
           <p class="md:text-[30px] text-[22px] mt-24 font-morabaa md:mt-24">فرصت سرمایه گذاری</p>
           <div class="md:w-10/12 w-full mx-auto mt-10">
             <div class="absolute p-5  rounded-[30px] bg-[#D1E7EB] -top-12 md:-top-8 left-1/2 -translate-x-1/2 mt-16">
@@ -50,7 +50,7 @@
       </swiper-slide>
 
       <swiper-slide class="rounded-[30px] w-[300px]">
-        <div class="w-full text-center p-5 h-auto relative">
+        <div class="w-full text-center p-5 h-auto relative" dir="rtl">
           <p class="md:text-[30px] text-[22px] mt-24 font-morabaa md:mt-24">تحلیل بازار</p>
           <div class="md:w-10/12 w-full mx-auto mt-10">
             <div class="absolute p-5  rounded-[30px] bg-[#D1E7EB] -top-12 md:-top-8 left-1/2 -translate-x-1/2 mt-16">

@@ -1,11 +1,12 @@
 import {defineStore} from "pinia";
+import axios from "axios";
 
 // const axios = useNuxtApp().$Axios
 
 export const useProjectStore = defineStore("projects", {
     state: () => {
         return {
-            baseUrl: "http://api.loogano.com/api/",
+            baseUrl: "https://loogano.com/endpoints/api/",
             galleryModalFlag: false,
             projectLists: [],
             projectsImprovePercent: [],
@@ -119,6 +120,16 @@ export const useProjectStore = defineStore("projects", {
             })
             console.log(error.value);
 
+        },
+        axTest() {
+            axios.post("/panel/buy", {
+                "project_id": 1,
+                "area": 3,
+            }).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
         }
 
     }

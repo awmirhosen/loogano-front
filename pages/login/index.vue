@@ -9,9 +9,9 @@
         <div class="text-white bg-sky-custom w-[300px] rounded-md p-4 text-center">
           ورود
         </div>
-        <div class="text-zinc-600 w-[300px] rounded-md p-4 text-center bg-zinc-100">
+        <RouterLink to="/register" class="text-zinc-600 w-[300px] rounded-md p-4 text-center bg-zinc-100">
           ثبت نام
-        </div>
+        </RouterLink>
       </div>
 
 
@@ -24,23 +24,19 @@
           </p>
 
           <div class="flex items-center gap-2">
-            <div>
-              <img src="/images/auth/irans_icon.png" class="mt-4" alt="irans_icon" width="35">
-            </div>
-            <div class="flex items-center mt-4">
-              +98
+            <div class="p-3 gap-2 flex items-center ">
+              <div>
+                <img src="/images/auth/iran_flag.png" class="mt-4" alt="irans_icon" width="60">
+              </div>
+              <div class="flex items-center mt-4">
+                +{{ eArabic(98) }}
+              </div>
             </div>
             <div class="w-full mt-4">
-              <input type="text" @input="onchangePhoneNumber" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2" placeholder="9330869519" v-model="phoneNumber">
+              <input type="text" @input="onchangePhoneNumber" class="focus:border-black w-full border border-[2px] border-[#8f8f8f] rounded-md px-4 py-2" :placeholder="eArabic(912)+eArabic(321)+'...'" v-model="phoneNumber">
             </div>
           </div>
 
-          <div class="bg-red-600 rounded-md text-white py-2 text-center w-full mt-2"
-               v-if="authStore.phoneNumberLoginExistFlag">
-            <p>
-              شماره ی مورد نظر ثبت نشده
-            </p>
-          </div>
 
           <div class="w-full">
             <button @click.prevent="authStore.verifyMobile(phoneNumber)" class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
@@ -205,6 +201,10 @@ const loginPassword = ref("");
 
 const onchangePhoneNumber = () => {
   console.log(phoneNumber.value)
+}
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
 }
 
 </script>

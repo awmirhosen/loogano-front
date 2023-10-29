@@ -1,31 +1,45 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="w-full h-screen mb-12">
     <div class="w-full flex pt-28 h-screen">
       <!----- left side----->
       <div class="w-full mt-24">
         <!----- tabs button-------->
         <div class="flex items-center justify-center w-full">
-          <div class="text-zinc-600 w-[300px] rounded-md p-4 text-center bg-zinc-100">
+          <div to="/login" @click.prevent="checkSignupSteps"
+               class="text-zinc-600 w-[300px] rounded-md p-4 text-center bg-zinc-100 cursor-pointer">
             ورود
           </div>
-          <div class="text-white bg-sky-custom w-[300px] rounded-md p-4 text-center">
+          <div class="text-white bg-sky-custom w-[300px] rounded-md p-4 text-center cursor-pointer">
             ثبت نام
           </div>
         </div>
 
 
-        <div class="w-[600px] mt-24 mx-auto ">
+        <div class="w-[600px] mx-auto ">
 
           <!----- inputs first step-------->
-          <div class="w-full" v-if="authStore.stepSignup === 1">
+          <div class="w-full mt-24" v-if="authStore.stepSignup === 1">
 
             <p class="text-right w-full">
               شماره موبایل را وارد کنید
             </p>
 
-            <div class="w-full mt-4">
-              <input type="text" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2"
-                     v-model="phoneNumber" placeholder="98933...">
+            <div class="flex items-center">
+              <div class="flex items-center">
+                <div class="p-3 gap-2 flex items-center ">
+                  <div>
+                    <img src="/images/auth/iran_flag.png" class="mt-4" alt="irans_icon" width="60">
+                  </div>
+                  <div class="flex items-center mt-4">
+                    +{{ eArabic(98) }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full mt-4">
+                <input type="text" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2"
+                       v-model="phoneNumber" placeholder="98933...">
+              </div>
             </div>
 
             <!-------- error for phone number------>
@@ -35,39 +49,77 @@
 
             <!------- submit for button -------->
             <div class="w-full">
-              <button @click.prevent="authStore.verifyMobile(phoneNumber)"
-                      class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ثبت نام
+              <button :disabled="authStore.signupLoading" @click.prevent="authStore.registerMobileVerify(phoneNumber)"
+                      class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">
+                <p dir="rtl" v-if="authStore.signupLoading"> لطفا صبر کنید...</p>
+                <p v-else>ثبت نام</p>
               </button>
             </div>
 
           </div>
 
-          <!------ inputs second step (otp login) ---->
-          <div class="w-full" v-else-if="authStore.stepLogin === 2">
+          <!------ inputs second step (otp signup) ---->
+          <div class="w-full mt-12" v-else-if="authStore.stepSignup === 2">
+            <FormKit type="form" @submit="registerDataSubmit" :actions="false">
 
-            <p class="text-right w-full">
-              کد یکبار مصرف را وارد کنید
-            </p>
-            <p class="text-right w-full text-blue-custom text-[14px] mt-2">
-              کد تایید به شماره 09022700339 ارسال شد
-            </p>
+              <div class="flex justify-center w-full gap-4 mt-4" dir="rtl">
 
-            <div class="w-full mt-4 flex justify-center">
-              <input type="text" class="w-6/12 text-center border-b-2 borderzinc-300] px-4 py-2">
-            </div>
+                <FormKit class="w-full" outer-class="w-full" type="text" name="firstName" label="نام*"
+                         input-class="w-full border-2 border-zinc-300 transition-all p-2 rounded-md"
+                         validation="required|alpha"
+                         :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
 
-            <div class="w-full">
-              <button class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">ورود</button>
-            </div>
-            <p @click="authStore.backToPassword"
-               class="text-center w-full text-[17px] cursor-pointer hover:text-zinc-600 mt-4 text-zinc-500">
-              ورود با رمز عبور
-            </p>
+                />
+                <FormKit class="w-full" outer-class="w-full" type="text" name="lastName" label="نام خانوادگی*"
+                         input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
+                         validation="required|alpha"
+                         :validation-messages="{required: 'فیلد نام خانوادگی الزامیست', alpha:'نام خانوادگی نمیتواند شامل عدد باشد'}"
+                />
+              </div>
 
+              <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
+                <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="کدملی*"
+                         input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
+                         :validation="[['required'], ['matches', /^[0-9]*$/]]"
+                         :validation-messages="{ matches: 'کدملی شامل حروف نمیباشد',}"
+                />
+              </div>
+
+              <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
+                <FormKit class="w-full" outer-class="w-full" type="text" name="email" label="ایمیل*"
+                         input-class="w-full transition-all border-2 border-zinc-300 p-2 rounded-md"/>
+              </div>
+
+              <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
+                <FormKit class="w-full" outer-class="w-full" type="password" name="password" label="رمز عبور*"
+                         input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"/>
+              </div>
+
+              <div class="w-full mt-5 text-center">
+                <p class="text-center w-full">
+                  کد یکبار مصرف را وارد کنید
+                </p>
+                <p class="text-center w-full text-blue-custom text-[14px] mt-2">
+                  کد تایید به شماره {{ authStore.signupPhoneNumber }} ارسال شد
+                </p>
+
+                <div class="w-full flex justify-center">
+                  <div class="flex justify-center items-center w-full gap-4">
+                    <FormKit class="w-full" outer-class="w-full" type="text" name="token"
+                             input-class="w-6/12 transition-all text-center border-b-2 mx-auto border-zinc-300 px-4 py-2 focus:border-b-2 focus:border-zinc-600 focus:outline-0"/>
+                  </div>
+                </div>
+              </div>
+
+              <FormKit type="submit"
+                       input-class="w-full bg-sky-custom text-white p-2 rounded-md mt-8 hover:bg-[#1B9Ea1]">
+                ثبت نام
+              </FormKit>
+
+            </FormKit>
           </div>
 
         </div>
-
 
       </div>
 
@@ -207,10 +259,59 @@
 <script setup>
 
 import {useAuthStore} from "~/store/auth";
+import Swal from "sweetalert2";
 
 const authStore = useAuthStore();
 
+const router = useRouter()
+
+const checkSignupSteps = () => {
+  if (authStore.stepSignup > 1) {
+    Swal.fire({
+      title: 'ثبت نام شما کامل نشده',
+      text: " در فشردن دکمه تایید، شما باید از اول مراحل را طی کنید",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'تایید',
+      cancelButtonText: 'لغو'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        authStore.stepSignup = 1;
+        authStore.passwordLoginErrorFlag = "";
+        authStore.stepLogin = 1;
+        authStore.phoneNumberLoginExistFlag = false;
+
+        router.push("/login");
+      }
+    })
+  } else {
+    authStore.stepSignup = 1;
+    authStore.passwordLoginErrorFlag = "";
+    authStore.stepLogin = 1;
+    authStore.phoneNumberLoginExistFlag = false;
+
+    router.push("/login");
+  }
+}
+
 const phoneNumber = ref("");
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
+}
+
+const mobile = ref("")
+
+const registerDataSubmit = (formData) => {
+
+  mobile.value = authStore.signupPhoneNumber
+
+  console.log(formData);
+  authStore.registerUser(formData, mobile.value);
+}
+
 
 </script>
 

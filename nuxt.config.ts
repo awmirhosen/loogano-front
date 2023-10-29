@@ -5,7 +5,7 @@ export default defineNuxtConfig({
         `~/assets/css/global.css`,
     ],
     devtools: {enabled: true},
-    modules: ['@nuxtjs/tailwindcss', 'nuxt-swiper', '@pinia/nuxt', 'nuxt3-leaflet', ["nuxt-plotly", { inject: true }]],
+    modules: ['@nuxtjs/tailwindcss', '@formkit/nuxt', 'nuxt-swiper', '@pinia/nuxt', 'nuxt3-leaflet', ["nuxt-plotly", { inject: true }]],
     vite: {
         optimizeDeps: {
             include: ["plotly.js-dist-min"],
