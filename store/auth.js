@@ -85,7 +85,8 @@ export const useAuthStore = defineStore("auth", {
 
         },
         async registerUser(data, mobile) {
-            const toast = useToast()
+            const toast = useToast();
+            const router = useRouter();
 
             $axios.post("/auth/register", {
                 first_name: data.firstName,
@@ -98,7 +99,9 @@ export const useAuthStore = defineStore("auth", {
                 password_confirmation: data.password
             }).then(res => {
                 console.log(res)
-                localStorage.setItem("token", res.data.data)
+                localStorage.setItem("token", res.data.data);
+                router.push("/");
+                location.reload();
             }).catch(err => {
                 console.log(err.response.data.message)
                 if (err.response.data.message) {

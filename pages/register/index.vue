@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen mb-12">
+  <div class="w-full h-screen mb-[220px]">
     <div class="w-full flex pt-28 h-screen">
       <!----- left side----->
       <div class="w-full mt-24">
@@ -68,31 +68,53 @@
                          input-class="w-full border-2 border-zinc-300 transition-all p-2 rounded-md"
                          validation="required|alpha"
                          :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
-
+                         messages-class="text-[14px] text-red-500"
                 />
                 <FormKit class="w-full" outer-class="w-full" type="text" name="lastName" label="نام خانوادگی*"
                          input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
                          validation="required|alpha"
                          :validation-messages="{required: 'فیلد نام خانوادگی الزامیست', alpha:'نام خانوادگی نمیتواند شامل عدد باشد'}"
+                         messages-class="text-[14px] text-red-500"
                 />
               </div>
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="کدملی*"
+                         inputmode="numeric"
                          input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
-                         :validation="[['required'], ['matches', /^[0-9]*$/]]"
-                         :validation-messages="{ matches: 'کدملی شامل حروف نمیباشد',}"
+                         validation="required|number|length:10,10"
+                         :validation-messages="{length: 'کدملی ده رقم میباشد' , number: 'کدملی شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
                 />
               </div>
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="text" name="email" label="ایمیل*"
-                         input-class="w-full transition-all border-2 border-zinc-300 p-2 rounded-md"/>
+                         input-class="w-full transition-all border-2 border-zinc-300 p-2 rounded-md"
+                         validation="required|email"
+                         :validation-messages="{ email: 'ایمیل وارد شده صحیح نمیباشد', required: 'فیلد ایمیل الزامیست'}"
+                         messages-class="text-[14px] text-red-500"
+                />
               </div>
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="password" name="password" label="رمز عبور*"
-                         input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"/>
+                         input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"
+                         help="رمز عبور شما باید شامل حروف بزرگ، کوچک و ارقام باشد و بین 8 تا 16 کاراکتر باشد"
+                         validation="required|contains_alpha|contains_numeric|length:8,16"
+                         :validation-messages="{ length: 'رمز عبور شما باید بین 8 تا 16 کاراکتر باشد', contains_numeric: 'رمز عبور شما باید شامل اعداد هم باشد', contains_alpha: 'رمز عبور انتخاب شده حتما باید شامل حروف هم باشد', required: 'فیلد رمز عبور الزامیست'}"
+                         messages-class="text-[14px] text-red-500"
+                         help-class="text-[12px] text-zinc-500"
+                />
+              </div>
+
+              <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
+                <FormKit class="w-full" outer-class="w-full" type="password" name="password_confirm"
+                         label="تکرار رمز عبور*"
+                         input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"
+                         validation="required|confirm"
+                         :validation-messages="{ confirm: 'رمز عبور ها با هم تطابق ندارند', required: 'فیلد تکرار رمز عبور الزامیست'}"
+                         messages-class="text-[14px] text-red-500"
+                />
               </div>
 
               <div class="w-full mt-5 text-center">
@@ -106,7 +128,12 @@
                 <div class="w-full flex justify-center">
                   <div class="flex justify-center items-center w-full gap-4">
                     <FormKit class="w-full" outer-class="w-full" type="text" name="token"
-                             input-class="w-6/12 transition-all text-center border-b-2 mx-auto border-zinc-300 px-4 py-2 focus:border-b-2 focus:border-zinc-600 focus:outline-0"/>
+                             inputmode="numeric"
+                             input-class="w-6/12 transition-all text-center border-b-2 mx-auto border-zinc-300 px-4 py-2 focus:border-b-2 focus:border-zinc-600 focus:outline-0"
+                             validation="required|length:6,6|number"
+                             :validation-messages="{required: 'فیلد کد ارسالی الزامیست', alpha:'کد ارسالی شش رقم میباشد', number: 'کد ارسالی عدد میباشد'}"
+                             messages-class="text-[14px] text-red-500"
+                    />
                   </div>
                 </div>
               </div>
@@ -320,5 +347,6 @@ const registerDataSubmit = (formData) => {
 input:focus {
   outline: none !important;
 }
+
 
 </style>

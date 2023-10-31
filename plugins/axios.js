@@ -8,7 +8,7 @@ export default defineNuxtPlugin((NuxtApp) => {
         const token = window.localStorage.getItem('token');
         console.log("process")
         if(token){
-            console.log("");
+            console.log("token");
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         }
     }

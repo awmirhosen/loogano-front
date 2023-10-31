@@ -41,7 +41,7 @@
         >
           <swiper-slide v-for="(images, index) in projectStore.projectImages">
             <div class="w-full flex justify-center items-center h-full max-h-[600px]">
-              <img :src="'http://api.loogano.com/'+images.url" class="max-w-full" alt="main">
+              <img :src="'https://loogano.com/endpoints/'+images.url" class="max-w-full" alt="main">
             </div>
           </swiper-slide>
 

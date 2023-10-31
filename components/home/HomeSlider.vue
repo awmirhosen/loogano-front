@@ -45,7 +45,7 @@
                 <img src="/images/home/test_investment_slider_pic.png" class="w-full" alt="investment_building">
               </div>
 
-              <div class="w-full text-center relative">
+              <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
                 <!--project name-->
                 <div class="text-[24px] text-center mt-24 flex items-center flex-row-reverse justify-between flex-wrap">
                   <p>{{ projects.title }}</p>
@@ -125,7 +125,7 @@
                   </NuxtLink>
 
                 </div>
-              </div>
+              </RouterLink>
             </swiper-slide>
 
           </swiper>
