@@ -10,8 +10,11 @@
 <script setup>
 
 import {useLayoutStore} from "~/store/layout";
-
 const layoutStore = useLayoutStore();
+
+definePageMeta({
+  middleware: 'set-auth'
+})
 
 
 </script>

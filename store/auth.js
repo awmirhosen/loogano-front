@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {useToast} from "vue-toastification";
 import axios from "~/plugins/axios";
+import {useLayoutStore} from "~/store/layout";
 
 const $axios = axios().provide.axios
 
@@ -16,13 +17,14 @@ export const useAuthStore = defineStore("auth", {
             loginPhoneNumber: "",
             signupPhoneNumber: "",
             passwordLoginErrorFlag: false,
-            loading: false,
             signupLoading: false,
+            loginLoading: false,
+            otpLoading: false,
         }
     },
     actions: {
         async verifyMobile(mobile) {
-
+            this.loginLoading = true;
             const toast = useToast()
 
             const {
@@ -36,8 +38,10 @@ export const useAuthStore = defineStore("auth", {
             console.log(error.value);
             console.log(verified.value);
             if (verified.value.code === -1) {
+                this.loginLoading = false;
                 toast.error("حسابی با این تلفن همراه وجود ندارد")
             } else if (verified.value.code === 100) {
+                this.loginLoading = false;
                 this.stepLogin = 2;
                 this.loginPhoneNumber = mobile;
             }
@@ -67,21 +71,26 @@ export const useAuthStore = defineStore("auth", {
             }
         },
         async loginWithPassword(password) {
+            const router = useRouter();
+            const toast = useToast();
+            const layoutStore = useLayoutStore();
+            this.loginLoading = true;
 
-            console.log(password, this.loginPhoneNumber)
-            const {data: verified, error, refresh, pending} = await useFetch(() => `/auth/login`, {
-                method: "POST",
-                body: {
-                    mobile: this.loginPhoneNumber,
-                    password: password,
-                },
-                baseURL: this.baseUrl,
-            });
-            if (error.value) {
-                if (error.value.data.code === 99) {
-                    this.passwordLoginErrorFlag = true;
+            $axios.post("/auth/login", {
+                mobile: this.loginPhoneNumber,
+                password: password
+            }).then(res => {
+                console.log(res);
+                layoutStore.isAuth = true;
+                localStorage.setItem("token", res.data.data);
+                router.push("/");
+                this.loginLoading = false;
+            }).catch(err => {
+                if (err.response.data.code === 99) {
+                    toast.error("رمز عبور شما صحیح نیست")
                 }
-            }
+                this.loginLoading = false;
+            })
 
         },
         async registerUser(data, mobile) {
@@ -100,7 +109,7 @@ export const useAuthStore = defineStore("auth", {
             }).then(res => {
                 console.log(res)
                 localStorage.setItem("token", res.data.data);
-                router.push("/");
+                // router.push("/");
                 location.reload();
             }).catch(err => {
                 console.log(err.response.data.message)
@@ -115,12 +124,16 @@ export const useAuthStore = defineStore("auth", {
         },
         async sendToken(mobile) {
 
+            const toast = useToast();
+            this.otpLoading = true;
+
           $axios.post("/auth/new-user-otp", {
               mobile: mobile,
           }).then(res => {
-              console.log(res)
+              this.otpLoading = false;
           }).catch(err => {
-              console.log(err)
+              toast.error('مشکلی در برقراری ارتباط پیش آمده')
+              this.otpLoading = false;
           })
 
         },
@@ -131,6 +144,13 @@ export const useAuthStore = defineStore("auth", {
         backToPassword(data) {
             console.log(data)
             this.stepLogin = 2;
+        },
+        logout() {
+            const layoutStore = useLayoutStore();
+            localStorage.removeItem("token");
+            layoutStore.isAuth = false;
+            location.reload();
         }
-    }
+    },
+
 })

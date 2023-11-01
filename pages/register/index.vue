@@ -288,8 +288,15 @@
 import {useAuthStore} from "~/store/auth";
 import Swal from "sweetalert2";
 
-const authStore = useAuthStore();
+onBeforeMount(() => {
+  console.log("qwqwqw");
+})
 
+definePageMeta({
+  middleware: 'is-logged-in'
+})
+
+const authStore = useAuthStore();
 const router = useRouter()
 
 const checkSignupSteps = () => {
