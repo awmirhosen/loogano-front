@@ -1,6 +1,6 @@
 <template>
 
-  <div class="w-full overflow-hidden relative mt-10">
+  <div class="w-full overflow-hidden relative mt-24">
     <!-----desktop footer path-------->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1512 622" fill="none" class="w-full hidden lg:block lg:mt-10">
       <path d="M1512 0L0 125.5V622H1512V0Z" fill="#002D4B"/>

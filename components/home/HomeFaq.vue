@@ -21,13 +21,15 @@
 
             <div class="w-full flex flex-row-reverse justify-between items-center">
               <div class="flex items-center lg:gap-8 gap-2 ">
-                <p class="lg:text-xl text-sm text-right font-morabaa">حداقل میزان سرمایه گذاری برای شروع کار چقدر است؟</p>
+                <p class="lg:text-xl text-sm text-right font-morabaa">حداقل میزان سرمایه گذاری برای شروع کار چقدر
+                  است؟</p>
                 <div class="">
                   <img src="/images/icons/home/faq_money.png" alt="money_icon" class="w-6 md:w-12">
                 </div>
               </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" class="w-6 lg:w-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                   class="w-6 lg:w-10">
                 <path d="M8.3335 18.75L25.0002 35.4167L41.6668 18.75" stroke="black" stroke-width="2.5"
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -38,7 +40,8 @@
                 <p class="lg:text-lg lg:mt-10 text-sm text-zinc-500">
                   در سرمایه‌گذاری ملکی لوگانو، هدف ما ایجاد فرصت‌های سرمایه‌گذاری قابل دسترس برای همه است.
                   <br>
-                  بنابراین، ما با تعیین حداقل میزان سرمایه‌گذاری به مقدار یک سانتی متر مربع، اجازه می‌دهیم تا افراد با اندک سرمایه نیز به این بازار وارد شوند و از مزایای سرمایه‌گذاری ملکی بهره‌مند شوند.
+                  بنابراین، ما با تعیین حداقل میزان سرمایه‌گذاری به مقدار یک سانتی متر مربع، اجازه می‌دهیم تا افراد با
+                  اندک سرمایه نیز به این بازار وارد شوند و از مزایای سرمایه‌گذاری ملکی بهره‌مند شوند.
                 </p>
               </section>
             </Transition>
@@ -57,7 +60,8 @@
                 </div>
               </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" class="w-6 lg:w-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                   class="w-6 lg:w-10">
                 <path d="M8.3335 18.75L25.0002 35.4167L41.6668 18.75" stroke="black" stroke-width="2.5"
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -89,7 +93,8 @@
                 </div>
               </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" class="w-6 lg:w-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                   class="w-6 lg:w-10">
                 <path d="M8.3335 18.75L25.0002 35.4167L41.6668 18.75" stroke="black" stroke-width="2.5"
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -98,7 +103,9 @@
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="thirdAccordion">
                 <p class="lg:mt-10 lg:text-lg text-sm text-zinc-500" dir="rtl">
-                  مدت زمان انجام هر پروژه ملکی، بسته به ویژگی‌ها و اندازه پروژه ممکن است متفاوت باشد. در صورتی که به انتخاب پروژه‌ای با زمان کوتاه علاقه‌مند هستید، برخی از پروژه‌ها آماده‌ی سرمایه‌گذاری نیاز به زمان کمتری دارند. اما پروژه‌های بزرگتر و پیچیده‌تر ممکن است زمان بیشتری برای تکمیل داشته باشند.
+                  مدت زمان انجام هر پروژه ملکی، بسته به ویژگی‌ها و اندازه پروژه ممکن است متفاوت باشد. در صورتی که به
+                  انتخاب پروژه‌ای با زمان کوتاه علاقه‌مند هستید، برخی از پروژه‌ها آماده‌ی سرمایه‌گذاری نیاز به زمان
+                  کمتری دارند. اما پروژه‌های بزرگتر و پیچیده‌تر ممکن است زمان بیشتری برای تکمیل داشته باشند.
                 </p>
               </section>
             </Transition>
@@ -117,7 +124,8 @@
                 </div>
               </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" class="w-6 lg:w-10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"
+                   class="w-6 lg:w-10">
                 <path d="M8.3335 18.75L25.0002 35.4167L41.6668 18.75" stroke="black" stroke-width="2.5"
                       stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -126,7 +134,9 @@
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="forthAccordion">
                 <p class="lg:mt-10 lg:text-lg text-sm text-zinc-500" dir="rtl">
-                  برای فروش سهام خود در وبسایت سرمایه‌گذاری ملکی، بهتر است که ابتدا با مدیریت یا اپراتور وبسایت تماس بگیرید و نحوه‌ی عملکرد و شرایط مربوط به فروش سهام را مطالعه کنید. همچنین، باید مطمئن شوید که سهام شما قابلیت فروش دارند و هیچ محدودیتی برای فروش آن‌ها وجود ندارد.
+                  برای فروش سهام خود در وبسایت سرمایه‌گذاری ملکی، بهتر است که ابتدا با مدیریت یا اپراتور وبسایت تماس
+                  بگیرید و نحوه‌ی عملکرد و شرایط مربوط به فروش سهام را مطالعه کنید. همچنین، باید مطمئن شوید که سهام شما
+                  قابلیت فروش دارند و هیچ محدودیتی برای فروش آن‌ها وجود ندارد.
                 </p>
               </section>
             </Transition>
@@ -167,7 +177,7 @@ const firstHomeAccordionOpen = (e) => {
   if (firstAccordion.value === true) {
     firstAccordionBox.value.style = "height: 80px"
     firstAccordion.value = false
-  }else {
+  } else {
     firstAccordionBox.value.style = "height: 250px"
     firstAccordion.value = true;
   }
@@ -189,7 +199,7 @@ const secondHomeAccordionOpen = (e) => {
   if (secondAccordion.value === true) {
     e.currentTarget.style = "height: 80px"
     secondAccordion.value = false
-  }else {
+  } else {
     e.currentTarget.style = "height: 250px"
     secondAccordion.value = true;
   }
@@ -210,7 +220,7 @@ const thirdHomeAccordionOpen = (e) => {
   if (thirdAccordion.value === true) {
     e.currentTarget.style = "height: 80px"
     thirdAccordion.value = false
-  }else {
+  } else {
     e.currentTarget.style = "height: 250px"
     thirdAccordion.value = true;
   }
@@ -231,7 +241,7 @@ const forthHomeAccordionOpen = (e) => {
   if (forthAccordion.value === true) {
     e.currentTarget.style = "height: 80px"
     forthAccordion.value = false
-  }else {
+  } else {
     e.currentTarget.style = "height: 250px"
     forthAccordion.value = true;
   }

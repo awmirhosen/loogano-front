@@ -1,8 +1,8 @@
 <template>
   <div class="w-full h-screen mb-[220px]">
-    <div class="w-full flex pt-28 h-screen">
+    <div class="w-full flex pt-28 h-screen flex-col lg:flex-row">
       <!----- left side----->
-      <div class="w-full mt-24">
+      <div class="w-full mt-1 lg:mt-24 px-4">
         <!----- tabs button-------->
         <div class="flex items-center justify-center w-full">
           <div to="/login" @click.prevent="checkSignupSteps"
@@ -15,10 +15,10 @@
         </div>
 
 
-        <div class="w-[600px] mx-auto ">
+        <div class="w-11/12 lg:w-[600px] mx-auto">
 
           <!----- inputs first step-------->
-          <div class="w-full mt-24" v-if="authStore.stepSignup === 1">
+          <div class="w-full mt-12 lg:mt-24" v-if="authStore.stepSignup === 1">
 
             <p class="text-right w-full">
               شماره موبایل را وارد کنید
