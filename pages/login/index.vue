@@ -1,20 +1,20 @@
 <template>
-  <div class="w-full h-screen">
-    <div class="w-full flex pt-28 h-screen">
+  <div class="w-full lg:h-screen ">
+    <div class="w-full flex flex-col lg:flex-row pt-28 lg:h-screen">
 
       <!----- left side----->
-      <div class="w-full mt-24">
+      <div class=" mx-auto mt-10 lg:mt-24 w-[340px] lg:w-full shadow-md lg:shadow-none p-8 rounded-md">
         <!----- tabs button-------->
-        <div class="flex items-center justify-center w-full">
-          <div class="text-white bg-sky-custom w-[300px] rounded-md p-4 text-center">
+        <div class="flex items-center justify-center w-full lg:px-1">
+          <div class="text-white bg-sky-custom w-full w-full lg:w-[300px] rounded-md p-4 text-center">
             ورود
           </div>
-          <RouterLink to="/register" class="text-zinc-600 w-[300px] rounded-md p-4 text-center bg-zinc-100">
+          <RouterLink to="/register" class="text-zinc-600 w-full lg:w-[300px] rounded-md p-4 text-center bg-zinc-100">
             ثبت نام
           </RouterLink>
         </div>
 
-        <div class="w-[600px] mt-24 mx-auto ">
+        <div class="w-full lg:w-[600px] mt-24 mx-auto ">
             <!----- inputs first step-------->
             <div class="w-full" v-if="authStore.stepLogin === 1">
               <FormKit type="form" @submit="LoginMobileVerify" :actions="false">
@@ -134,10 +134,10 @@
       </div>
 
       <!----- right side ----->
-      <div class="flex w-full p-5">
+      <div class="flex w-full p-5 lg:block hidden">
         <div class="w-full h-full bg-[#000F2D] rounded-[20px] relative">
 
-          <div class="w-full flex justify-start items-center mt-12 pe-12 flex-row-reverse">
+          <div class="w-full flex justify-center items-center pt-12 pe-12 flex-row-reverse">
             <!----- loogano logo svg------->
             <svg xmlns="http://www.w3.org/2000/svg" width="126" height="61" viewBox="0 0 126 61" fill="none">
               <mask id="mask0_873_14784" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="126"
@@ -250,14 +250,14 @@
             <p class="text-white text-[34px] font-bold pt-5">LOOGANO</p>
           </div>
 
-          <h4 class="text-right w-full mt-10 pe-12 text-[40px] text-white font-morabaa">
+          <h4 class="text-center w-full mt-10 pe-12 text-[40px] text-white font-morabaa">
             فرصت هایی بی انتهایی
             <br>
             برای <span class="text-sky-200">معاملات</span> هوشمند ملکی
           </h4>
 
           <!----- bottom image---->
-          <img src="/images/login/login_building.png" class="absolute left-1/2 -translate-x-1/2 -bottom-5"
+          <img src="/images/login/login_building.png" class="absolute left-1/2 -translate-x-1/2 -bottom-[10px] lg:-bottom-5"
                alt="login_building">
         </div>
       </div>
@@ -271,7 +271,8 @@
 import {useAuthStore} from "~/store/auth";
 
 definePageMeta({
-  middleware: 'is-logged-in'
+  middleware: 'is-logged-in',
+  layout: 'default',
 })
 
 const authStore = useAuthStore();

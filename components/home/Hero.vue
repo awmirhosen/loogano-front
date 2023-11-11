@@ -63,7 +63,7 @@
 
             <div class="p-4 mt-10 flex gap-10 justify-end md:flex hidden">
 
-              <NuxtLink>
+              <NuxtLink to="/login" v-if="!props.auth">
                 <button class="px-10 text-blue-custom border-blue-custom py-2 rounded-md text-white hover:bg-sky-custom login-hero">ورود</button>
               </NuxtLink>
 
@@ -73,8 +73,8 @@
 
             </div>
 
-            <div class="p-4 flex gap-10 justify-end block md:hidden">
-              <NuxtLink>
+            <div class="p-4 flex gap-10 justify-end block md:hidden" v-if="!props.auth">
+              <NuxtLink to="/register">
                 <button class="px-10 bg-sky-custom py-2 search-hero rounded-md text-white">ثبت نام</button>
               </NuxtLink>
             </div>
@@ -100,6 +100,12 @@
 
 <script setup>
 
+const props = defineProps([
+    'auth'
+])
+
+console.log(props)
+
 </script>
 
 <style scoped>
@@ -115,12 +121,14 @@
 
 .search-hero:hover {
   background: white;
+  outline: none;
   color: rgba(27, 158, 178, 1);
   border: 1px solid rgba(27, 158, 178, 1);
 }
 
 .search-hero {
   transition: all linear 150ms;
+  border: 1px solid white;
 }
 
 </style>

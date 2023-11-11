@@ -38,7 +38,7 @@
 
               <div class="w-full mt-4">
                 <input type="text" class="w-full border border-2 border-[#8f8f8f] rounded-md px-4 py-2"
-                       v-model="phoneNumber" placeholder="98933...">
+                       v-model="phoneNumber" placeholder="98933..." inputmode="numeric">
               </div>
             </div>
 
@@ -83,6 +83,7 @@
                          inputmode="numeric"
                          input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
                          validation="required|number|length:10,10"
+                         messages-class="text-[14px] text-red-500"
                          :validation-messages="{length: 'کدملی ده رقم میباشد' , number: 'کدملی شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
                 />
               </div>
@@ -95,6 +96,7 @@
                          messages-class="text-[14px] text-red-500"
                 />
               </div>
+              
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="password" name="password" label="رمز عبور*"
@@ -288,8 +290,8 @@
 import {useAuthStore} from "~/store/auth";
 import Swal from "sweetalert2";
 
-onBeforeMount(() => {
-  console.log("qwqwqw");
+definePageMeta({
+  layout: 'default',
 })
 
 definePageMeta({

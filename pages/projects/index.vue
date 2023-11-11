@@ -8,7 +8,7 @@
       <div class="md:rounded-[30px] mt-56 relative shadow-lg min-w-[378px] lg:p-6 md:p-4 p-3" v-for="(projects, index) in projectStore.projectLists" :key="index">
 
         <!------image---------->
-        <div class="absolute w-full top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 px-8" style="z-index: 3333">
+        <div class="absolute w-full top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 px-8" style="z-index: 33">
           <img src="/images/home/test_investment_slider_pic.png" class="w-full" alt="investment_building">
         </div>
 
@@ -99,6 +99,11 @@
 <script setup>
 
 import {useProjectStore} from "~/store/projects";
+
+definePageMeta({
+  layout: 'default',
+})
+
 const projectStore = useProjectStore();
 projectStore.fetchProjectList();
 

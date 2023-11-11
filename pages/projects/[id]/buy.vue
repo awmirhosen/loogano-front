@@ -129,6 +129,9 @@
 import PeymentMethodBox from "~/components/projects/buy/PeymentMethodBox.vue";
 import {useProjectStore} from "~/store/projects";
 
+definePageMeta({
+  layout: 'default',
+})
 
 const projectStore = useProjectStore();
 

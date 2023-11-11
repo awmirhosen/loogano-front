@@ -4,7 +4,7 @@
 
   <!--hero seciton-->
   <client-only>
-    <Hero/>
+    <Hero :auth="layoutStore.isAuth" />
   </client-only>
 
 
@@ -47,9 +47,17 @@ import Hero from "~/components/home/Hero.vue";
 import Reasons from "~/components/home/Reasons.vue";
 import ServiceSwiper from "~/components/home/ServiceSwiper.vue";
 import {useProjectStore} from "~/store/projects";
+import {useLayoutStore} from "~/store/layout";
 // import HomeSlider from "~/components/home/HomeSlider.vue";
 // import InvestmentSteps from "~/components/home/InvestmentSteps.vue";
 // import HomeFaq from "~/components/home/HomeFaq.vue";
+
+definePageMeta({
+  layout: "default"
+})
+
+
+const layoutStore = useLayoutStore();
 
 const projectStore = useProjectStore();
 projectStore.fetchSliderProjectList();

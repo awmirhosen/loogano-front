@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     css: [
         `~/assets/css/global.css`,
     ],
-    devtools: {enabled: true},
+    devtools: {enabled: false},
     modules: [
         '@nuxtjs/tailwindcss',
         '@formkit/nuxt',
@@ -12,7 +12,9 @@ export default defineNuxtConfig({
         "@pinia/nuxt",
         "@pinia-plugin-persistedstate/nuxt",
         'nuxt3-leaflet',
-        ["nuxt-plotly", { inject: true }]
+        // '@alireza-ab/persian-date/nuxt',
+        // '@alireza-ab/vue-persian-datepicker/nuxt',
+        ["nuxt-plotly", {inject: true}],
     ],
     vite: {
         optimizeDeps: {
@@ -25,5 +27,6 @@ export default defineNuxtConfig({
         // prefix: 'Swiper',
         // styleLang: 'css',
         // modules: ['navigation', 'pagination'], // all modules are imported by default
-    }
+    },
+    components: true
 })

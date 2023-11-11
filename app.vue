@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrappper w-full">
     <NuxtLoadingIndicator color="#1B9DB1" throttle="0" />
-    <NuxtLayout :name="layoutStore.layouts">
+    <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
   </div>
@@ -19,7 +19,11 @@ definePageMeta({
 
 </script>
 
-<style scoped>
+<style>
+
+#nuxt-devtools-containe {
+  display: none !important;
+}
 
 
 </style>

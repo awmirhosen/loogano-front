@@ -106,6 +106,10 @@ import ProjectMap from "~/components/projects/details/ProjectMap.vue";
 import clientOnly from "#app/components/client-only";
 
 
+definePageMeta({
+  layout: 'default',
+})
+
 const route = useRoute();
 // deifne pinia project store
 const projectStore = useProjectStore();

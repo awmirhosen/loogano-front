@@ -1,11 +1,13 @@
 <template>
 
-  <!--    header-->
-  <HeaderItems class="z-20"/>
+  <div class="max-w-[1996px] mx-auto">
+    <!--    header-->
+    <HeaderItems class="z-20"/>
 
-  <slot />
-  <!-----footer------>
-  <Footer />
+      <slot />
+    <!-----footer------>
+    <Footer />
+  </div>
 
 </template>
 
