@@ -1,11 +1,17 @@
 <template>
-  <div class="w-full h-screen flex justify-center items-center gap-3 flex-col">
-    <p class="text-3xl">لطفا صبر کنید...</p>
-
-    <div class="w-[50px] h-[50px] bg-sky-custom rounded-full first-animation-ele"></div>
-    <div class="w-[50px] h-[50px] bg-sky-custom rounded-full second-animation-ele"></div>
-
+<div class="relative">
+  <div class="middle">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+    <div class="bar bar4"></div>
+    <div class="bar bar5"></div>
+    <div class="bar bar6"></div>
+    <div class="bar bar7"></div>
+    <div class="bar bar8"></div>
   </div>
+  <p class="absolute left-1/2 top-[50px] -translate-x-1/2">در حال دریافت اطلاعات</p>
+</div>
 </template>
 
 <script setup>
@@ -14,40 +20,66 @@
 </script>
 
 <style scoped>
-
-.first-animation-ele {
-  animation: loading infinite;
-  animation-duration: 1.6s;
-  transition: all linear 1ms;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #000;
 }
-.second-animation-ele {
-  animation: loading2 infinite;
-  animation-duration: 1.6s;
-  transition: all linear 1ms;
+.middle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.bar {
+  width: 10px;
+  height: 70px;
+  background: #fff;
+  display: inline-block;
+  transform-origin: bottom center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
+  animation: loader 1.2s linear infinite;
+}
+.bar1 {
+  animation-delay: 0.1s;
+}
+.bar2 {
+  animation-delay: 0.2s;
+}
+.bar3 {
+  animation-delay: 0.3s;
+}
+.bar4 {
+  animation-delay: 0.4s;
+}
+.bar5 {
+  animation-delay: 0.5s;
+}
+.bar6 {
+  animation-delay: 0.6s;
+}
+.bar7 {
+  animation-delay: 0.7s;
+}
+.bar8 {
+  animation-delay: 0.8s;
 }
 
-
-@keyframes loading {
+@keyframes loader {
   0% {
-    transform: translateY(0px);
+    transform: scaleY(0.1);
+    background: #1b9eb2;
   }
   50% {
-    transform: translateY(62px);
+    transform: scaleY(1);
+    background: #1b9eb2;
   }
   100% {
-    transform: translateY(0px);
-  }
-}
-
-@keyframes loading2 {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-62px);
-  }
-  100% {
-    transform: translateY(0px);
+    transform: scaleY(0.1);
+    background: transparent;
   }
 }
 

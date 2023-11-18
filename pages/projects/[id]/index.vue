@@ -76,8 +76,8 @@
         <div class="">
           <ProjectsDetailsGallerySwiper keep-alive/>
           <!-----project features---->
-          <div class="w-full">
-            <LazyProjectsDetailsFeatures class="hidden lg:block"/>
+          <div class="w-full hidden lg:block">
+            <LazyProjectsDetailsFeatures :attr="projectStore.projectDetails.attributes"/>
           </div>
 
           <div class="w-full mt-4">

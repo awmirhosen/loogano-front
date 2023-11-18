@@ -1,4 +1,7 @@
 <template>
+
+
+
   <div class="w-full">
     <div class="w-full flex items-center justify-between">
       <div class="px-4 py-2 text-zinc-950 bg-[#A3DDBE80] rounded-lg">
@@ -7,7 +10,7 @@
       <h3 class="text-[28px]">امکانات پروژه</h3>
     </div>
 
-    <div class="w-full flex flex-wrap justify-center gap-4 mt-16 overflow-hidden max-h-[210px] flex-row-reverse transition-all" ref="featuresBox">
+    <div class="w-full flex flex-wrap justify-center gap-4 mt-16 overflow-hidden max-h-[210px] flex-row-reverse transition-all" ref="featuresBox" >
 
       <div class="bg-zinc-100 max-w-[210px] w-[205px] text-center max-h-[90px] gap-4 py-6 rounded-lg flex justify-center items-center">
         <div class="">
@@ -250,8 +253,15 @@
 
 <script setup>
 
+
+
+
 const featuresBox = ref(null)
 const featureBoxStatus = ref(1)
+
+const props = defineProps([
+    'attr'
+])
 
 const openFeatures = () => {
   // console.log(featuresBox.value.classList)

@@ -1,7 +1,6 @@
 <template>
   <div class="w-full px-8">
     <div class="w-full">
-
       <!------ project details card -------->
       <div class="w-full mt-12 bg-white p-10">
 

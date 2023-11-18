@@ -19,6 +19,7 @@ export const useProjectStore = defineStore("projects", {
             projectDetailImprovePercent: [],
             investSuccessData: [],
             investSuccessArea: "",
+            sliderProjectPercent: [],
         }
     },
     actions: {
@@ -39,8 +40,22 @@ export const useProjectStore = defineStore("projects", {
             const { data: sliderProjects, error, refresh, pending } = await useFetch("/projects?page=1&count=3", {
                 baseURL: this.baseUrl
             });
-            console.log(error);
+            console.log(error.value);
             this.projectListSlider = sliderProjects.value.data.data;
+
+            sliderProjects.value.data.data.forEach(item => {
+                var projectStart = new Date(item.project_start).getTime();
+                var projectEnd = new Date(item.project_end).getTime();
+                var now = new Date().getTime();
+                console.log("now : ", now)
+
+                var totalTime = projectEnd - projectStart;
+                var timeSpent = now - projectStart;
+
+                let percent = (timeSpent / timeSpent) * 100;
+                console.log(percent)
+
+            })
 
             console.log("project slider list:", this.projectListSlider)
         },

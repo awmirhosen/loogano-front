@@ -2,11 +2,11 @@
   <div class="w-full lg:border lg:border-1 border-zinc-300 rounded-xl p-4">
 
     <!-----title of box------>
-    <div class="flex justify-between w-full items-center mt-4 px-2">
+    <div class="flex justify-between w-full items-center gap-4 mt-4 px-2">
       <div>
         <Countdown />
       </div>
-      <h4 class="2xl:text-[18px]">{{ projectStore.projectDetails?.title }}</h4>
+      <h4 class="2xl:text-[16px] text-right">{{ projectStore.projectDetails?.title }}</h4>
     </div>
 
     <hr class="mt-5 hidden lg:block">
@@ -33,7 +33,7 @@
           <p class="text-zinc-500 text-sm">: متراژ کل</p>
         </div>
 
-        <p class="text-right text-sm" dir="rtl">{{ projectStore.projectDetails?.area_mm / 1000 }} متر مربع </p>
+        <p class="text-right text-sm" dir="rtl">{{ projectStore.projectDetails?.area_mm  }} میلی متر </p>
       </div>
 
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
@@ -52,7 +52,7 @@
         </div>
 
         <p class="text-right text-sm">
-          test
+          به زودی
         </p>
       </div>
 
@@ -65,7 +65,7 @@
           <p class="text-zinc-500 text-sm">: شروع سرمایه پذیری از</p>
         </div>
 
-        <p class="text-right text-sm">{{ "-" }}</p>
+        <p class="text-right text-sm">{{ "به زودی" }}</p>
       </div>
 
     </div>
@@ -93,7 +93,7 @@
         <img src="/images/projects/images/group_project.svg" class="w-6" alt="measure_tape">
         <p class="text-zinc-500 text-sm">: تعداد سرمایه گذار ها</p>
       </div>
-      <p class="text-right text-sm">{{ projectStore.projectDetails?.project_user_completed_count}}</p>
+      <p class="text-right text-sm" dir="rtl">{{ projectStore.projectDetails?.project_user_completed_count}} نفر </p>
     </div>
 
     <hr class="mt-5">
@@ -104,14 +104,15 @@
 
       <div class="w-full relative" dir="rtl">
         <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-        <div class="w-8/12 h-[8px] absolute bg-[#5BCE90] top-0  rounded-full"></div>
+        <div class="h-[8px] absolute bg-[#5BCE90] top-0  rounded-full"></div>
       </div>
 
       <div class="w-full flex justify-between mt-2" dir="rtl">
         <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">
-          زمان کل پروژه : {{ totalMonth(projectStore.projectDetails?.project_start, projectStore.projectDetails?.project_end) }}
+          زمان کل پروژه : به زودی
         </div>
-        <div class="w-full text-zinc-400 text-left text-[12px]">{{ monthLeft(projectStore.projectDetails?.project_end) }}</div>
+<!--        <div class="w-full text-zinc-400 text-left text-[12px]">{{ monthLeft(projectStore.projectDetails?.project_end) }}</div>-->
+        <div class="w-full text-zinc-400 text-left text-[12px]">به زودی</div>
       </div>
 
       <hr class="mt-5">

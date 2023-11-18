@@ -82,7 +82,8 @@ export const useAuthStore = defineStore("auth", {
             }).then(res => {
                 console.log(res);
                 layoutStore.isAuth = true;
-                localStorage.setItem("token", res.data.data);
+                localStorage.setItem("token", res.data.data.token);
+                console.log(res.data.data);
                 router.push("/");
                 this.loginLoading = false;
             }).catch(err => {

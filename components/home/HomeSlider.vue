@@ -38,7 +38,8 @@
 
          }"
           >
-            <swiper-slide class="md:rounded-[30px] relative shadow-lg min-w-[300px] lg:p-6 md:p-4 p-3" v-for="projects in projectStore.projectListSlider">
+            <swiper-slide class="md:rounded-[30px] relative shadow-lg min-w-[300px] lg:p-6 md:p-4 p-3"
+                          v-for="projects in projectStore.projectListSlider">
 
               <!------image---------->
               <div class="absolute w-full top-0 -translate-y-2/3 px-8" style="z-index: 3333">
@@ -47,15 +48,16 @@
 
               <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
                 <!--project name-->
-                <div class="text-[24px] text-center mt-24 flex items-center flex-row-reverse justify-between flex-wrap">
+                <div class="text-[18px] text-center mt-24 flex items-center flex-row-reverse justify-between flex-wrap">
                   <p>{{ projects.title }}</p>
                   <!---investment status---->
-                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[13px] rounded-lg">
+                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[12px] rounded-lg">
                     توقف سرمایه پذیر
                   </div>
                 </div>
+                <!--border of bottom of title-->
                 <div class="">
-                <div class="w-full px-10 h-[1px] mt-3 w-full bg-zinc-300 mt-12"></div>
+                  <div class="w-full px-10 h-[1px] mt-3 w-full bg-zinc-300 mt-12"></div>
                 </div>
 
                 <div class="w-full mt-5">
@@ -77,11 +79,11 @@
                   </div>
 
                   <div class="w-full flex justify-start gap-3 flex-row-reverse items-center">
-                    <div >
+                    <div>
                       <img src="/images/home/tape_measure.png" alt="location">
                     </div>
                     <p class="text-zinc-500 text-[14px]">: متراژ</p>
-                    <p class="text-zinc-500 text-[16px] font-bold">{{ projects.area_mm / 1000 }} </p>
+                    <p class="text-zinc-500 text-[16px] font-bold" dir="rtl">{{ projects.area_mm }} میلی متر </p>
                   </div>
 
                   <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">
@@ -90,11 +92,13 @@
                         <img src="/images/home/peoples.png" alt="location">
                       </div>
                       <p class="text-zinc-500 text-[14px]">: تعداد سرمایه گذار ها</p>
-                      <p dir="rtl" class="text-zinc-500 text-[16px] font-bold">{{ projects.project_user_completed_count }}  نفر </p>
+                      <p dir="rtl" class="text-zinc-500 text-[16px] font-bold">{{
+                          projects.project_user_completed_count
+                        }} نفر </p>
                     </div>
 
                     <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                      سود تا امروز :  %{{ projects.progresses[0]?.value }}
+                      سود تا امروز : %{{ projects.progresses[0]?.value }}
                     </div>
 
                   </div>
@@ -120,7 +124,8 @@
                     </div>
                   </div>
 
-                  <NuxtLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full bg-[#1B9DB1] p-3 block text-white rounded-lg mt-6">
+                  <NuxtLink :to="{ name: 'projects-id', params: {id: projects.id} }"
+                            class="w-full bg-[#1B9DB1] p-3 block text-white rounded-lg mt-6">
                     شروع سرمایه گذاری
                   </NuxtLink>
 
@@ -137,7 +142,8 @@
         <div class="flex w-12/12 h-full">
           <div class="w-full flex justify-center items-center self-end mb-10">
             <div class="w-full h-1 bg-white"></div>
-            <NuxtLink to="/projects" class="px-10 whitespace-nowrap border border-2 border-white py-3 rounded-xl text-white">پروژه های
+            <NuxtLink to="/projects"
+                      class="px-10 whitespace-nowrap border border-2 border-white py-3 rounded-xl text-white">پروژه های
               بیشتر
             </NuxtLink>
             <div class="w-full h-1 bg-white"></div>
@@ -167,7 +173,7 @@ const totalMonth = (start, end) => {
   end = end.split(" ")[0];
   const endTime = new Date(end);
 
-  const monthsLeft =new Date(endTime - startTime);
+  const monthsLeft = new Date(endTime - startTime);
 
   if (monthsLeft.getMonth() < 1) {
     const daysLeft = monthsLeft.getDay();
@@ -193,7 +199,7 @@ const monthLeft = (end) => {
   // calculating month or day
   if (timeLeft.getMonth() < 1) {
 
-  }else {
+  } else {
     return `${timeLeft.getMonth()} ماه تا پایان`
   }
 
