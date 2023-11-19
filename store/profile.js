@@ -17,7 +17,7 @@ export const useProfileStore = defineStore("profile", {
                 amount: amount,
                 gateway: 1,
             }).then(res => {
-                // navigateTo(res.data.data.url, {external: true});
+                navigateTo(res.data.data.url, {external: true});
             }).catch(err => {
                 toast.error("مشکلی در ارتباط با سرور پیش آمده");
                 console.log(err);
