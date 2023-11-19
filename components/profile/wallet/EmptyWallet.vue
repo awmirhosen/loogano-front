@@ -25,20 +25,20 @@
           </div>
 
           <div class="flex justify-center mt-6 gap-4" dir="rtl">
-            <div class="px-10 py-2 text-zinc-400 border-2 rounded-md border-zinc-300 w-full text-center cursor-pointer">
+            <div class="px-10 py-2 text-zinc-400 border-2 rounded-md border-zinc-300 w-full text-center cursor-pointer" @click="changeAmount(5000000)">
               5,000,000 تومان
             </div>
-            <div class="px-10 py-2 text-zinc-400 border-2 rounded-md border-zinc-300 w-full text-center cursor-pointer">
+            <div class="px-10 py-2 text-zinc-400 border-2 rounded-md border-zinc-300 w-full text-center cursor-pointer" @click="changeAmount(15000000)">
               15,000,000 تومان
             </div>
-            <div class="px-10 py-2 border-2 text-zinc-400 rounded-md border-zinc-300 w-full text-center cursor-pointer">
+            <div class="px-10 py-2 border-2 text-zinc-400 rounded-md border-zinc-300 w-full text-center cursor-pointer" @click="changeAmount(30000000)">
               30,000,000 تومان
             </div>
           </div>
 
           <div class="mt-4 border-2 rounded-md border-zinc-300 py-2 flex gap-2 items-center px-4">
             <p class="text-zinc-400">تومان</p>
-            <input class="w-full bg-inherit focus:border-0 focus:outline-0 "/>
+            <input class="w-full bg-inherit focus:border-0 focus:outline-0 " v-model="paymentAmount" />
             <p class="whitespace-nowrap text-zinc-400">مبلغ مورد نظر</p>
           </div>
 
@@ -58,6 +58,11 @@
 import {useProfileStore} from "~/store/profile";
 
 const paymentFlag = ref(false);
+const paymentAmount = ref("");
+
+const changeAmount = (amount) => {
+  paymentAmount.value = amount
+}
 
 const changePaymentFlag = () => {
   if (paymentFlag.value === true){
@@ -71,8 +76,7 @@ const profileStore = useProfileStore();
 
 
 const chargeWallet = () => {
-  console.log("hhe");
-  profileStore.chargeWallet(300);
+  profileStore.chargeWallet(paymentAmount.value);
 }
 
 </script>

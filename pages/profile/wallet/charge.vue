@@ -6,6 +6,11 @@
       <span class="block w-full mt-3 h-[2px] bg-sky-custom"></span>
     </div>
     <!------ empty wallet ------>
+
+    <div @click="addTest">
+      fffffff
+    </div>
+
     <EmptyWallet />
 
   </div>
@@ -17,7 +22,13 @@ import EmptyWallet from "~/components/profile/wallet/EmptyWallet.vue";
 
 definePageMeta({
   layout: 'profile',
-})
+});
+
+const router = useRouter();
+
+const addTest = () => {
+  navigateTo('https://www.google.com', {external: true});
+}
 
 
 </script>
