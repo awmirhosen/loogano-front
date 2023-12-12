@@ -20,6 +20,7 @@
           <!----- inputs first step-------->
           <div class="w-full mt-12 lg:mt-24" v-if="authStore.stepSignup === 1">
 
+
             <p class="text-right w-full">
               شماره موبایل را وارد کنید
             </p>
