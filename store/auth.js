@@ -3,7 +3,7 @@ import {useToast} from "vue-toastification";
 import axios from "~/plugins/axios";
 import {useLayoutStore} from "~/store/layout";
 
-const $axios = axios().provide.axios
+const $axios = axios().provide.axios;
 
 export const useAuthStore = defineStore("auth", {
     state: () => {
@@ -49,8 +49,7 @@ export const useAuthStore = defineStore("auth", {
         async registerMobileVerify(phoneNumber) {
 
             this.signupLoading = true;
-
-            const toast = useToast()
+            const toast = useToast();
 
             const {
                 data: verified,
@@ -58,8 +57,7 @@ export const useAuthStore = defineStore("auth", {
             } = await useFetch(() => `/auth/check-mobile?mobile=${phoneNumber}`, {
                 baseURL: this.baseUrl,
             });
-            console.log(error.value);
-            console.log(verified.value);
+
             if (verified.value.code === -1) {
                 this.sendToken(phoneNumber);
                 this.signupLoading = false;
@@ -67,8 +65,9 @@ export const useAuthStore = defineStore("auth", {
                 this.signupPhoneNumber = phoneNumber;
             } else if (verified.value.code === 100) {
                 this.signupLoading = false;
-                toast.error("شما با این شماره تلفن همراه ثبت نام کردید")
+                toast.error("شما با این شماره تلفن همراه ثبت نام کردید");
             }
+
         },
         async loginWithPassword(password) {
             const router = useRouter();
@@ -83,7 +82,6 @@ export const useAuthStore = defineStore("auth", {
                 console.log(res);
                 layoutStore.isAuth = true;
                 localStorage.setItem("token", res.data.data.token);
-                console.log(res.data.data);
                 router.push("/");
                 this.loginLoading = false;
             }).catch(err => {
@@ -98,6 +96,9 @@ export const useAuthStore = defineStore("auth", {
             const toast = useToast();
             const router = useRouter();
 
+            const layoutStore = useLayoutStore();
+
+
             $axios.post("/auth/register", {
                 first_name: data.firstName,
                 last_name: data.lastName,
@@ -108,9 +109,11 @@ export const useAuthStore = defineStore("auth", {
                 password: data.password,
                 password_confirmation: data.password
             }).then(res => {
-                console.log(res)
+                console.log(res);
+                layoutStore.isAuth = true;
+                console.log(res.data);
                 localStorage.setItem("token", res.data.data);
-                // router.push("/");
+                router.push("/");
                 location.reload();
             }).catch(err => {
                 console.log(err.response.data.message)

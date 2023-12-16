@@ -10,11 +10,18 @@
 <script setup>
 
 import {useLayoutStore} from "~/store/layout";
+import axios from "~/plugins/axios";
 const layoutStore = useLayoutStore();
 
-definePageMeta({
-  middleware: 'set-auth'
-})
+const $axios = axios().provide
+
+console.log($axios.authFlag);
+
+if ($axios.authFlag === true) {
+  layoutStore.isAuth = true;
+}else {
+  layoutStore.isAuth = false;
+}
 
 
 </script>

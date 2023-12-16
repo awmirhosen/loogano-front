@@ -1,7 +1,10 @@
 import {defineStore} from "pinia";
-import axios from "axios";
+import axios from "~/plugins/axios";
+import {useToast} from "vue-toastification";
+import {useLayoutStore} from "~/store/layout";
 
-// const axios = useNuxtApp().$Axios
+const $axios = axios().provide.axios;
+
 
 export const useProjectStore = defineStore("projects", {
     state: () => {
@@ -20,6 +23,7 @@ export const useProjectStore = defineStore("projects", {
             investSuccessData: [],
             investSuccessArea: "",
             sliderProjectPercent: [],
+            walletNeed: false,
         }
     },
     actions: {
@@ -27,7 +31,7 @@ export const useProjectStore = defineStore("projects", {
             this.galleryModalFlag = this.galleryModalFlag === false;
         },
         async fetchProjectList() {
-            const { data: project, error, refresh, pending } = await useFetch("/projects?page=1&count=8", {
+            const {data: project, error, refresh, pending} = await useFetch("/projects?page=1&count=8", {
                 baseURL: this.baseUrl
             });
             console.log(error);
@@ -37,7 +41,7 @@ export const useProjectStore = defineStore("projects", {
 
         },
         async fetchSliderProjectList() {
-            const { data: sliderProjects, error, refresh, pending } = await useFetch("/projects?page=1&count=3", {
+            const {data: sliderProjects, error, refresh, pending} = await useFetch("/projects?page=1&count=3", {
                 baseURL: this.baseUrl
             });
             console.log(error.value);
@@ -61,7 +65,7 @@ export const useProjectStore = defineStore("projects", {
         },
         async fetchProjectById(id) {
 
-            const { data: details, error, refresh, pending } = await useFetch( () => `/projects/${id}`, {
+            const {data: details, error, refresh, pending} = await useFetch(() => `/projects/${id}`, {
                 baseURL: this.baseUrl,
             });
 
@@ -87,7 +91,7 @@ export const useProjectStore = defineStore("projects", {
             details.value.data.files.forEach(item => {
                 if (item.type === 'image') {
                     detailsImage.push(item);
-                }else {
+                } else {
                     detailsPDF.push(item);
                 }
             })
@@ -99,28 +103,45 @@ export const useProjectStore = defineStore("projects", {
         },
         async insertInvest(id, area) {
 
-            const {data: invest, error, pending} = await useFetch("/panel/buy", {
-                baseURL: this.baseUrl,
-                method: "POST",
-                headers: {
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDA3YjBkMzg3YmJkZjEyZGQyZDZjZTE0MDhmM2VmYjBmNjJhZjUwMGYyYTBiYWQyM2NlZGJmMDI1NDFmNjVhNDU2NjY1ZDc5NDk4N2MxOTEiLCJpYXQiOjE2OTY2NjE3MzEuNzUyODgxLCJuYmYiOjE2OTY2NjE3MzEuNzUyODgzLCJleHAiOjE3MjgyODQxMzEuNzQ2Mzg2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.fbKIlY1Bw_k5OaYK6MasIZr4OxJGxnBx33m7qiQ390pTS-hw6aUYM8adB0aH0Wiewxja-HMnShrgjNImoFqv1sCfcz5wrxb6bM-0sAv9GxxueYBdeOMgbkuWpyvAI_5WSEvcM4AEi3kKwMiJAoUFE7TIjoQTIH9rzMYIv6bMS8wjSYOJPT1aAsfaCj8fmGHQp_kY_2VGlScQ9zGU3crmxwOOMYS9ct7J1ahNqspOxShXCHtBdb6DRJp1SzeEcUCjXUSM33BwAwhngIt2mto_evvyPy5kyMVUqBvmjxJz10u6S6bU_TSDeXfjDzNkPzJDLZlbeTea2C8dPv_raYXkI1lKiheP-CMu7z9luFmmWF4SiP14-D43sObE5UySBXedy0eXJ530WYtb66sZajMa5YHOhVfCVNOGAoZf98w0jBwLdz1-kvqROyBkIemH5pkeuzfRkT7DAzE3o2IVBHjBJAMxY99Gun3vpju-9sNfS3Mtbe7oCbgbMOarUUlrcQa8Kzgu2ZkjtcH3vN2d3XtM48ZvU6M_XkVqzSDS-a_8RRTQ_7oyl-s0XyOXnQEZR0XT1dG3NBo7ntXy5rpjWmNZsPwnRiGFgFgZrHoX9cshShoEc0nmj0uRTD9ewozJFmgX_Px3TFnjwYIbPHM_TRGVODPwu5BBUPIZN2TK1Q_tjeA"
-                },
-                body: {
-                    project_id: id,
-                    area: area,
-                }
-            })
-            console.log(error.value);
-
-            if (invest.value.code === 100) {
-                this.investSuccessData = invest.value.data
-                this.investSuccessArea = area
-            }
-
             const router = useRouter();
-            router.push(`/projects/${id}/buy`);
+            const toast = useToast();
+
+            $axios.post("/panel/buy", {
+                project_id: id,
+                area: area,
+            }).then(res => {
+                console.log(res.data.errors);
+
+                const layoutStore = useLayoutStore();
+
+                if (layoutStore.isAuth === false) {
+                    toast.error("لطفا اول وارد حساب کاربری خود شوید");
+                }else {
+                    if ( res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
+                        toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
+                    }else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
+                        toast.error("موجودی کیف پول شما کافی نیست")
+                        this.walletNeed = true;
+                    } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
+                        toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
+                    } else if (res.data.code === 100) {
+                        console.log("this is for test")
+                        console.log(res.data.data);
+                        this.investSuccessArea = area;
+                        this.investSuccessData = res.data.data;
+                        router.push(`/projects/${id}/buy`);
+                    }
+                }
+                // router.push(`/projects/${id}/buy`);
+                // this.investSuccessData = invest.value.data;
+                // this.investSuccessArea = area;
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
 
         },
+
         async test(data) {
             const {data: invest, error, pending} = await useFetch("/panel/invoice", {
                 baseURL: this.baseUrl,
@@ -136,16 +157,6 @@ export const useProjectStore = defineStore("projects", {
             console.log(error.value);
 
         },
-        axTest() {
-            axios.post("/panel/buy", {
-                "project_id": 1,
-                "area": 3,
-            }).then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log(err)
-            })
-        }
 
     }
 })

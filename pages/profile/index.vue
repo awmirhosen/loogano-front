@@ -15,8 +15,12 @@
 <script setup>
 
 import {useLayoutStore} from "~/store/layout";
+import {useProfileStore} from "~/store/profile";
 
 const layoutStore = useLayoutStore();
+
+const profileStore = useProfileStore();
+profileStore.fetchProfileData();
 
 definePageMeta({
   layout: 'profile'

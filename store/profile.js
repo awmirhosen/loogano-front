@@ -6,12 +6,14 @@ const $axios = axios().provide.axios
 
 export const useProfileStore = defineStore("profile", {
     state: () => {
-        return {}
+        return {
+            profileData: {}
+        }
     },
     actions: {
         // wallet functions
         async chargeWallet(amount) {
-            const toast = useToast()
+            const toast = useToast();
 
             $axios.post("/user/charge", {
                 amount: amount,
@@ -22,6 +24,19 @@ export const useProfileStore = defineStore("profile", {
                 toast.error("مشکلی در ارتباط با سرور پیش آمده");
                 console.log(err);
             })
+        },
+        async fetchProfileData () {
+
+            const toast = useToast()
+
+            $axios.get("/user/me").then(res => {
+                this.profileData = res.data.data;
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+                toast.error("مشکلی در ارتباط با سرور پیش آمده")
+            })
+
         }
     },
 

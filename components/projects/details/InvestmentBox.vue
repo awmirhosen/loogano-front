@@ -203,6 +203,11 @@
         شروع سرمایه گذاری
       </div>
 
+      <RouterLink to="/profile/wallet/charge" class="w-full block mt-4 hover:text-sky-600 transition-all text-center text-[#1B9DB1]" v-if="projectStore.walletNeed">
+        شارژ کیف پول
+      </RouterLink>
+
+
     </div>
 
   </div>
@@ -377,6 +382,8 @@ const monthLeft = (end) => {
   console.log(end)
 
 }
+
+projectStore.walletNeed = false;
 
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-<div class="relative">
-  <div class="middle">
+<div class="relative mt-[250px]">
+  <div class="middle mb-[100px]">
     <div class="bar bar1"></div>
     <div class="bar bar2"></div>
     <div class="bar bar3"></div>
@@ -10,7 +10,7 @@
     <div class="bar bar7"></div>
     <div class="bar bar8"></div>
   </div>
-  <p class="absolute left-1/2 top-[50px] -translate-x-1/2">در حال دریافت اطلاعات</p>
+  <p class="absolute left-1/2 top-[50px] -translate-x-1/2 pb-[250px]">در حال دریافت اطلاعات</p>
 </div>
 </template>
 

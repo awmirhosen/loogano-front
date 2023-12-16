@@ -18,14 +18,14 @@ export default defineNuxtPlugin((NuxtApp) => {
     axios.defaults.proxyHeaders = false;
     if(process.client){
         const token = window.localStorage.getItem('token');
-        console.log("process")
         if(token){
-            console.log("token");
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            var flag = true;
         }
     }
     return {
         provide: {
+            authFlag: flag,
             axios: axios
         },
     }

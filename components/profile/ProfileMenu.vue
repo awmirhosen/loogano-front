@@ -11,7 +11,7 @@
               fill="#12788F"/>
         </svg>
       </div>
-      <p class="text-center text-[#12788F]">امیرحسین محمدی</p>
+      <p class="text-center text-[#12788F]"> {{ profileStore.profileData.first_name }} {{ profileStore.profileData.last_name }} </p>
       <hr class="mt-6 bg-zinc-400">
 
       <div class="w-full mt-5">
@@ -207,8 +207,12 @@
 
 <script setup>
 
+import {useProfileStore} from "~/store/profile";
+
 const investMenuFlag = ref(false);
 const profileMenuFlag = ref(true);
+
+const profileStore = useProfileStore();
 
 const onchangeSubmenu = (e) => {
   investMenuFlag.value = investMenuFlag.value !== true;

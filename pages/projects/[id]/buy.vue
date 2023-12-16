@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if="projectStore.investSuccessData.invoice_details === undefined" dir="rtl">
+  <div v-if="projectStore.investSuccessData.invoice_details === undefined" dir="rtl" class="mt-24 relative">
     <Loader />
   </div>
   <div class="bg-[#F8F8F8]" v-else>
@@ -22,11 +22,11 @@
             <p>کارمزد:</p>
             <p> {{ projectStore.investSuccessData.invoice_details.commission_amount.toFixed(2) }} ریال</p>
           </div>
-          <hr class="mt-2 border-zinc-100">
-          <div class="flex items-center mt-2 justify-between text-green-500 text-[18px]" dir="rtl">
-            <p>تخفیف:</p>
-            <p>  198,000,000 ریال</p>
-          </div>
+<!--          <hr class="mt-2 border-zinc-100">-->
+<!--          <div class="flex items-center mt-2 justify-between text-green-500 text-[18px]" dir="rtl">-->
+<!--            <p>تخفیف:</p>-->
+<!--            <p>  198,000,000 ریال</p>-->
+<!--          </div>-->
           <hr class="mt-2 border-zinc-100">
           <div class="flex items-center mt-2 justify-between font-bold text-[18px]" dir="rtl">
             <p>مبلغ قابل پرداخت:</p>
@@ -64,7 +64,7 @@
           </div>
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
-            <p>قیمت هر متر مربع:</p>
+            <p>قیمت هر میلی متر مربع:</p>
             <p> {{ projectStore.investSuccessData.project_details.prices[0].value }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
