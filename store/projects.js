@@ -12,6 +12,7 @@ export const useProjectStore = defineStore("projects", {
             baseUrl: "https://loogano.com/endpoints/api/",
             galleryModalFlag: false,
             projectLists: [],
+            projectId: "",
             projectsImprovePercent: [],
             projectListSlider: [],
             projectDetails: [],
@@ -105,8 +106,9 @@ export const useProjectStore = defineStore("projects", {
 
             const router = useRouter();
             const toast = useToast();
+            this.projectId = id;
 
-            $axios.post("/panel/buy", {
+            $axios.post("/panel/invoice", {
                 project_id: id,
                 area: area,
             }).then(res => {
@@ -128,7 +130,7 @@ export const useProjectStore = defineStore("projects", {
                         console.log("this is for test")
                         console.log(res.data.data);
                         this.investSuccessArea = area;
-                        this.investSuccessData = res.data.data;
+                        this.investSuccessData = res.data.data.invoice;
                         router.push(`/projects/${id}/buy`);
                     }
                 }
@@ -137,11 +139,55 @@ export const useProjectStore = defineStore("projects", {
                 // this.investSuccessArea = area;
                 console.log(res);
             }).catch(err => {
-                console.log(err);
+                console.log(err.response.status);
+
+                if (err.response.status === 401) {
+                    toast.error("لطفا وارد حساب کاربری خود شوید")
+                }
+
             })
 
         },
+        async buyProject(id) {
 
+            const router = useRouter();
+            const toast = useToast();
+
+            $axios.post("/panel/buy", {
+                project_id: this.projectId,
+                area: this.project,
+            }).then(res => {
+                console.log(res.data.errors);
+
+                const layoutStore = useLayoutStore();
+
+                if (layoutStore.isAuth === false) {
+                    toast.error("لطفا اول وارد حساب کاربری خود شوید");
+                }else {
+                    if ( res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
+                        toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
+                    }else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
+                        toast.error("موجودی کیف پول شما کافی نیست")
+                        this.walletNeed = true;
+                    } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
+                        toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
+                    } else if (res.data.code === 100) {
+                        // console.log("this is for test")
+                        console.log(res.data);
+                        // this.investSuccessArea = area;
+                        // this.investSuccessData = res.data.data.invoice;
+                        // router.push(`/projects/${id}/buy`);
+                    }
+                }
+            }).catch(err => {
+                console.log(err.response.status);
+
+                if (err.response.status === 401) {
+                    toast.error("لطفا وارد حساب کاربری خود شوید")
+                }
+
+            })
+        },
         async test(data) {
             const {data: invest, error, pending} = await useFetch("/panel/invoice", {
                 baseURL: this.baseUrl,

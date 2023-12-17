@@ -49,23 +49,27 @@
     <p>قوانین لوگانو را مطالعه کردم و با آنها موافقت میکنم</p>
   </div>
 
-  <div class="w-100 bg-sky-custom text-center py-3 rounded-md mt-3 text-white">
+  <button class="w-full bg-sky-custom text-center py-3 rounded-md mt-3 text-white block" @click.prevent="projectStore.buyProject">
     پرداخت
-  </div>
+  </button>
 
 </template>
 
 <script setup>
 
+import {useProjectStore} from "~/store/projects";
+
 const walletSvg = ref(null);
 const walletCircle = ref(null);
 const onlinePaymentSvg = ref(null)
+const projectStore = useProjectStore();
 
 const walletPaymetntSelect = (e) => {
   e.currentTarget.classList.add("fill-active")
   onlinePaymentSvg.value.classList.remove("fill-active")
 
 }
+
 
 const onlinePaymetntSelect = (e) => {
   e.currentTarget.classList.add("fill-active");

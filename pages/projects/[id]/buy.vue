@@ -1,6 +1,7 @@
 <template>
 
-  <div v-if="projectStore.investSuccessData.invoice_details === undefined" dir="rtl" class="mt-24 relative">
+
+  <div v-if="projectStore.investSuccessData.pure_amount === undefined" dir="rtl" class="mt-24 relative">
     <Loader />
   </div>
   <div class="bg-[#F8F8F8]" v-else>
@@ -15,12 +16,12 @@
         <div class="w-100 p-4 mt-3 bg-white rounded-b-xl">
           <div class="flex items-center mt-2 justify-between text-[18px] text-zinc-700" dir="rtl">
             <p>مبلغ سرمایه گذاری:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.pure_amount }} ریال</p>
+            <p> {{ projectStore.investSuccessData.pure_amount }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100">
           <div class="flex items-center mt-2 justify-between text-[18px] text-zinc-700" dir="rtl">
             <p>کارمزد:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.commission_amount.toFixed(2) }} ریال</p>
+            <p> {{ projectStore.investSuccessData.commission_amount.toFixed(2) }} ریال</p>
           </div>
 <!--          <hr class="mt-2 border-zinc-100">-->
 <!--          <div class="flex items-center mt-2 justify-between text-green-500 text-[18px]" dir="rtl">-->
@@ -30,7 +31,7 @@
           <hr class="mt-2 border-zinc-100">
           <div class="flex items-center mt-2 justify-between font-bold text-[18px]" dir="rtl">
             <p>مبلغ قابل پرداخت:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.total_amount }} ریال</p>
+            <p> {{ projectStore.investSuccessData.total_amount }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100 pb-5">
         </div>
@@ -51,26 +52,26 @@
 
           <div class="flex justify-between mt-3 mb-8 px-4">
             <h6 class="py-2 rounded-md bg-[#A3DDBE80] font-bold text-[10px] lg:text-[14px] px-3">
-              سازنده: {{ projectStore.investSuccessData.constructor_details.title }}
+<!--              سازنده: {{ projectStore.investSuccessData.constructor_details.title }}-->
             </h6>
-            <h4 class="font-bold text-[20px] lg:text-[26px]">{{ projectStore.investSuccessData.project_details.title }}</h4>
+<!--            <h4 class="font-bold text-[20px] lg:text-[26px]">{{ projectStore.investSuccessData.project_details.title }}</h4>-->
           </div>
 
           <div class="px-4" dir="rtl">
             <p class="text-zinc-400 my-2">مبلغ سرمایه گذاری</p>
             <div class="w-full bg-zinc-200 text-center p-3 rounded-md">
-              {{ projectStore.investSuccessData.invoice_details.pure_amount }} ریال
+              {{ projectStore.investSuccessData.pure_amount }} ریال
             </div>
           </div>
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>قیمت هر میلی متر مربع:</p>
-            <p> {{ projectStore.investSuccessData.project_details.prices[0].value }} ریال</p>
+<!--            <p> {{ projectStore.investSuccessData.project_details.prices[0].value }} ریال</p>-->
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>مبلغ سرمایه گذار:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.pure_amount }} ریال</p>
+            <p> {{ projectStore.investSuccessData.pure_amount }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
@@ -80,25 +81,25 @@
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>مالیات:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.vat_tax_rate }} درصد</p>
+            <p> {{ projectStore.investSuccessData.vat_tax_rate }} درصد</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>کارمزد:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.commission_sale_rate }} درصد</p>
+            <p> {{ projectStore.investSuccessData.commission_sale_rate }} درصد</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>جمع کل:</p>
-            <p> {{ projectStore.investSuccessData.invoice_details.total_amount }} ریال</p>
+            <p> {{ projectStore.investSuccessData.total_amount }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>تاریخ اتمام پروژه:</p>
-            <p> {{ projectEndingDate(projectStore.investSuccessData.project_details.project_end) }}</p>
+<!--            <p> {{ projectEndingDate(projectStore.investSuccessData.project_details.project_end) }}</p>-->
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
@@ -123,6 +124,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script setup>
