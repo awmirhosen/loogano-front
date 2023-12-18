@@ -33,7 +33,7 @@
       <div>
         <p>کیف پول</p>
         <p class="text-[12px]">
-          موجودی 0 ریال
+          {{ profileStore.profileData.wallet.balance }}
         </p>
       </div>
     </div>
@@ -58,11 +58,13 @@
 <script setup>
 
 import {useProjectStore} from "~/store/projects";
+import {useProfileStore} from "~/store/profile";
 
 const walletSvg = ref(null);
 const walletCircle = ref(null);
 const onlinePaymentSvg = ref(null)
 const projectStore = useProjectStore();
+cosnt profileStore = useProfileStore();
 
 const walletPaymetntSelect = (e) => {
   e.currentTarget.classList.add("fill-active")
