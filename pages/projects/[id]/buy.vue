@@ -50,12 +50,12 @@
         <!----- box----->
         <div class="w-100 p-4 mt-3 bg-white rounded-b-xl">
 
-          <div class="flex justify-between mt-3 mb-8 px-4">
-            <h6 class="py-2 rounded-md bg-[#A3DDBE80] font-bold text-[10px] lg:text-[14px] px-3">
+<!--          <div class="flex justify-between mt-3 mb-8 px-4">-->
+<!--            <h6 class="py-2 rounded-md bg-[#A3DDBE80] font-bold text-[10px] lg:text-[14px] px-3">-->
 <!--              سازنده: {{ projectStore.investSuccessData.constructor_details.title }}-->
-            </h6>
+<!--            </h6>-->
 <!--            <h4 class="font-bold text-[20px] lg:text-[26px]">{{ projectStore.investSuccessData.project_details.title }}</h4>-->
-          </div>
+<!--          </div>-->
 
           <div class="px-4" dir="rtl">
             <p class="text-zinc-400 my-2">مبلغ سرمایه گذاری</p>
@@ -76,7 +76,7 @@
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>متراژ سرمایه گذاری:</p>
-            <p> {{ projectStore.investSuccessArea }} متر</p>
+            <p> {{ projectStore.investSuccessArea }} میلی متر</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">

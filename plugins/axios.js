@@ -19,6 +19,7 @@ export default defineNuxtPlugin((NuxtApp) => {
     if(process.client){
         const token = window.localStorage.getItem('token');
         if(token){
+            console.log("Token is in Header")
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
             var flag = true;
         }

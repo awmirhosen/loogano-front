@@ -152,15 +152,12 @@ export const useProjectStore = defineStore("projects", {
 
             const router = useRouter();
             const toast = useToast();
+            const layoutStore = useLayoutStore();
 
             $axios.post("/panel/buy", {
                 project_id: this.projectId,
-                area: this.project,
+                area: this.investSuccessArea,
             }).then(res => {
-                console.log(res.data.errors);
-
-                const layoutStore = useLayoutStore();
-
                 if (layoutStore.isAuth === false) {
                     toast.error("لطفا اول وارد حساب کاربری خود شوید");
                 }else {
@@ -172,11 +169,21 @@ export const useProjectStore = defineStore("projects", {
                     } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
                         toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
                     } else if (res.data.code === 100) {
-                        // console.log("this is for test")
-                        console.log(res.data);
-                        // this.investSuccessArea = area;
-                        // this.investSuccessData = res.data.data.invoice;
-                        // router.push(`/projects/${id}/buy`);
+
+                        $axios.post("/panel/buy/verify", {
+                            project_id: this.projectId,
+                            area: this.investSuccessArea,
+                            invoice: res.data.data.invoice,
+                            block: res.data.data.block
+                        }).then(res => {
+                            console.log(res)
+                            router.push("/payment/success")
+                        }).catch(err => {
+                            console.log(err);
+                            router.push("/payment/error")
+                            toast.error("خطا در ارسال اطلاعات")
+                        })
+
                     }
                 }
             }).catch(err => {
