@@ -64,7 +64,7 @@ const walletSvg = ref(null);
 const walletCircle = ref(null);
 const onlinePaymentSvg = ref(null)
 const projectStore = useProjectStore();
-cosnt profileStore = useProfileStore();
+const profileStore = useProfileStore();
 
 const walletPaymetntSelect = (e) => {
   e.currentTarget.classList.add("fill-active")
