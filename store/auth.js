@@ -83,6 +83,7 @@ export const useAuthStore = defineStore("auth", {
                 layoutStore.isAuth = true;
                 localStorage.setItem("token", res.data.data.token);
                 router.push("/");
+                location.reload();
                 this.loginLoading = false;
             }).catch(err => {
                 if (err.response.data.code === 99) {
