@@ -4,7 +4,7 @@
     <!-----title of box------>
     <div class="flex justify-between w-full items-center gap-4 mt-4 px-2">
       <div>
-        <Countdown />
+        <Countdown end="" />
       </div>
       <h4 class="2xl:text-[16px] text-right">{{ projectStore.projectDetails?.title }}</h4>
     </div>
@@ -138,6 +138,7 @@
 
             <div class="w-full flex justify-center items-center">
               <input class=" text-center bg-zinc-100" type="text" placeholder="1980000" @input="onchangePricePriceBox" />
+              <p class="text-zinc-400 text-[12px]">ریال</p>
             </div>
 
             <div class="border-l-2 border-zinc-200 pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
@@ -165,7 +166,7 @@
             </svg></div>
 
             <div class="w-full">
-              <input class="w-full text-center bg-zinc-100" type="number" step="10" placeholder="3 متر" @input="onchangeMeterbox" />
+              <input class="w-full text-center bg-zinc-100" type="number" step="10" placeholder="3 میلی متر" @input="onchangeMeterbox" />
             </div>
 
             <div class="border-l-2 border-zinc-200 pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
@@ -220,7 +221,6 @@ import Countdown from "~/components/projects/details/Countdown.vue";
 import {useProjectStore} from "~/store/projects";
 import {totalMonth} from "../../../composable/datesComposable";
 const projectStore = useProjectStore();
-
 
 
 const meterBox = ref(null)

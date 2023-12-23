@@ -18,18 +18,19 @@
         </div>
         <div class="w-full text-center flex justify-between items-center rounded-[5px] bg-white p-6" dir="rtl">
           <p class="text-[20px]">ارزش کل سرمایه ها</p>
-          <p class="text-blue-custom">307,120,000 ریال</p>
+          <p class="text-blue-custom">{{ profileStore.userProjects.total_transactions }} ریال</p>
         </div>
         <div class="w-full text-center flex justify-between items-center rounded-[5px] bg-white p-6" dir="rtl">
           <p class="text-[20px]">تعداد دارایی ها</p>
-          <p class="text-blue-custom">2 عدد</p>
+          <p class="text-blue-custom">{{ profileStore.userProjects.total_assets }}</p>
         </div>
       </div>
 
       <!------ project details card -------->
-      <div class="w-full mt-12 bg-white p-10">
+      <div :key="index" class="w-full mt-12 bg-white p-10" v-for="(projects, index) in profileStore.userProjects.projects">
         <!------ project title ------->
-        <h3 class="w-full text-right text-[24px]">پروژه آرمونیا</h3>
+
+        <h3 class="w-full text-right text-[24px]">{{ projects.project.title }}</h3>
 
         <div class="w-full gap-4 flex flex-row-reverse items-center justify-center">
           <!------- investment details------>
@@ -62,7 +63,7 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">ریال</p>
-                      <p class="text-[18px] text-zinc-700">245,520,000</p>
+                      <p class="text-[18px] text-zinc-700">{{ JSON.parse(projects.invoice_details).total_amount }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">مبلغ سرمایه گذاری:</p>
                   </div>
@@ -70,8 +71,8 @@
                 <div class="w-full flex items-center mt-3">
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
-                      <p class="text-[12px] text-zinc-700">ریال</p>
-                      <p class="text-[18px] text-zinc-700">245,520,000</p>
+                      <p class="text-[12px] text-zinc-700">میلی متر</p>
+                      <p class="text-[18px] text-zinc-700">{{ projects.area }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">متراژ خریداری شده:</p>
                   </div>
@@ -80,9 +81,9 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">ریال</p>
-                      <p class="text-[18px] text-zinc-700">245,520,000</p>
+                      <p class="text-[18px] text-zinc-700">{{ projects.project.prices[0].value }}</p>
                     </div>
-                    <p dir="rtl" class="text-[18px] text-zinc-700">قیمت هر متر مربع:</p>
+                    <p dir="rtl" class="text-[18px] text-zinc-700">قیمت هر میلی متر مربع:</p>
                   </div>
                 </div>
               </div>
@@ -128,7 +129,7 @@
                     <p class="text-[13px] text-zinc-500 mt-2">2 ماه تا پایان</p>
                   </div>
                   <!------absolute style for project image ------>
-                  <img src="/images/test/profile_mini_image_project.png" alt="project" class="w-full h-[240px] rounded-t-[25px] absolute left-0 -top-[190%]">
+                  <img :src="'https://loogano.com/endpoints/'+projects.project.files[0].url" alt="project" class="w-full h-[240px] rounded-t-[25px] absolute left-0 -top-[190%]">
 
                 </div>
               </div>
@@ -146,8 +147,13 @@
 <script setup>
 
 import {useLayoutStore} from "~/store/layout";
+import {useProfileStore} from "~/store/profile";
 
 const layoutStore = useLayoutStore();
+const profileStore = useProfileStore();
+
+profileStore.fetchUserProjects();
+
 
 definePageMeta({
   layout: 'profile'

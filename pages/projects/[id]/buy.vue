@@ -37,7 +37,7 @@
         </div>
 
         <!---payment methods--->
-        <PeymentMethodBox />
+        <PeymentMethodBox :amount="projectStore.investSuccessData.total_amount" />
 
       </div>
       <!---- right side ----->

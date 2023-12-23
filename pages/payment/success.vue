@@ -53,9 +53,9 @@
 
       <div class="mt-4 w-11/12 md:w-[500px] mx-auto">
         <div class="flex justify-center gap-4">
-          <div class="bg-sky-custom text-white p-3 w-full text-center">
+          <RouterLink to="/profile/investment/properties" class="bg-sky-custom text-white p-3 w-full text-center">
             مدیریت دارایی ها
-          </div>
+          </RouterLink>
           <div class="bg-[#C0ECF2] text-[#005B70] text-white p-3 w-full text-center">
             صفحه ی اصلی
           </div>
@@ -77,9 +77,26 @@
 
 <script setup>
 
+import {useProfileStore} from "~/store/profile";
+import {useProjectStore} from "~/store/projects";
+
 definePageMeta({
   layout: 'default',
 })
+
+const projectStore = useProjectStore();
+
+if (process.client) {
+
+  if (localStorage.getItem("area") && localStorage.getItem("id")) {
+    const area = localStorage.getItem("area");
+    const id = localStorage.getItem("id");
+    projectStore.buyProjectOnline(id, area);
+  }
+
+
+}
+
 
 </script>
 

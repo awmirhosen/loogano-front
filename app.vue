@@ -10,8 +10,17 @@
 <script setup>
 
 import {useLayoutStore} from "~/store/layout";
+import {useProfileStore} from "~/store/profile";
+const profileStore = useProfileStore();
 
 const layoutStore = useLayoutStore();
+
+if (layoutStore.isAuth) {
+  profileStore.fetchProfileData();
+
+  profileStore.fetchUserProjects();
+
+}
 
 
 

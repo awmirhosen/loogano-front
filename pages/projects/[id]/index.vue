@@ -147,8 +147,6 @@ const invetmentTime = (end) => {
     month.value = "november"
   } else if (end[1] === '12') {
     month.value = "December"
-  } else {
-    console.log(end[1])
   }
 
   projectStore.investmentEndingTime = `${end[2]} ${month.value} ${end[0]}`;

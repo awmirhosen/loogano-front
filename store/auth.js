@@ -99,7 +99,6 @@ export const useAuthStore = defineStore("auth", {
 
             const layoutStore = useLayoutStore();
 
-
             $axios.post("/auth/register", {
                 first_name: data.firstName,
                 last_name: data.lastName,

@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full bg-white fixed z-10 flex justify-center items-center top-0 px-10" dir="rtl">
+  <div class="w-full text-blue-custom text-center p-4" v-if="profileStore.profileData.wallet === undefined">
+    در حال بارگیری اطلاعات شخصی...
+  </div>
+  <div class="w-full bg-white fixed z-10 flex justify-center items-center top-0 px-10" v-else dir="rtl">
 
     <div class="w-full flex items-center">
       <div class="w-full flex justify-between items-center">

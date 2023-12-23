@@ -35,20 +35,22 @@
 import {useProjectStore} from "~/store/projects";
 const projectStore = useProjectStore();
 
+console.log("Ending Time", projectStore.countdownEnd)
+
 
 const days = ref(0);
 const hours = ref(0);
 const minutes = ref(0);
 const seconds = ref(0);
-console.log(projectStore.investmentEndingTime)
-const launchDate = new Date(projectStore.investmentEndingTime);
+const launchDate = new Date(projectStore.countdownEnd);
 const currentDate = new Date();
 
 
 if (launchDate.getTime() < currentDate.getTime() ) {
-  console.log(launchDate.getTime(), currentDate.getTime())
+  console.log(launchDate.getTime())
   projectStore.investmentTimeFlag = false;
 }else {
+  console.log(launchDate.getTime())
   setInterval(() => {
     const currDate = new Date();
     const launchTime = launchDate - currDate;

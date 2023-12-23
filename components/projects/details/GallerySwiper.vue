@@ -41,7 +41,6 @@
 
 import {useProjectStore} from "~/store/projects";
 const projectStore = useProjectStore();
-console.log(projectStore.projectImages);
 
 
 
