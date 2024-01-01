@@ -19,10 +19,11 @@
                ref="firstAccordionBox"
                class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] lg:gap-4 gap-4 transition-all">
 
-            <div class="w-full flex flex-row-reverse justify-between items-center">
+            <div class="w-full flex flex-row-reverse justify-between items-center cursor-pointer">
               <div class="flex items-center lg:gap-8 gap-2 ">
-                <p class="lg:text-xl text-sm text-right font-morabaa">حداقل میزان سرمایه گذاری برای شروع کار چقدر
-                  است؟</p>
+                <p class="lg:text-xl text-sm text-right font-morabaa">
+                  چه مدارکی پس از سرمایه‌گذاری در پروژه‌ها ارائه می‌شود؟
+                </p>
                 <div class="">
                   <img src="/images/icons/home/faq_money.png" alt="money_icon" class="w-6 md:w-12">
                 </div>
@@ -38,10 +39,7 @@
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="firstAccordion">
                 <p class="lg:text-lg lg:mt-10 text-sm text-zinc-500">
-                  در سرمایه‌گذاری ملکی لوگانو، هدف ما ایجاد فرصت‌های سرمایه‌گذاری قابل دسترس برای همه است.
-                  <br>
-                  بنابراین، ما با تعیین حداقل میزان سرمایه‌گذاری به مقدار یک سانتی متر مربع، اجازه می‌دهیم تا افراد با
-                  اندک سرمایه نیز به این بازار وارد شوند و از مزایای سرمایه‌گذاری ملکی بهره‌مند شوند.
+                  مهم‌ترین مدرک، قرارداد حقوقی بین لوگانو و سرمایه‌گذار است که از آن با عنوان توافق‌نامه سرمایه‌گذاری یاد می‌شود. همچنین نسخه‌ای از قرارداد لوگانو و سازنده نیز به سرمایه‌گذاران داده می‌شود. «مقررات مزایده سامانه، مقررات استفاده سامانه، نقشه پروژه، طرح تقسیم پروژه، فهرست مصالح مصرفی و جدول پیشرفت پروژه» هم در اختیار سرمایه‌گذار قرار می‌گیرد. به علاوه گواهی سرمایه‌گذاری نیز به سرمایه‌گذار داده می‌شود.
                 </p>
               </section>
             </Transition>
@@ -52,9 +50,11 @@
                ref="secondAccordionBox"
                class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 transition-all">
 
-            <div class="w-full flex flex-row-reverse justify-between items-center">
+            <div class="w-full flex flex-row-reverse justify-between items-center cursor-pointer">
               <div class="flex items-center lg:gap-8 gap-2 ">
-                <p class="lg:text-xl text-sm  text-right font-morabaa">چه مدارکی لازم است؟</p>
+                <p class="lg:text-xl text-sm  text-right font-morabaa">
+                  آیا سند مالکیت به خریداران داده می‌شود؟
+                </p>
                 <div class="">
                   <img src="/images/icons/home/faq_second.svg" alt="money_icon" class="w-6 md:w-12">
                 </div>
@@ -69,12 +69,8 @@
 
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="secondAccordion">
-                <p class="lg:text-lg lg:mt-10 text-sm text-zinc-500">
-                  ارائه مدارک شناسایی معتبر مانند کارت ملی یا پاسپورت برای احراز هویت الزامی است.
-                  <br>
-                  ارائه مدارکی مانند قبض‌های آب، برق یا گاز به عنوان تایید آدرس محل اقامت شما ضروری است.
-                  <br>
-                  گواهی‌های مالی نظیر تصاویر کارت‌های بانکی یا اطلاعات حساب بانکی برای اطلاع از منابع مالی خود می‌باشد
+                <p class="lg:text-lg lg:mt-10 text-sm text-zinc-500 text-right" dir="rtl">
+                  خیر. به دلیل تعدد سرمایه‌گذاران در یک واحد ملک، امکان ارائه سند به همه وجود ندارد. این کار در زمان اتمام پروژه، باعث بروز اختلاف میان مالکان برای فروش ملک می‌شود؛ چرا که برای فروش باید همه مالکان رضایت داشته باشند. این اختلاف نظر به عدم فروش ملک منجر می‌شود و قفل شدن سرمایه افراد را در پی دارد.
                 </p>
               </section>
             </Transition>
@@ -87,7 +83,7 @@
 
             <div class="w-full flex flex-row-reverse justify-between items-center">
               <div class="flex items-center lg:gap-8 gap-2 ">
-                <p class="lg:text-xl text-sm text-right font-morabaa">پروژه های ملکی چقدر زمان میبرد؟</p>
+                <p class="lg:text-xl text-sm text-right font-morabaa"> آیا نسخه چاپی گواهی سرمایه‌گذاری برای تمامی سرمایه‌گذاران صادر می‌شود؟</p>
                 <div class="">
                   <img src="/images/icons/home/faq_third.svg" alt="money_icon" class="w-6 md:w-12">
                 </div>
@@ -103,9 +99,7 @@
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="thirdAccordion">
                 <p class="lg:mt-10 lg:text-lg text-sm text-zinc-500" dir="rtl">
-                  مدت زمان انجام هر پروژه ملکی، بسته به ویژگی‌ها و اندازه پروژه ممکن است متفاوت باشد. در صورتی که به
-                  انتخاب پروژه‌ای با زمان کوتاه علاقه‌مند هستید، برخی از پروژه‌ها آماده‌ی سرمایه‌گذاری نیاز به زمان
-                  کمتری دارند. اما پروژه‌های بزرگتر و پیچیده‌تر ممکن است زمان بیشتری برای تکمیل داشته باشند.
+                  بله. پس از انتخاب پروژه مورد نظر و سرمایه گذاری در پروژه مورد نظر، نسخه فیزیکی گواهی سرمایه‌گذاری چاپ و برای تمامی سرمایه گذاران ارسال خواهد شد.
                 </p>
               </section>
             </Transition>
@@ -118,7 +112,9 @@
 
             <div class="w-full flex flex-row-reverse justify-between items-center">
               <div class="flex items-center lg:gap-8 gap-2 ">
-                <p class="lg:text-xl text-sm text-right font-morabaa">چه زمانی میتوانم سهامم را بفروشم؟</p>
+                <p class="lg:text-xl text-sm text-right font-morabaa">
+                  ضمانت اجرای پروژه توسط سازنده و عدم توقف آن چیست؟
+                </p>
                 <div class="">
                   <img src="/images/icons/home/faq_forth.svg" alt="money_icon" class="w-6 md:w-12">
                 </div>
@@ -134,9 +130,9 @@
             <Transition name="slide-down">
               <section class="w-full w-full h-0 text-right mt-4 px-5 transition-all" v-if="forthAccordion">
                 <p class="lg:mt-10 lg:text-lg text-sm text-zinc-500" dir="rtl">
-                  برای فروش سهام خود در وبسایت سرمایه‌گذاری ملکی، بهتر است که ابتدا با مدیریت یا اپراتور وبسایت تماس
-                  بگیرید و نحوه‌ی عملکرد و شرایط مربوط به فروش سهام را مطالعه کنید. همچنین، باید مطمئن شوید که سهام شما
-                  قابلیت فروش دارند و هیچ محدودیتی برای فروش آن‌ها وجود ندارد.
+                  لوگانو با در نظر گرفتن معیارهای دقیق، سازندگان را انتخاب می‌کند و در کنار عقد قراردادهای حقوقی معتبر، ضمانت‌هایی را نیز از آنها اخذ می‌کند.
+                  <br>
+                  ضمانت‌هایی نظیر؛ دریافت ضمانت نامه بانکی از سازنده به میزان ۱۲۰ درصد قیمت روز پرو‌ژه. مبلغ این ضمانت‌نامه هر ۳ ماه یک‌بار به روز می‌شود. در صورت عدم تکمیل پروژه تا ۹۰ روز پس از تاریخ اعلامی، سازنده باید به ازای هر روز، ۱ درصد ارزش روز پروژه را به تمام سرمایه‌گذاران پرداخت نماید.
                 </p>
               </section>
             </Transition>

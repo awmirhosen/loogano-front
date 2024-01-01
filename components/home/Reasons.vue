@@ -7,7 +7,7 @@
         <p class="md:text-[52px] text-[28px] font-morabaa whitespace-nowrap">چرا لوگانو</p>
       </div>
 
-      <div class="w-full mt-8 max-w-[1400px] mx-auto px-10">
+      <div class="w-full mt-8 max-w-[1400px] mx-auto px-10" dir="rtl">
 
         <!----first----->
         <div class="w-full flex justify-between md:flex-row flex-col">
@@ -16,8 +16,8 @@
           </div>
           <div class="w-full md:mt-16 mt-4 order-1">
             <div class="w-full  md:px-10 px-1">
-              <p class="md:text-5xl text-2xl text-full text-end font-morabaa">دانش متخصصان</p>
-              <p class="text-zinc-600 mt-4 w-full text-end">
+              <p class="md:text-5xl text-2xl text-full text-start font-morabaa">دانش متخصصان</p>
+              <p class="text-zinc-600 mt-4 w-full text-start">
                 دانش متخصصان ما، اساس راه‌اندازی بهترین سرمایه‌گذاری‌های ملکی را می‌سازد. همراه با تیم حرفه‌ای ما، به سودآوری دست یافته و آینده‌ی مالی خود را به دست بگیرید.
               </p>
             </div>
@@ -29,8 +29,8 @@
 
           <div class="w-full mt-16">
             <div class="w-full md:px-10 px-0">
-              <p class="md:text-5xl text-2xl text-full text-end font-morabaa">تجربه ممتاز</p>
-              <p class="text-zinc-600 mt-4 w-full text-end">
+              <p class="md:text-5xl text-2xl text-full text-start font-morabaa">تجربه ممتاز</p>
+              <p class="text-zinc-600 mt-4 w-full text-start">
                 در دنیای سرمایه‌گذاری ملکی، تجربه‌ی ممتاز را با ما تجربه کنید. تیم متخصصان ما با دانش عمیق، تحلیل دقیق و ارتباط نزدیک با مشتریان راهکارهای بهترین سرمایه‌گذاری را برای شما فراهم می‌آورد.
               </p>
             </div>
@@ -51,8 +51,8 @@
 
           <div class="w-full mt-16 order-1">
             <div class="w-full md:px-10 px-0">
-              <p class="md:text-5xl text-2xl text-full text-end font-morabaa">تعهد به موفقیت</p>
-              <p class="text-zinc-600 mt-4 w-full text-end">
+              <p class="md:text-5xl text-2xl text-full text-start font-morabaa">تعهد به موفقیت</p>
+              <p class="text-zinc-600 mt-4 w-full text-start">
                 موفقیت شما همانند موفقیت ماست. تعهد ما به ارائه نتیجه‌های ارزشمند و سودآور در انتخاب‌های سرمایه‌گذاری، از ویژگی‌های برجسته تیم ماست.
               </p>
             </div>
