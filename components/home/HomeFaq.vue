@@ -3,6 +3,8 @@
 
     <!--FAQ title-->
     <div class="w-full flex justify-start mt-10 items-center gap-2 px-4 md:my-24">
+      <div class="w-full h-1 max-w-[100px] bg-sky-custom"></div>
+      <nuxt-link to="/faq" class="md:text-[22px] text-[16px] whitespace-nowrap">بیشتر</nuxt-link>
       <div class="w-full h-1 bg-sky-custom"></div>
       <p class="md:text-[52px] text-[28px] font-morabaa whitespace-nowrap">سوالات شما</p>
     </div>
@@ -50,7 +52,7 @@
                ref="secondAccordionBox"
                class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 transition-all">
 
-            <div class="w-full flex flex-row-reverse justify-between items-center cursor-pointer">
+            <div class="w-full flex flex-row-reverse justify-between items-center cursor-pointer cursor-pointer">
               <div class="flex items-center lg:gap-8 gap-2 ">
                 <p class="lg:text-xl text-sm  text-right font-morabaa">
                   آیا سند مالکیت به خریداران داده می‌شود؟
@@ -79,7 +81,7 @@
 
           <div @click="thirdHomeAccordionOpen"
                ref="thirdAccordionBox"
-               class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 transition-all">
+               class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 transition-all cursor-pointer">
 
             <div class="w-full flex flex-row-reverse justify-between items-center">
               <div class="flex items-center lg:gap-8 gap-2 ">
@@ -108,7 +110,7 @@
 
           <div @click="forthHomeAccordionOpen"
                ref="forthAccordionBox"
-               class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 transition-all">
+               class="bg-white h-20  px-4 py-3 flex-row-reverse items-center rounded-[10px] gap-4 cursor-pointer transition-all">
 
             <div class="w-full flex flex-row-reverse justify-between items-center">
               <div class="flex items-center lg:gap-8 gap-2 ">

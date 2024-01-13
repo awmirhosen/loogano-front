@@ -49,7 +49,7 @@
               <h1 class="md:text-[53px] text-[25px] text-right font-morabaa">
                 فرصت هایی بی انتها
                 <br>
-                ! برای <span class="text-blue-custom">معاملات</span> هوشمند ملکی
+                ! برای <span class="text-blue-custom">سرمایه گذاری</span> هوشمند ملکی
               </h1>
             </div>
 
@@ -103,8 +103,6 @@
 const props = defineProps([
     'auth'
 ])
-
-console.log(props)
 
 </script>
 

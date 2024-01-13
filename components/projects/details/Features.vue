@@ -2,9 +2,10 @@
 
 
 
-  <div class="w-full">
+  <div class="w-full" v-if="projectStore.projectDetails?.attributes[0] ">
+
     <div class="w-full flex items-center justify-between">
-      <div class="px-4 py-2 text-zinc-950 bg-[#A3DDBE80] rounded-lg">
+      <div class="px-4 py-2 text-zinc-950 bg-[#A3DDBE80] rounded-lg px-2">
         کاربری : مسکونی
       </div>
       <h3 class="text-[28px]">امکانات پروژه</h3>
@@ -253,8 +254,9 @@
 
 <script setup>
 
+import {useProjectStore} from "~/store/projects";
 
-
+const projectStore = useProjectStore();
 
 const featuresBox = ref(null)
 const featureBoxStatus = ref(1)

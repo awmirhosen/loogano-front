@@ -1,76 +1,85 @@
 <template>
-<div class="relative mt-[250px]">
-  <p class="text-center w-full text-[28px] text-blue-custom" dir="rtl">...در حال دریافت اطلاعات</p>
-</div>
+  <div class="w-full min-h-[700px] flex items-center justify-center">
+    <div>
+      <div class="w-full flex justify-center">
+        <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+      <p class="mt-4 font-[500] text-[24px] text-blue-custom">در حال دریافت اطلاعات</p>
+    </div>
+  </div>
 </template>
 
-<script setup>
-
-
-</script>
+<script setup></script>
 
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: #000;
-}
-.middle {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
-.bar {
-  width: 10px;
-  height: 70px;
-  background: #fff;
-  display: inline-block;
-  transform-origin: bottom center;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
-  animation: loader 1.2s linear infinite;
-}
-.bar1 {
-  animation-delay: 0.1s;
-}
-.bar2 {
-  animation-delay: 0.2s;
-}
-.bar3 {
-  animation-delay: 0.3s;
-}
-.bar4 {
-  animation-delay: 0.4s;
-}
-.bar5 {
-  animation-delay: 0.5s;
-}
-.bar6 {
-  animation-delay: 0.6s;
-}
-.bar7 {
-  animation-delay: 0.7s;
-}
-.bar8 {
-  animation-delay: 0.8s;
-}
 
-@keyframes loader {
-  0% {
-    transform: scaleY(0.1);
-    background: #1b9eb2;
+.lds-grid {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-grid div {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1b9eb2;
+  animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+  top: 8px;
+  left: 8px;
+  animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+  top: 8px;
+  left: 32px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+  top: 8px;
+  left: 56px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+  top: 32px;
+  left: 8px;
+  animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+  top: 32px;
+  left: 32px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+  top: 32px;
+  left: 56px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+  top: 56px;
+  left: 8px;
+  animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+  top: 56px;
+  left: 32px;
+  animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+  top: 56px;
+  left: 56px;
+  animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
   }
   50% {
-    transform: scaleY(1);
-    background: #1b9eb2;
-  }
-  100% {
-    transform: scaleY(0.1);
-    background: transparent;
+    opacity: 0.5;
   }
 }
+
 
 </style>

@@ -46,6 +46,50 @@ export const useAuthStore = defineStore("auth", {
                 this.loginPhoneNumber = mobile;
             }
         },
+
+        async verifyMobileCode(token) {
+
+            this.loginLoading = true;
+            const layoutStore = useLayoutStore();
+            const router = useRouter();
+            const toast = useToast();
+
+            $axios.post("/auth/otp-login", {
+                mobile: this.loginPhoneNumber,
+                token: token,
+            }).then(res => {
+                console.log(res);
+                layoutStore.isAuth = true;
+                localStorage.setItem("token", res.data.data.token);
+                router.push("/");
+                location.reload();
+                this.loginLoading = false;
+            }).catch(err => {
+                console.log(err.response.data.errors)
+                if (err.response.data.code === 99) {
+                    toast.error("مشکلی در ارسال پیامک ایجاد شده")
+                } else if (err.response.data.errors.message === "invalid_token") {
+                    toast.error("کد وارد شده اشتباه است")
+                }
+                this.loginLoading = false;
+            })
+        },
+        async codeLogin(mobile) {
+            this.otpLoading = true;
+            $axios.post("/auth/forget", {
+                mobile: this.loginPhoneNumber,
+            }).then(res => {
+                console.log(res);
+                this.stepLogin = 3;
+                this.otpLoading = false;
+            }).catch(err => {
+                if (err.response.data.code === 99) {
+                    toast.error("مشکلی در ارسال پیامک ایجاد شده")
+                }
+                this.loginLoading = false;
+                this.otpLoading = false;
+            })
+        },
         async registerMobileVerify(phoneNumber) {
 
             this.signupLoading = true;
@@ -87,7 +131,7 @@ export const useAuthStore = defineStore("auth", {
                 this.loginLoading = false;
             }).catch(err => {
                 if (err.response.data.code === 99) {
-                    toast.error("رمز عبور شما صحیح نیست")
+                    toast.error("رمز عبور شما صحیح نیست");
                 }
                 this.loginLoading = false;
             })

@@ -3,23 +3,18 @@
   <!--  Home page, main content-->
 
   <!--hero seciton-->
-  <client-only>
+
     <Hero :auth="layoutStore.isAuth" />
-  </client-only>
 
 
   <!----- gray wrapper start ---->
-  <div class="w-full pt-14 bg-[#F7F7F7]">
+  <div class="w-full pt-14 bg-[#F7F7F7]" id="services">
 
     <!-- Loogano Service --->
-    <client-only>
-      <HomeService class="px-10"/>
-    </client-only>
+      <LazyHomeService />
 
     <!---- third section------>
-    <client-only>
-      <Reasons/>
-    </client-only>
+      <LazyHomeReasons/>
 
 
     <!-----swiper investment ----->
@@ -32,7 +27,7 @@
 
     <!----- home faq ------->
     <div class="mx-auto">
-      <HomeFaq/>
+      <LazyHomeFaq/>
     </div>
 
   </div>
@@ -45,7 +40,6 @@
 
 import Hero from "~/components/home/Hero.vue";
 import Reasons from "~/components/home/Reasons.vue";
-import ServiceSwiper from "~/components/home/ServiceSwiper.vue";
 import {useProjectStore} from "~/store/projects";
 import {useLayoutStore} from "~/store/layout";
 // import HomeSlider from "~/components/home/HomeSlider.vue";

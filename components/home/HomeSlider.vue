@@ -42,17 +42,20 @@
                           v-for="projects in projectStore.projectListSlider">
 
               <!------image---------->
-              <div class="absolute w-full top-0 -translate-y-2/3 px-8" style="z-index: 3333">
-                <img src="/images/home/test_investment_slider_pic.png" class="w-full" alt="investment_building">
+              <div class="absolute w-full top-0 -translate-y-2/3 px-6" style="z-index: 3333">
+                <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
               </div>
 
               <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
                 <!--project name-->
                 <div class="text-[18px] text-center mt-24 flex items-center flex-row-reverse justify-between flex-wrap">
-                  <p>{{ projects.title }}</p>
+                  <p class="font-[500]">{{ projects.title }}</p>
                   <!---investment status---->
-                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[12px] rounded-lg">
-                    توقف سرمایه پذیر
+<!--                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[12px] rounded-lg">-->
+<!--                    توقف سرمایه پذیری-->
+<!--                  </div>-->
+                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[11px] rounded-[4px] hover:bg-white hover:text-zinc-500 transition-all">
+                    پذیرش سرمایه گذار
                   </div>
                 </div>
                 <!--border of bottom of title-->
@@ -62,28 +65,29 @@
 
                 <div class="w-full mt-5">
 
-                  <div class="w-full flex justify-start gap-2 flex-row-reverse items-center">
+                  <div class="w-full flex justify-start gap-2 my-1 flex-row-reverse items-center">
                     <div>
                       <img src="/images/home/location.png" alt="location">
                     </div>
-                    <p class="text-zinc-500 text-[14px]">: منطقه</p>
-                    <p class="text-zinc-500 text-[16px] font-bold">{{ projects.address }}</p>
+                    <p class="text-zinc-600 text-[14px]">: منطقه</p>
+                    <p class="text-zinc-500 text-[16px] font-[500]">{{ projects.address }}</p>
                   </div>
 
-                  <div class="w-full flex justify-start gap-3 flex-row-reverse items-center">
+                  <div class="w-full flex justify-start gap-3 flex-row-reverse items-center my-1">
                     <div>
                       <img src="/images/home/buildings.png" alt="location">
                     </div>
-                    <p class="text-zinc-500 text-[14px]">: کاربری</p>
-                    <p class="text-zinc-500 text-[16px] font-bold">{{ projects.type }}</p>
+                    <p class="text-zinc-600 text-[14px]">: کاربری</p>
+                    <p class="text-zinc-500 text-[16px] " v-if="projects.type === 'apartment'">مسکونی</p>
+                    <p class="text-zinc-500 text-[16px] " v-else>تجاری</p>
                   </div>
 
-                  <div class="w-full flex justify-start gap-3 flex-row-reverse items-center">
+                  <div class="w-full flex justify-start gap-3 flex-row-reverse items-center my-1">
                     <div>
                       <img src="/images/home/tape_measure.png" alt="location">
                     </div>
-                    <p class="text-zinc-500 text-[14px]">: متراژ</p>
-                    <p class="text-zinc-500 text-[16px] font-bold" dir="rtl">{{ projects.area_mm }} میلی متر </p>
+                    <p class="text-zinc-600 text-[14px]">: متراژ</p>
+                    <p class="text-zinc-500 text-[16px]" dir="rtl">{{ projects.area_mm }} میلی متر </p>
                   </div>
 
                   <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">
@@ -91,14 +95,14 @@
                       <div class="">
                         <img src="/images/home/peoples.png" alt="location">
                       </div>
-                      <p class="text-zinc-500 text-[14px]">: تعداد سرمایه گذار ها</p>
-                      <p dir="rtl" class="text-zinc-500 text-[16px] font-bold">{{
+                      <p class="text-zinc-600 text-[14px]">: تعداد سرمایه گذار ها</p>
+                      <p dir="rtl" class="text-zinc-500 text-[16px]">{{
                           projects.project_user_completed_count
                         }} نفر </p>
                     </div>
 
                     <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                      سود تا امروز : %{{ projects.progresses[0]?.value }}
+                      سود تا امروز : %{{ projects.progresses[1]?.value }}
                     </div>
 
                   </div>

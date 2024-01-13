@@ -1,31 +1,31 @@
 <template>
   <div class="w-full mt-8 border-zinc-300 rounded-xl p-4">
     <!-----title of box------>
-    <div class="flex justify-between w-full items-center mt-4 px-2">
-      <div>
-        <p class="text-[13px] text-[#1B9DB1]">
-          گروه سازندگان: {{ projectStore.projectDetails.constructor.title }}
-        </p>
-      </div>
-      <h4 class="2xl:text-[24px]">پروژه آرمونیا</h4>
+    <hr class="mt-2">
+
+    <div class="w-full items-center mt-4 px-2">
+      <h4 class="2xl:text-[24px] text-center">پروژه آرمونیا</h4>
+      <p class="text-[13px] text-center mt-2 text-[#1B9DB1]">
+        گروه سازندگان: {{ projectStore.projectDetails.constructor.title }}
+      </p>
     </div>
 
-    <hr class="mt-5">
+<!--    <hr class="mt-5">-->
 
-    <div class="flex justify-around flex-wrap mt-4">
-      <div class="w-[117px] text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
-        <p class="text-zinc-600 text-sm">فروش رفته</p>
-      </div>
-      <div class="w-[117px] text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
-        <p class="text-zinc-600 text-sm">پیش بینی سود</p>
-      </div>
-      <div class="w-[117px] text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
-        <p class="text-zinc-600 text-sm">سود تا امروز</p>
-      </div>
-    </div>
+<!--    <div class="flex justify-around flex-wrap mt-4">-->
+<!--      <div class="w-[117px] text-center rounded-md py-2">-->
+<!--        <p class="text-[#12788F]">37%</p>-->
+<!--        <p class="text-zinc-600 text-sm">فروش رفته</p>-->
+<!--      </div>-->
+<!--      <div class="w-[117px] text-center rounded-md py-2">-->
+<!--        <p class="text-[#12788F]">37%</p>-->
+<!--        <p class="text-zinc-600 text-sm">پیش بینی سود</p>-->
+<!--      </div>-->
+<!--      <div class="w-[117px] text-center rounded-md py-2">-->
+<!--        <p class="text-[#12788F]">37%</p>-->
+<!--        <p class="text-zinc-600 text-sm">سود تا امروز</p>-->
+<!--      </div>-->
+<!--    </div>-->
 
 <!--    <hr class="mt-5">-->
 

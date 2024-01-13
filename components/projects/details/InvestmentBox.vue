@@ -12,17 +12,17 @@
     <hr class="mt-5 hidden lg:block">
 
     <div class="flex justify-around flex-wrap lg:mt-4 mt-6">
+<!--      <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">-->
+<!--        <p class="text-[#12788F]">37%</p>-->
+<!--        <p class="text-zinc-600 text-sm">فروش رفته</p>-->
+<!--      </div>-->
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
-        <p class="text-zinc-600 text-sm">فروش رفته</p>
-      </div>
-      <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
+        <p class="text-[#12788F]">{{ projectStore.projectDetails?.progresses[0].value }}%</p>
         <p class="text-zinc-600 text-sm">پیش بینی سود</p>
       </div>
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">37%</p>
-        <p class="text-zinc-600 text-sm">فروش رفته</p>
+        <p class="text-[#12788F]">{{ projectStore.projectDetails?.progresses[1].value }}%</p>
+        <p class="text-zinc-600 text-sm">سود تا امروز</p>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
           <p class="text-zinc-500 text-sm">: متراژ کل</p>
         </div>
 
-        <p class="text-right text-sm" dir="rtl">{{ projectStore.projectDetails?.area_mm  }} میلی متر </p>
+        <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.area_mm)  }} میلی متر </p>
       </div>
 
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
@@ -48,11 +48,11 @@
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
         <div class="flex items-center gap-2 flex-row-reverse">
           <img src="/images/projects/images/currency.svg" class="w-6" alt="measure_tape">
-          <p class="text-zinc-500 text-sm">: قیمت هر متر مربع</p>
+          <p class="text-zinc-500 text-sm">: قیمت هر میلی متر مربع</p>
         </div>
 
         <p class="text-right text-sm">
-          به زودی
+          {{ `${ eArabic(projectStore.projectDetails.prices[0].value) }`}}
         </p>
       </div>
 
@@ -65,7 +65,7 @@
           <p class="text-zinc-500 text-sm">: شروع سرمایه پذیری از</p>
         </div>
 
-        <p class="text-right text-sm">{{ "به زودی" }}</p>
+        <p class="text-right text-sm">{{ projectEndingDate(projectStore.projectDetails?.investment_start) }}</p>
       </div>
 
     </div>
@@ -85,7 +85,7 @@
         <p class="text-zinc-500 text-sm">: متراژ فروخته شده</p>
       </div>
 
-      <p class="text-right text-sm">تهران، منطقه دو پونک</p>
+      <p class="text-right text-sm"> - </p>
     </div>
 
     <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
@@ -93,7 +93,7 @@
         <img src="/images/projects/images/group_project.svg" class="w-6" alt="measure_tape">
         <p class="text-zinc-500 text-sm">: تعداد سرمایه گذار ها</p>
       </div>
-      <p class="text-right text-sm" dir="rtl">{{ projectStore.projectDetails?.project_user_completed_count}} نفر </p>
+      <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.project_user_completed_count) }} نفر </p>
     </div>
 
     <hr class="mt-5">
@@ -138,7 +138,7 @@
 
             <div class="w-full flex justify-center items-center">
               <input class=" text-center bg-zinc-100" type="text" placeholder="1980000" @input="onchangePricePriceBox" />
-              <p class="text-zinc-400 text-[12px]">ریال</p>
+              <p class="text-zinc-400 text-[12px]">تومان</p>
             </div>
 
             <div class="border-l-2 border-zinc-200 pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
@@ -151,9 +151,9 @@
               متراژ معادل : {{ totalBoughtMeter }} میلی متر
             </div>
 
-            <div class="text-zinc-700 text-sm">
-              مبلغ نهایی : 2.200.000 ریال
-            </div>
+<!--            <div class="text-zinc-700 text-sm">-->
+<!--              مبلغ نهایی : 2.200.000 ریال-->
+<!--            </div>-->
           </div>
 
         </div>
@@ -329,6 +329,10 @@ const onchangeMeterbox = (e) => {
   totalBoughtPrice.value = projectStore.projectDetails.prices[priceArray.value - 1].value * thisElementValue;
   totalBoughtMeter.value = thisElementValue
 
+}
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
 }
 
 
