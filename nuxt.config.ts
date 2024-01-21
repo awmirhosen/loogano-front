@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // @ts-ignore
 export default defineNuxtConfig({
+    app: {
+        head: {
+            link: [
+                { rel: "icon", type: "image/x-icon", href: "/images/favicon.svg" },
+            ]
+        },
+    },
     css: [
         `~/assets/css/global.css`,
     ],

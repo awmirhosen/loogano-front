@@ -86,7 +86,7 @@
         </div>
         <!---- items ----->
         <div class="flex gap-10 items-center flex-row-reverse">
-          <NuxtLink to="/">خانه</NuxtLink>
+<!--          <NuxtLink to="/">خانه</NuxtLink>-->
           <!--          <NuxtLink to="/services">خدمات</NuxtLink>-->
           <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
           <NuxtLink to="/blog">بلاگ</NuxtLink>

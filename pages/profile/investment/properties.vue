@@ -41,7 +41,7 @@
                 <div class="w-full flex justify-between">
                   <div class="flex items-center gap-2">
                     <p class="text-blue-custom text-[12px]">ریال</p>
-                    <p class="text-[18px] text-blue-custom">245,520,000</p>
+                    <p class="text-[18px] text-blue-custom">{{ eArabic(120000000) }}</p>
                   </div>
                   <p dir="rtl" class="text-[18px] text-blue-custom">ارزش فعلی:</p>
                 </div>
@@ -50,8 +50,8 @@
               <div class="w-full flex items-center mt-4" dir="rtl">
                 <p class="text-[20px] whitespace-nowrap text-green-500">سود:</p>
                 <div class="w-full flex items-center justify-end gap-2">
-                  <p class="py-1 px-4 bg-green-500 rounded-[5px] text-white">36%</p>
-                  <p class="text-green-500">31,120,000 </p>
+                  <p class="py-1 px-4 bg-green-500 rounded-[5px] text-white">{{ eArabic(32) }}%</p>
+                  <p class="text-green-500">{{ eArabic(120000000) }}</p>
                   <p class="text-green-500 text-[14px]"> ریال </p>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">ریال</p>
-                      <p class="text-[18px] text-zinc-700">{{ JSON.parse(projects.invoice_details).total_amount }}</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(JSON.parse(projects.invoice_details).total_amount) }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">مبلغ سرمایه گذاری:</p>
                   </div>
@@ -72,7 +72,7 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">میلی متر</p>
-                      <p class="text-[18px] text-zinc-700">{{ projects.area }}</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.area) }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">متراژ خریداری شده:</p>
                   </div>
@@ -81,7 +81,7 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">ریال</p>
-                      <p class="text-[18px] text-zinc-700">{{ projects.project.prices[0].value }}</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.project.prices[0].value) }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">قیمت هر میلی متر مربع:</p>
                   </div>
@@ -158,6 +158,10 @@ profileStore.fetchUserProjects();
 definePageMeta({
   layout: 'profile'
 });
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
+}
 
 // onBeforeMount(() => {
 //   setPageLayout("profile");

@@ -9,6 +9,9 @@ export const useProfileStore = defineStore("profile", {
         return {
             profileData: {},
             userProjects: {},
+            cardData: {
+
+            },
         }
     },
     actions: {
@@ -39,11 +42,8 @@ export const useProfileStore = defineStore("profile", {
 
             $axios.get("/user/me").then(res => {
                 this.profileData = res.data.data;
-                console.log("اطلاعات شخصی دریافت شد")
-                console.log(res);
             }).catch(err => {
                 console.log(err);
-                toast.error("مشکلی در ارتباط با سرور پیش آمده")
             })
 
         },

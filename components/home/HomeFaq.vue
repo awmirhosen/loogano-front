@@ -4,7 +4,9 @@
     <!--FAQ title-->
     <div class="w-full flex justify-start mt-10 items-center gap-2 px-4 md:my-24">
       <div class="w-full h-1 max-w-[100px] bg-sky-custom"></div>
-      <nuxt-link to="/faq" class="md:text-[22px] text-[16px] whitespace-nowrap">بیشتر</nuxt-link>
+      <nuxt-link to="/faq" class="md:text-[26px] text-[16px] whitespace-nowrap">
+        سوالات بیشتر
+      </nuxt-link>
       <div class="w-full h-1 bg-sky-custom"></div>
       <p class="md:text-[52px] text-[28px] font-morabaa whitespace-nowrap">سوالات شما</p>
     </div>

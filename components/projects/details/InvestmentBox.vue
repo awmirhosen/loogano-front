@@ -179,9 +179,11 @@
               قیمت معادل : {{ totalBoughtPrice }} ریال
             </div>
 
-            <div class="text-zinc-700 text-sm">
-              مبلغ نهایی : 2.200.000 ریال
-            </div>
+<!--            <div class="text-zinc-700 text-sm">-->
+<!--              مبلغ نهایی : 2.200.000 ریال-->
+<!--            </div>-->
+
+
           </div>
 
         </div>

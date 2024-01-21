@@ -20,10 +20,6 @@
 
           <div class="w-full flex justify-center items-center gap-4">
             <img src="/images/home/loogano_logo.png" alt="ff">
-            <nuxt-link to="https://tehran.irannsr.org/fa/trade_unit/2504716/swd_id/104366/%D8%A7%D8%B9%D8%B6%D8%A7%DB%8C-%D8%AD%D9%82%D9%88%D9%82%DB%8C-%D8%A7%DB%8C%D8%AF%D9%87-%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%D8%A7%D9%86-%D8%B3%D8%A7%D8%B2%D9%87-%DA%AF%D8%B3%D8%AA%D8%B1-%D8%B3%D9%88%D9%85%D8%A7.html
-">
-              <img src="/images/unnamed.png" alt="rayane_senf_logo" class="h-[70px]">
-            </nuxt-link>
           </div>
 
           <p class="text-sm w-10/12 mx-auto text-right text-white" style="opacity: 60%">
@@ -31,7 +27,7 @@
             سرمایه‌ی کم به دنیای سرمایه‌گذاری ملکی وارد شوید.
           </p>
 
-          <div class="text-sm w-10/12 mx-auto text-right text-white w-100 justify-center mt-3 flex">
+          <div class="text-sm flex items-center w-10/12 mx-auto text-right text-white w-100 justify-center mt-3 flex gap-2">
             <a referrerpolicy="origin" target="_blank"
                href="https://trustseal.enamad.ir/?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd"><img referrerpolicy="origin"
                                                                                                 src="https://Trustseal.eNamad.ir/logo.aspx?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd"
@@ -39,6 +35,10 @@
                                                                                                 style="cursor:pointer"
                                                                                                 id="famE1evKQ2jNA9Bhl8Hd">
             </a>
+            <nuxt-link to="https://tehran.irannsr.org/fa/trade_unit/2504716/swd_id/104366/%D8%A7%D8%B9%D8%B6%D8%A7%DB%8C-%D8%AD%D9%82%D9%88%D9%82%DB%8C-%D8%A7%DB%8C%D8%AF%D9%87-%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%D8%A7%D9%86-%D8%B3%D8%A7%D8%B2%D9%87-%DA%AF%D8%B3%D8%AA%D8%B1-%D8%B3%D9%88%D9%85%D8%A7.html
+">
+              <img src="/images/senfi.png" alt="rayane_senf_logo" class="h-[100px]">
+            </nuxt-link>
           </div>
 
         </div>

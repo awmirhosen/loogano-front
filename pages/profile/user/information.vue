@@ -61,6 +61,11 @@
 
       </div>
       <!-------- first step ------>
+
+<!--      <div class="bg-red-400 text-center w-full">-->
+<!--        {{ profileStore.profileData }}-->
+<!--      </div>-->
+
       <div class="w-full mt-16" v-if="steps === 1">
         <div class="w-full">
           <!------ page title ----->
@@ -77,6 +82,7 @@
                 <div class="w-full flex justify-center items-center gap-4">
                   <FormKit class="w-full" outer-class="w-full" type="text" name="firstName" label="نام"
                            input-class="w-full transition-all p-2 rounded-md focus:border-zinc-200"
+                           :value="profileStore.profileData.first_name"
                            placeholder="امیرحسین"
                            validation="required|alpha"
                            :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
@@ -85,7 +91,8 @@
                   <FormKit class="w-full" outer-class="w-full" type="text" name="lastName" label="نام خوانوادگی"
                            input-class="w-full transition-all p-2 rounded-md bg-white"
                            validation="required|alpha"
-                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
+                           :value="profileStore.profileData.last_name"
+                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام خانوادگی نمیتواند شامل عدد باشد'}"
                            messages-class="text-[14px] text-red-500"
                            placeholder="محمدی"
                   />
@@ -94,61 +101,97 @@
                 <div class="w-full flex justify-center items-center gap-4 mt-6">
                   <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="کدملی"
                            inputmode="numeric"
-                           input-class="w-full transition-all p-2 rounded-md bg-white"
+                           input-class="w-full bg-zinc-200 transition-all p-2 rounded-md bg-white"
+                           :value="profileStore.profileData.national_code"
                            validation="required|number|length:10,10"
+                           disabled
                            messages-class="text-[14px] text-red-500"
                            :validation-messages="{length: 'کدملی ده رقم میباشد' , number: 'کدملی شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
                   />
-                  <FormKit class="w-full" outer-class="w-full" type="date" name="birthDate" label="تاریخ تولد"
-                           input-class="w-full transition-all p-2 rounded-md"
-                           validation="required"
-                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
-                           messages-class="text-[14px] text-red-500"
-                           placeholder=""
-                  />
-                </div>
 
-                <div class="w-full flex justify-center items-center gap-4 mt-6">
-                  <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="شماره تماس"
+                  <FormKit class="w-full" outer-class="w-full" type="text" name="mobile" label="شماره تماس"
                            inputmode="numeric"
-                           input-class="w-full transition-all p-2 rounded-md bg-white"
-                           validation="required|number|length:10,10"
-                           messages-class="text-[14px] text-red-500"
-                           :validation-messages="{length: 'کدملی ده رقم میباشد' , number: 'کدملی شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
-                  />
-                  <FormKit class="w-full" outer-class="w-full" type="text" name="firstName" label="کد پستی"
-                           input-class="w-full transition-all p-2 rounded-md"
-                           validation="required|number|length:10,10"
-                           :validation-messages="{required: 'فیلد نام الزامیست', number:'کد پستی شامل حرف نمیباشد', length:'کد پستی ده رقم میباشد'}"
-                           messages-class="text-[14px] text-red-500"
-                           placeholder=""
-                  />
-                </div>
-
-                <div class="w-full flex justify-center items-center gap-4 mt-6">
-                  <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="شماره تماس"
-                           inputmode="numeric"
-                           input-class="w-full transition-all p-2 rounded-md bg-white"
+                           :value="profileStore.profileData.mobile"
+                           input-class="w-full transition-all p-2 rounded-md bg-white bg-zinc-200"
                            validation="required|number"
                            messages-class="text-[14px] text-red-500"
-                           :validation-messages="{ number: 'شماه تماس شامل حروف نمیباشد', required: 'فیلد شماره تماس الزامیست'}"
+                           disabled
+                           :validation-messages="{ number: 'تلفن همراه شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
                   />
+
+<!--                  <FormKit class="w-full" outer-class="w-full" type="date" name="birthDate" label="تاریخ تولد"-->
+<!--                           input-class="w-full transition-all p-2 rounded-md"-->
+<!--                           validation="required"-->
+<!--                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"-->
+<!--                           messages-class="text-[14px] text-red-500"-->
+<!--                           placeholder=""-->
+<!--                  />-->
+                </div>
+
+                <div class="w-full flex justify-center items-center gap-4 mt-6">
+                  <FormKit class="w-full" outer-class="w-full" type="text" name="postalCode" label="کد پستی"
+                           input-class="w-full transition-all p-2 rounded-md"
+                           validation="required|number|length:10,10"
+                           :value="profileStore.profileData.postal_code"
+                           :validation-messages="{required: 'این فیلد الزامیست', number:'کد پستی شامل حرف نمیباشد', length:'کد پستی ده رقم میباشد'}"
+                           messages-class="text-[14px] text-red-500"
+                           placeholder=""
+                  />
+                </div>
+
+                <div class="w-full flex justify-center items-center gap-4 mt-6">
+
                   <FormKit
                       type="select"
                       outer-class="w-full"
                       input-class="w-full transition-all p-2 rounded-md bg-white"
                       label="استان"
-                      name="state"
+                      :value="profileStore.profileData.province"
+                      name="province"
                       placeholder="نام استان مورد نظر را انتخاب کنید"
                       :options="[
     { label: 'نام استان مورد نظر را انتخاب کنید', value: '' },
     { label: 'تهران', value: 'تهران' },
+    { label: 'آذربایجان غربی', value: 'آذربایجان غربی' },
+    { label: 'آذربایجان شرقی', value: 'آذربایجان شرقی' },
+    { label: 'اردبیل', value: 'اردبیل' },
     { label: 'اصفهان', value: 'اصفهان' },
-    { label: 'تبریز', value: 'تبریز' },
-    { label: 'مشهد', value: 'مشهد' },
+    { label: 'البرز', value: 'البرز' },
+    { label: 'ایلام', value: 'ایلام' },
+    { label: 'بوشهر', value: 'بوشهر' },
+    { label: 'خراسان رضوی', value: 'خراسان رضوی' },
+    { label: 'خراسان شمالی', value: 'خراسان شمالی' },
+    { label: 'خراسان جنوبی', value: 'خراسان جنوبی' },
+    { label: 'خوزستان', value: 'خوزستان' },
+    { label: 'زنجان', value: 'زنجان' },
     { label: 'سمنان', value: 'سمنان' },
+    { label: 'سیستان و بلوچستان', value: 'سیستان و بلوچستان' },
+    { label: 'فارس', value: 'فارس' },
+    { label: 'قزوین', value: 'قزوین' },
+    { label: 'قم', value: 'قم' },
+    { label: 'کردستان', value: 'کردستان' },
+    { label: 'کرمان', value: 'کرمان' },
+    { label: 'کرمانشاه', value: 'کرمانشاه' },
+    { label: 'کهگیلویه و بویراحمد', value: 'کهگیلویه و بویراحمد' },
+    { label: 'گیلان', value: 'گیلان' },
+    { label: 'لرستان', value: 'لرستان' },
+    { label: 'مازندران', value: 'مازندران' },
+    { label: 'مرکزی', value: 'مرکزی' },
+    { label: 'هرمزگان', value: 'هرمزگان' },
+    { label: 'همدان', value: 'همدان' },
+    { label: 'یزد', value: 'یزد' },
   ]"
                   />
+
+                  <FormKit class="w-full" outer-class="w-full" type="text" name="city" label="شهر"
+                           inputmode="numeric"
+                           input-class="w-full transition-all p-2 rounded-md bg-white"
+                           :value="profileStore.profileData.city"
+                           validation="required"
+                           messages-class="text-[14px] text-red-500"
+                           :validation-messages="{ number: 'شهر شامل حروف نمیباشد', required: 'فیلد شماره شهر الزامیست'}"
+                  />
+
                 </div>
 
                 <!------ text area of address ------>
@@ -156,11 +199,12 @@
                   <FormKit class="w-full"
                            outer-class="w-full"
                            type="textarea"
-                           name="nationalCode"
+                           name="address"
+                           :value="profileStore.profileData.address"
                            label="آدرس محل سکونت"
                            input-class="w-full transition-all p-2 rounded-md bg-white"
                            validation="required"
-                           :validation-messages="{required: 'آدرس محل کار الزامیست'}"
+                           :validation-messages="{required: 'آدرس محل کار سکونت'}"
                            messages-class="text-[14px] text-red-500"
                   />
                 </div>
@@ -194,15 +238,20 @@
               <FormKit type="form" :actions="false" @submit="submitSecondStep">
 
                 <p>شماره کارت</p>
-                <div class="flex justify-between items-center gap-4">
-                  <input type="text" class="p-4 text-center" maxlength="4" />
-                  <input type="text" class="p-4 text-center" maxlength="4" />
-                  <input type="text" class="p-4 text-center" maxlength="4" />
-                  <input type="text" class="p-4 text-center" maxlength="4" />
+                <div class="flex justify-between items-center gap-4 flex-row-reverse">
+                  <FormKit type="text" name="first" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید', length: 'هر فیلد 4 عدد' }" />
+                  <FormKit type="text" name="second" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
+                  <FormKit type="text" name="third" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
+                  <FormKit type="text" name="forth" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
                 </div>
 
-                <div class="m-8">
-                  <FormKit type="text" input-class="w-full p-4" label="شماره شبا" />
+
+                <div class="w-full flex items-center gap-2">
+                  <div class="m-8 w-full">
+                    <FormKit type="text" dir="ltr" input-class="w-full p-4" label="شماره شبا" inner-class="w-full" name="sheba" />
+                  </div>
+                  <p class="mt-4">-</p>
+                  <p class="mt-4">IR</p>
                 </div>
 
                 <!------- submit btn ------->
@@ -233,11 +282,17 @@
 <script setup>
 
 
+import {useProfileStore} from "~/store/profile";
+
 definePageMeta({
   layout: 'profile'
 });
-const submitSecondStep = () => {
-  console.log("this is for test");
+
+const profileStore = useProfileStore();
+console.log(profileStore.profileData);
+
+const submitSecondStep = (formData) => {
+  console.log(formData)
 }
 
 const steps = ref(1);
@@ -245,14 +300,26 @@ const steps = ref(1);
 const firstStepIcon = ref();
 const firstStepLine = ref();
 
-const submitFirstStep = () => {
-  console.log(firstStepIcon.value.childNodes[0].childNodes[0])
+const submitFirstStep = (formData) => {
+
+  profileStore.profileData.first_name = formData.firstName;
+  profileStore.profileData.last_name = formData.lastName;
+  profileStore.profileData.postal_code = formData.postalCode;
+  profileStore.profileData.province = formData.province;
+  profileStore.profileData.city = formData.city;
+  profileStore.profileData.address = formData.address;
+
+
+
   firstStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
   firstStepIcon.value.classList.remove("bg-[#E9E9E9]");
   firstStepIcon.value.classList.add("bg-sky-custom");
   firstStepLine.value.classList.remove("bg-[#E9E9E9]");
   firstStepLine.value.classList.add("bg-sky-custom");
   steps.value = 2;
+
+  console.log(formData)
+
 }
 
 const backTofirst = () => {
@@ -265,6 +332,7 @@ const backTofirst = () => {
   firstStepLine.value.classList.remove("bg-sky-custom");
   steps.value = 1;
 }
+
 
 </script>
 

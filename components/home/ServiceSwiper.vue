@@ -22,7 +22,7 @@
     >
       <swiper-slide class="rounded-[30px] w-[300px]">
         <div class="w-full text-center p-5  relative" dir="rtl">
-          <p class="md:text-[30px] text-[22px] mt-24 font-morabaa md:mt-24">مشاور حرفه ای</p>
+          <p class="md:text-[30px] text-[22px] mt-24 font-morabaa md:mt-24">مشاوره حرفه ای</p>
           <div class="w-10/12 mx-auto mt-10">
             <div class="absolute p-5  rounded-[30px] bg-[#D1E7EB] md:-top-8 -top-12 left-1/2 -translate-x-1/2 mt-16">
               <img src="/images/icons/home/service_cards_icon.png" alt="service_card_icons" class="md:w-12 w-12">

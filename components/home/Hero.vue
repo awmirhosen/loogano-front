@@ -46,10 +46,10 @@
           <div class="md:w-8/12 w-11/12  md:ml-20">
             <div class="w-full flex justify-center">
               <!----- title of web ------>
-              <h1 class="md:text-[53px] text-[25px] text-right font-morabaa">
-                فرصت هایی بی انتها
+              <h1 class="md:text-[50px] text-[25px] text-right font-morabaa">
+                فرصت هایی بی انتها برای
                 <br>
-                ! برای <span class="text-blue-custom">سرمایه گذاری</span> هوشمند ملکی
+                 <span class="text-blue-custom">سرمایه گذاری</span> هوشمند ملکی
               </h1>
             </div>
 
@@ -67,8 +67,8 @@
                 <button class="px-10 text-blue-custom border-blue-custom py-2 rounded-md text-white hover:bg-sky-custom login-hero">ورود</button>
               </NuxtLink>
 
-              <NuxtLink>
-                <button class="px-10 bg-sky-custom py-2 search-hero rounded-md text-white">جستجو</button>
+              <NuxtLink to="/projects">
+                <button class="px-10 bg-sky-custom py-2 search-hero rounded-md text-white">سرمایه گذاری</button>
               </NuxtLink>
 
             </div>
