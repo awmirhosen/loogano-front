@@ -104,15 +104,15 @@
 
       <div class="w-full relative" dir="rtl">
         <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-        <div class="h-[8px] absolute bg-[#5BCE90] top-0  rounded-full"></div>
+        <div class="h-[8px] absolute bg-[#5BCE90] top-0  rounded-full" :style="`width: ${projectStore.projectDetails.progressss_percent}% `" ></div>
       </div>
 
       <div class="w-full flex justify-between mt-2" dir="rtl">
-        <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">
-          زمان کل پروژه : به زودی
-        </div>
+<!--        <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">-->
+<!--          زمان کل پروژه : به زودی-->
+<!--        </div>-->
 <!--        <div class="w-full text-zinc-400 text-left text-[12px]">{{ monthLeft(projectStore.projectDetails?.project_end) }}</div>-->
-        <div class="w-full text-zinc-400 text-left text-[12px]">به زودی</div>
+        <div class="w-full text-zinc-400 text-left text-[12px]">{{ projectEndingDate(projectStore.projectDetails?.project_end) }}</div>
       </div>
 
       <hr class="mt-5">

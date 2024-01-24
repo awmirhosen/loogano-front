@@ -1,11 +1,12 @@
 <template>
   <div class="w-full h-[350px] mt-6">
+
     <LMap
         ref="map"
         :zoom="zoom"
-        :center="[35.700119, 51.400394]"
+        :center="[props.loccationla, props.locationlo]"
     >
-      <LMarker :lat-lng="[35.700105, 51.400394]" draggable> </LMarker>
+      <LMarker :lat-lng="[props.loccationla, props.locationlo]" draggable> </LMarker>
       <LTileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
@@ -21,6 +22,12 @@
 <script setup>
 import { ref } from 'vue'
 const zoom = ref(17);
+
+
+const props = defineProps([
+    'loccationla', 'locationlo'
+])
+
 
 const leafletOptions = ref({
   url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

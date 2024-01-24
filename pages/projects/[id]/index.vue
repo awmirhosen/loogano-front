@@ -81,7 +81,9 @@
           </div>
 
           <div class="w-full mt-4">
-            <ProjectMap/>
+            <ProjectMap :loccationla="projectStore.projectDetails.location_latitude
+" :locationlo="projectStore.projectDetails.location_longitude"
+            />
           </div>
 
           <!--          <div class="w-full">-->

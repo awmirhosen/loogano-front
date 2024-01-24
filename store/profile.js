@@ -10,7 +10,11 @@ export const useProfileStore = defineStore("profile", {
             profileData: {},
             userProjects: {},
             cardData: {
-
+                first:  "",
+                second: "",
+                third: "",
+                forth: "",
+                sheba: "",
             },
         }
     },

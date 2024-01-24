@@ -34,21 +34,21 @@
         <!----- line -------->
         <div ref="firstStepLine" class="transition-all w-full bg-[#E9E9E9] h-1"></div>
         <!------- document ----->
-        <div class="relative">
-          <div class="p-3 bg-[#E9E9E9] transition-all rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M8 13H14M8 17H16M13 3H5V21H19V9M13 3H14L19 8V9M13 3V7C13 8 14 9 15 9H19" stroke="#858585"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <p class="whitespace-nowrap left-1/2 top-16 -translate-x-1/2 absolute text-[14px] text-[#858585]">بارگذاری
-            مدارک</p>
-        </div>
+<!--        <div class="relative">-->
+<!--          <div class="p-3 bg-[#E9E9E9] transition-all rounded-full" ref="secondStepIcon">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">-->
+<!--              <path d="M8 13H14M8 17H16M13 3H5V21H19V9M13 3H14L19 8V9M13 3V7C13 8 14 9 15 9H19" stroke="#858585"-->
+<!--                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>-->
+<!--            </svg>-->
+<!--          </div>-->
+<!--          <p class="whitespace-nowrap left-1/2 top-16 -translate-x-1/2 absolute text-[14px] text-[#858585]">بارگذاری-->
+<!--            مدارک</p>-->
+<!--        </div>-->
         <!----- line -------->
-        <div class="w-full bg-[#E9E9E9] h-1"></div>
+<!--        <div ref="secondStepLine" class="transition-all w-full bg-[#E9E9E9] h-1"></div>-->
         <!----- pending ----->
         <div class="relative">
-          <div class="p-3 bg-[#E9E9E9] rounded-full">
+          <div class="p-3 bg-[#E9E9E9] rounded-full" ref="finalStepIcon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                   d="M12 8V12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
@@ -62,9 +62,9 @@
       </div>
       <!-------- first step ------>
 
-<!--      <div class="bg-red-400 text-center w-full">-->
-<!--        {{ profileStore.profileData }}-->
-<!--      </div>-->
+      <!--      <div class="bg-red-400 text-center w-full">-->
+      <!--        {{ profileStore.profileData }}-->
+      <!--      </div>-->
 
       <div class="w-full mt-16" v-if="steps === 1">
         <div class="w-full">
@@ -119,13 +119,13 @@
                            :validation-messages="{ number: 'تلفن همراه شامل حروف نمیباشد', required: 'فیلد کدملی الزامیست'}"
                   />
 
-<!--                  <FormKit class="w-full" outer-class="w-full" type="date" name="birthDate" label="تاریخ تولد"-->
-<!--                           input-class="w-full transition-all p-2 rounded-md"-->
-<!--                           validation="required"-->
-<!--                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"-->
-<!--                           messages-class="text-[14px] text-red-500"-->
-<!--                           placeholder=""-->
-<!--                  />-->
+                  <!--                  <FormKit class="w-full" outer-class="w-full" type="date" name="birthDate" label="تاریخ تولد"-->
+                  <!--                           input-class="w-full transition-all p-2 rounded-md"-->
+                  <!--                           validation="required"-->
+                  <!--                           :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"-->
+                  <!--                           messages-class="text-[14px] text-red-500"-->
+                  <!--                           placeholder=""-->
+                  <!--                  />-->
                 </div>
 
                 <div class="w-full flex justify-center items-center gap-4 mt-6">
@@ -239,16 +239,29 @@
 
                 <p>شماره کارت</p>
                 <div class="flex justify-between items-center gap-4 flex-row-reverse">
-                  <FormKit type="text" name="first" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید', length: 'هر فیلد 4 عدد' }" />
-                  <FormKit type="text" name="second" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
-                  <FormKit type="text" name="third" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
-                  <FormKit type="text" name="forth" dir="ltr" input-class="w-full text-center p-4" maxlength="4" inputmode="numeric" validation="required|number|length:4,4" :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}" />
+                  <FormKit type="text" name="first" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
+                           inputmode="numeric" validation="required|number|length:4,4"
+                           :value="profileStore.cardData.first"
+                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید', length: 'هر فیلد 4 عدد' }"/>
+                  <FormKit type="text" name="second" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
+                           inputmode="numeric" validation="required|number|length:4,4"
+                           :value="profileStore.cardData.second"
+                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
+                  <FormKit type="text" name="third" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
+                           inputmode="numeric" validation="required|number|length:4,4"
+                           :value="profileStore.cardData.third"
+                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
+                  <FormKit type="text" name="forth" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
+                           inputmode="numeric" validation="required|number|length:4,4"
+                           :value="profileStore.cardData.forth"
+                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
                 </div>
 
 
                 <div class="w-full flex items-center gap-2">
                   <div class="m-8 w-full">
-                    <FormKit type="text" dir="ltr" input-class="w-full p-4" label="شماره شبا" inner-class="w-full" name="sheba" />
+                    <FormKit type="text" dir="ltr" input-class="w-full p-4" label="شماره شبا" inner-class="w-full"
+                             name="sheba" :value="profileStore.cardData.sheba"/>
                   </div>
                   <p class="mt-4">-</p>
                   <p class="mt-4">IR</p>
@@ -257,7 +270,9 @@
                 <!------- submit btn ------->
                 <div class="flex justify-end gap-8 items-center">
                   <div class="w-full flex justify-end gap-4">
-                    <div class="whitespace-nowrap px-8 py-2 border-blue-custom text-blue-custom cursor-pointer text-white rounded-md mt-10" @click="backTofirst">
+                    <div
+                        class="whitespace-nowrap px-8 py-2 border-blue-custom text-blue-custom cursor-pointer text-white rounded-md mt-10"
+                        @click="backTofirst">
                       مرحله قبلی
                     </div>
 
@@ -272,6 +287,61 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!------- third step / document uploader ------>
+      <div class="w-full px-4" v-if="steps === 3">
+        <!------ page title ----->
+        <div class="w-full mt-20" dir="rtl">
+          <p class="text-[23px] text-[#0C5C75]">بارگذاری مدارک</p>
+          <span class="block w-full mt-3 h-[2px] bg-sky-custom"></span>
+        </div>
+
+        <div class="w-full flex justify-center items-center" dir="rtl">
+
+          <FormKit type="form" :actions="false" @submit="submitFiles">
+
+            <div class="p-4 border border-dashed border-2 mt-5 rounded-[5px]">
+              <FormKit
+                  type="file"
+                  label="شناسنامه"
+                  accept=".pdf,.doc,.docx,.xml,.md,.csv"
+                  help="لطفا تصویر شناسنامه خود را بارگذاری کنید"
+                  multiple="true"
+              />
+            </div>
+
+            <!------- submit btn ------->
+            <div class="flex justify-end gap-8 items-center">
+              <div class="w-full flex justify-end gap-4" dir="rtl">
+                <div
+                    class="whitespace-nowrap px-8 py-2 border-blue-custom text-blue-custom cursor-pointer text-white rounded-md mt-10"
+                    @click="backToSecond">
+                  مرحله قبلی
+                </div>
+
+                <FormKit type="submit" input-class="w-full px-8 py-2 bg-sky-custom text-white rounded-md mt-10">
+                  مرحله بعدی
+                </FormKit>
+              </div>
+            </div>
+
+          </FormKit>
+
+        </div>
+
+      </div>
+
+
+      <!------ forth step ------->
+      <div class="">
+        <div class="w-full px-4" v-if="steps === 4">
+          <!------ page title ----->
+          <div class="w-full mt-20" dir="rtl">
+            <p class="text-[23px] bg-sky-custom text-white rounded-lg p-2 text-center text-[#0C5C75]">اطلاعات شما  برای بررسی ارسال شد</p>
+<!--            <span class="block w-full mt-3 h-[2px] bg-sky-custom"></span>-->
+          </div>
         </div>
       </div>
 
@@ -291,14 +361,34 @@ definePageMeta({
 const profileStore = useProfileStore();
 console.log(profileStore.profileData);
 
-const submitSecondStep = (formData) => {
-  console.log(formData)
-}
-
 const steps = ref(1);
 
 const firstStepIcon = ref();
+const secondStepIcon = ref();
+const finalStepIcon = ref();
 const firstStepLine = ref();
+const secondStepLine = ref();
+
+const submitSecondStep = (formData) => {
+
+  profileStore.cardData.first = formData.first;
+  profileStore.cardData.second = formData.second;
+  profileStore.cardData.third = formData.third;
+  profileStore.cardData.forth = formData.forth;
+  profileStore.cardData.sheba = formData.sheba;
+
+  // secondStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
+  // secondStepIcon.value.classList.remove("bg-[#E9E9E9]");
+  // secondStepIcon.value.classList.add("bg-sky-custom");
+  finalStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
+  finalStepIcon.value.classList.remove("bg-[#E9E9E9]");
+  finalStepIcon.value.classList.add("bg-sky-custom");
+  // secondStepLine.value.classList.remove("bg-[#E9E9E9]");
+  // secondStepLine.value.classList.add("bg-sky-custom");
+  steps.value = 4;
+
+
+}
 
 const submitFirstStep = (formData) => {
 
@@ -308,7 +398,6 @@ const submitFirstStep = (formData) => {
   profileStore.profileData.province = formData.province;
   profileStore.profileData.city = formData.city;
   profileStore.profileData.address = formData.address;
-
 
 
   firstStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
@@ -331,8 +420,24 @@ const backTofirst = () => {
   firstStepLine.value.classList.add("bg-[#E9E9E9]");
   firstStepLine.value.classList.remove("bg-sky-custom");
   steps.value = 1;
+
 }
 
+const backToSecond = () => {
+  secondStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
+  secondStepIcon.value.childNodes[0].childNodes[0].style.stroke = "#858585"
+  secondStepIcon.value.classList.add("bg-[#E9E9E9]");
+  secondStepIcon.value.classList.remove("bg-sky-custom");
+  secondStepLine.value.classList.add("bg-[#E9E9E9]");
+  secondStepLine.value.classList.remove("bg-sky-custom");
+  steps.value = 2;
+}
+
+
+const submitFiles = (formData) => {
+  console.log("hello")
+  console.log(formData);
+}
 
 </script>
 
