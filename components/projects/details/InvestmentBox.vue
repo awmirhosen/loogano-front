@@ -48,11 +48,14 @@
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
         <div class="flex items-center gap-2 flex-row-reverse">
           <img src="/images/projects/images/currency.svg" class="w-6" alt="measure_tape">
-          <p class="text-zinc-500 text-sm">: قیمت هر میلی متر مربع</p>
+          <p class="text-zinc-500 text-sm">: قیمت هر سانتی متر متر مربع</p>
         </div>
 
         <p class="text-right text-sm">
+
           {{ `${ eArabic(projectStore.projectDetails.prices[0].value) }`}}
+
+          ریال
         </p>
       </div>
 
@@ -310,7 +313,7 @@ const onchangePricePriceBox = (e) => {
   }
 
   const priceArray = ref(projectStore.projectDetails.prices.length)
-  totalBoughtMeter.value = thisElementValue / projectStore.projectDetails.prices[priceArray.value - 1].value / 100;
+  totalBoughtMeter.value = thisElementValue / projectStore.projectDetails.prices[priceArray.value - 1].value * 100 ;
 
   seperatedNumber = funcReverseString(tmpSeperatedNumber);
   if(seperatedNumber[0] === ",") seperatedNumber = seperatedNumber.replace("," , "");
@@ -328,7 +331,7 @@ const onchangeMeterbox = (e) => {
 
   const priceArray = ref(projectStore.projectDetails.prices.length);
 
-  totalBoughtPrice.value = projectStore.projectDetails.prices[priceArray.value - 1].value * thisElementValue;
+  totalBoughtPrice.value = projectStore.projectDetails.prices[priceArray.value - 1].value * thisElementValue / 100 ;
   totalBoughtMeter.value = thisElementValue
 
 }
