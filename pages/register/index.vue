@@ -67,7 +67,7 @@
 
                 <FormKit class="w-full" outer-class="w-full" type="text" name="firstName" label="نام*"
                          input-class="w-full border-2 border-zinc-300 transition-all p-2 rounded-md"
-                         validation="required|alpha"
+                         validation="required"
                          :validation-messages="{required: 'فیلد نام الزامیست', alpha:'نام نمیتواند شامل عدد باشد'}"
                          messages-class="text-[14px] text-red-500"
                 />

@@ -65,7 +65,7 @@
           </div>
 
           <div class="w-full sticky">
-            <StickyCard/>
+            <StickyCard :name="projectStore.projectDetails.title" :cons="projectStore.projectDetails.constructor.title" />
           </div>
 
         </div>
