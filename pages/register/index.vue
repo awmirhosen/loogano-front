@@ -73,7 +73,7 @@
                 />
                 <FormKit class="w-full" outer-class="w-full" type="text" name="lastName" label="نام خانوادگی*"
                          input-class="w-full border-2 transition-all border-zinc-300 p-2 rounded-md"
-                         validation="required|alpha"
+                         validation="required"
                          :validation-messages="{required: 'فیلد نام خانوادگی الزامیست', alpha:'نام خانوادگی نمیتواند شامل عدد باشد'}"
                          messages-class="text-[14px] text-red-500"
                 />
