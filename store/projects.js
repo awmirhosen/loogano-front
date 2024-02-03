@@ -195,7 +195,8 @@ export const useProjectStore = defineStore("projects", {
                                 invoice: res.data.data.invoice,
                                 block: res.data.data.block
                             }).then(res => {
-                                console.log(res)
+                                console.log(res);
+                                profileStore.fetchProfileData();
                                 this.buyProjectLoading = false;
                                 router.push("/payment/success")
                             }).catch(err => {
@@ -258,6 +259,7 @@ export const useProjectStore = defineStore("projects", {
                         }).then(res => {
                             console.log(res)
                             this.buyProjectLoading = false;
+                            profileStore.fetchProfileData();
                             router.push("/payment/success");
                         }).catch(err => {
 
@@ -269,6 +271,7 @@ export const useProjectStore = defineStore("projects", {
                                 }
                             }
                             toast.error("کیف پول شما به اندازه ی مبلغ سرمایه گذاری شارژ شد اما خطایی در خرید پروژه رخ داد!")
+                            profileStore.fetchProfileData();
 
                             console.log(err);
                             router.push("/payment/error")

@@ -2,9 +2,13 @@
 
   <div class="w-full overflow-hidden relative mt-24">
     <!-----desktop footer path-------->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1512 622" fill="none" class="w-full hidden lg:block lg:mt-10">
-      <path d="M1512 0L0 125.5V622H1512V0Z" fill="#002D4B"/>
-    </svg>
+<!--    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1512 622" fill="none" class="w-full hidden lg:block lg:mt-10">-->
+<!--      <path d="M1512 0L0 125.5V622H1512V0Z" fill="#002D4B"/>-->
+<!--    </svg>-->
+
+    <div class="w-full p-4 min-h-[500px] bg-[#002D4B] hidden lg:block" style="clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 100%);">
+
+    </div>
 
 
     <!-----mobile footer path-------->
@@ -22,7 +26,7 @@
             <img src="/images/home/loogano_logo.png" alt="ff">
           </div>
 
-          <p class="text-sm w-10/12 mx-auto text-right text-white" style="opacity: 60%">
+          <p class="text-sm w-10/12 mx-auto text-right text-white" dir="rtl" style="opacity: 60%">
             سرمایه‌گذاری ملکی لوگانو به عنوان یک نقطه آغاز برای رسیدن به آینده‌ی مالی پایدار، به شما کمک می‌کند تا با
             سرمایه‌ی کم به دنیای سرمایه‌گذاری ملکی وارد شوید.
           </p>
@@ -50,16 +54,16 @@
 
               <p class="font-morabaa text-white text-3xl">ارتباط با ما</p>
 
-              <div class="flex items-center gap-2 justify-end mt-10">
-                <p class=" text-white text-md opacity-[60%]">loogano@info.com</p>
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <div class="flex items-center gap-2 justify-end">
-                <p class=" text-white text-md opacity-[60%]">09125242600</p>
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <div class="flex items-center gap-2 justify-end">
+              <div class="flex items-start gap-2 justify-end mt-10">
                 <p class=" text-white text-md opacity-[60%]">خیابان مطهری، نرسیده به سهروردی <br> پلاک 100، طبقه 4</p>
+                <div class="w-3 h-3 bg-white rounded-full mt-1"></div>
+              </div>
+              <div class="flex items-center gap-2 justify-end mt-3">
+                <p class=" text-white text-md opacity-[60%]">021-47738333</p>
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+              <div class="flex items-center gap-2 justify-end">
+                <p class=" text-white text-md opacity-[60%]">info@loogano.com</p>
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
 
@@ -111,6 +115,12 @@
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
               <div class="flex items-center gap-2 justify-end my-2">
+                <nuxt-link to="https://t.me/+989906060793">
+                  <p class=" text-white text-md opacity-[60%]">تلگرام</p>
+                </nuxt-link>
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+              <div class="flex items-center gap-2 justify-end my-2">
                 <nuxt-link to="https://www.linkedin.com/company/loogano/?viewAsMember=true">
                   <p class=" text-white text-md opacity-[60%]">لینکدین</p>
                 </nuxt-link>
@@ -131,7 +141,7 @@
           <img src="/images/home/loogano_logo.png" alt="ff">
         </div>
 
-        <p class="text-sm w-10/12 mx-auto text-center text-white" style="opacity: 60%">
+        <p class="text-sm w-10/12 mx-auto text-center text-white" dir="rtl" style="opacity: 60%">
           سرمایه‌گذاری ملکی لوگانو به عنوان یک نقطه آغاز برای رسیدن به آینده‌ی مالی پایدار، به شما کمک می‌کند تا با
           سرمایه‌ی کم به دنیای سرمایه‌گذاری ملکی وارد شوید.
         </p>
@@ -200,19 +210,17 @@
 
             <div class="w-full text-right">
 
-              <p class="font-morabaa text-white text-3xl">تماس با ما</p>
+              <p class="font-morabaa text-white text-3xl mt-5 md:mt-0">تماس با ما</p>
 
-              <div class="flex items-center gap-2 justify-end mt-10 my-2">
-                <p class=" text-white text-md opacity-[60%]">فیسبوک</p>
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <div class="flex items-center gap-2 justify-end my-2">
-                <p class=" text-white text-md opacity-[60%]">توییتر</p>
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
               <div class="flex items-center gap-2 justify-end my-2">
                 <nuxt-link to="https://www.linkedin.com/company/loogano/?viewAsMember=true">
                   <p class=" text-white text-md opacity-[60%]">لینکدین</p>
+                </nuxt-link>
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+              <div class="flex items-center gap-2 justify-end my-2">
+                <nuxt-link to="https://t.me/+989906060793">
+                  <p class=" text-white text-md opacity-[60%]">تلگرام</p>
                 </nuxt-link>
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>

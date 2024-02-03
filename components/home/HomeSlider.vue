@@ -10,7 +10,7 @@
 
     <div class="relative">
 
-      <div class="w-full mt-[250px] md:mt-[300px] lg:mt-[400px]">
+      <div class="w-full mt-[250px] md:mt-[250px] lg:mt-[300px]">
         <div class="w-full relative mt-24 lg:px-24 md:px-8 px-4">
           <swiper
               style="overflow-y: visible"
@@ -87,7 +87,7 @@
                       <img src="/images/home/tape_measure.png" alt="location">
                     </div>
                     <p class="text-zinc-600 text-[14px]">: متراژ</p>
-                    <p class="text-zinc-500 text-[16px]" dir="rtl">{{ projects.area_mm }} میلی متر </p>
+                    <p class="text-zinc-500 text-[16px]" dir="rtl">{{ projects.area_mm }} سانتی متر مربع </p>
                   </div>
 
                   <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">

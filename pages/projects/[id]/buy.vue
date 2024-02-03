@@ -16,12 +16,12 @@
         <div class="w-100 p-4 mt-3 bg-white rounded-b-xl">
           <div class="flex items-center mt-2 justify-between text-[18px] text-zinc-700" dir="rtl">
             <p>مبلغ سرمایه گذاری:</p>
-            <p> {{ projectStore.investSuccessData.pure_amount }} ریال</p>
+            <p> {{ eArabic(projectStore.investSuccessData.pure_amount) }} تومان</p>
           </div>
           <hr class="mt-2 border-zinc-100">
           <div class="flex items-center mt-2 justify-between text-[18px] text-zinc-700" dir="rtl">
             <p>کارمزد:</p>
-            <p> {{ projectStore.investSuccessData.commission_amount.toFixed(2) }} ریال</p>
+            <p> {{ eArabic(projectStore.investSuccessData.commission_amount) }} تومان</p>
           </div>
 <!--          <hr class="mt-2 border-zinc-100">-->
 <!--          <div class="flex items-center mt-2 justify-between text-green-500 text-[18px]" dir="rtl">-->
@@ -31,7 +31,7 @@
           <hr class="mt-2 border-zinc-100">
           <div class="flex items-center mt-2 justify-between font-bold text-[18px]" dir="rtl">
             <p>مبلغ قابل پرداخت:</p>
-            <p> {{ projectStore.investSuccessData.total_amount }} ریال</p>
+            <p> {{ eArabic(Math.floor(projectStore.investSuccessData.total_amount)) }} تومان</p>
           </div>
           <hr class="mt-2 border-zinc-100 pb-5">
         </div>
@@ -60,7 +60,7 @@
           <div class="px-4" dir="rtl">
             <p class="text-zinc-400 my-2">مبلغ سرمایه گذاری</p>
             <div class="w-full bg-zinc-200 text-center p-3 rounded-md">
-              {{ projectStore.investSuccessData.pure_amount }} ریال
+              {{ eArabic(projectStore.investSuccessData.pure_amount) }} تومان
             </div>
           </div>
 
@@ -71,37 +71,37 @@
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>مبلغ سرمایه گذار:</p>
-            <p> {{ projectStore.investSuccessData.pure_amount }} ریال</p>
+            <p> {{ eArabic(projectStore.investSuccessData.pure_amount) }} تومان</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>متراژ سرمایه گذاری:</p>
-            <p> {{ projectStore.investSuccessArea }} میلی متر</p>
+            <p> {{ eArabic(parseInt(projectStore.investSuccessArea)) }} میلی متر</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>مالیات:</p>
-            <p> {{ projectStore.investSuccessData.vat_tax_rate }} درصد</p>
+            <p> {{ eArabic(projectStore.investSuccessData.vat_tax_rate) }} درصد</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>کارمزد:</p>
-            <p> {{ projectStore.investSuccessData.commission_sale_rate }} درصد</p>
+            <p> {{ eArabic(projectStore.investSuccessData.commission_sale_rate) }} درصد</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>جمع کل:</p>
-            <p> {{ projectStore.investSuccessData.total_amount }} ریال</p>
+            <p> {{ eArabic(Math.floor(projectStore.investSuccessData.total_amount)) }} ریال</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
-          <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
-            <p>تاریخ اتمام پروژه:</p>
+<!--          <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">-->
+<!--            <p>تاریخ اتمام پروژه:</p>-->
 <!--            <p> {{ projectEndingDate(projectStore.investSuccessData.project_details.project_end) }}</p>-->
-          </div>
-          <hr class="mt-2 border-zinc-100 px-4">
+<!--          </div>-->
+<!--          <hr class="mt-2 border-zinc-100 px-4">-->
 
           <div class="flex justify-start items-center border border-2 border-zinc-300 rounded-md mt-4 p-3">
             <div>
@@ -157,6 +157,10 @@ const projectEndingDate = (end) => {
   })
   return `${endingFa.year}/${endingFa.month}/${endingFa.day}`
 
+}
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
 }
 
 </script>

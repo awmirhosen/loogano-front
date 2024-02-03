@@ -30,6 +30,8 @@
       <div :key="index" class="w-full mt-12 bg-white p-10" v-for="(projects, index) in profileStore.userProjects.projects">
         <!------ project title ------->
 
+        {{projects.project_id}}
+
         <h3 class="w-full text-right text-[24px]">{{ projects.project.title }}</h3>
 
         <div class="w-full gap-4 flex flex-row-reverse items-center justify-center">
@@ -89,12 +91,12 @@
               </div>
 
               <div class="flex justify-center items-center mt-10 gap-4">
-                <div class="pb-2 border-b-[2px] border-b border-red-600 text-red-600 px-10 cursor-pointer hover:border-b-2 hover:border-red-400 transition-all hover:text-red-400">
+                <div class="pb-2 border-b-[2px] border-b border-red-600 text-red-600 px-10 cursor-pointer hover:border-b-2 hover:border-red-400 transition-all hover:text-red-400" @click="sellProperty">
                   فروش
                 </div>
-                <div class="bg-sky-custom py-2 text-white w-full cursor-pointer rounded-md transition-all hover:bg-[#1B9DC1]">
+                <nuxt-link :to="{ name: 'projects-id', params: {id: projects.project_id} }"  class="bg-sky-custom py-2 text-white w-full cursor-pointer rounded-md transition-all hover:bg-[#1B9DC1]">
                   خرید دوباره
-                </div>
+                </nuxt-link>
               </div>
 
             </div>
@@ -148,6 +150,7 @@
 
 import {useLayoutStore} from "~/store/layout";
 import {useProfileStore} from "~/store/profile";
+import {useToast} from "vue-toastification";
 
 const layoutStore = useLayoutStore();
 const profileStore = useProfileStore();
@@ -161,6 +164,13 @@ definePageMeta({
 
 function eArabic(x) {
   return x.toLocaleString('ar-EG');
+}
+
+const sellProperty = () => {
+  const toast = useToast();
+
+  toast.error("بخش فروش درحال حاضر در دسترس نیست");
+
 }
 
 // onBeforeMount(() => {

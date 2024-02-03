@@ -30,10 +30,10 @@
       <div class="w-full flex justify-between items-center flex-row-reverse">
         <div class="flex items-center gap-2 flex-row-reverse">
           <img src="/images/home/tape_measure.png" alt="measure_tape">
-          <p class="text-zinc-500 text-sm">: متراژ کل</p>
+          <p class="text-zinc-500 text-sm">: متراژ پروژه مسکونی </p>
         </div>
 
-        <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.area_mm)  }} میلی متر </p>
+        <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.area_mm)  }} مترمربع </p>
       </div>
 
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
@@ -55,7 +55,7 @@
 
           {{ `${ eArabic(projectStore.projectDetails.prices[0].value) }`}}
 
-          ریال
+          تومان
         </p>
       </div>
 
@@ -151,7 +151,7 @@
 
           <div class="w-full flex justify-between items-center mt-2">
             <div class="text-zinc-700 text-sm">
-              متراژ معادل : {{ totalBoughtMeter }} میلی متر
+              متراژ معادل : {{ totalBoughtMeter }} سانتی متر
             </div>
 
 <!--            <div class="text-zinc-700 text-sm">-->
@@ -168,18 +168,20 @@
               <path d="M5.71582 9.91718L13.2676 9.91718" stroke="black" stroke-width="1.13276" stroke-linecap="round" stroke-linejoin="round"/>
             </svg></div>
 
-            <div class="w-full">
-              <input class="w-full text-center bg-zinc-100" type="number" step="10" placeholder="3 میلی متر" @input="onchangeMeterbox" />
+            <div class="w-full flex items-center">
+              <input class="w-full text-center bg-zinc-100" type="number" step="10" placeholder="3" @input="onchangeMeterbox" />
+              <p class="whitespace-nowrap px-2 text-zinc-500 text-[12px]">سانتی متر</p>
             </div>
 
             <div class="border-l-2 border-zinc-200 pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
               <path d="M9.78857 6.11426V13.7201M6.0127 9.91719H13.5644" stroke="black" stroke-width="1.13276" stroke-linecap="round" stroke-linejoin="round"/>
             </svg></div>
+
           </div>
 
           <div class="w-full flex justify-between items-center mt-2">
             <div class="text-zinc-700 text-sm">
-              قیمت معادل : {{ totalBoughtPrice }} ریال
+              قیمت معادل : {{ eArabic(totalBoughtPrice) }} تومان
             </div>
 
 <!--            <div class="text-zinc-700 text-sm">-->
@@ -313,7 +315,7 @@ const onchangePricePriceBox = (e) => {
   }
 
   const priceArray = ref(projectStore.projectDetails.prices.length)
-  totalBoughtMeter.value = thisElementValue / projectStore.projectDetails.prices[priceArray.value - 1].value * 100 ;
+  totalBoughtMeter.value = thisElementValue / projectStore.projectDetails.prices[priceArray.value - 1].value  ;
 
   seperatedNumber = funcReverseString(tmpSeperatedNumber);
   if(seperatedNumber[0] === ",") seperatedNumber = seperatedNumber.replace("," , "");
@@ -331,7 +333,7 @@ const onchangeMeterbox = (e) => {
 
   const priceArray = ref(projectStore.projectDetails.prices.length);
 
-  totalBoughtPrice.value = projectStore.projectDetails.prices[priceArray.value - 1].value * thisElementValue / 100 ;
+  totalBoughtPrice.value = projectStore.projectDetails.prices[priceArray.value - 1].value * thisElementValue ;
   totalBoughtMeter.value = thisElementValue
 
 }

@@ -5,7 +5,7 @@
 
 
     <div class="w-full items-center mt-4 px-2">
-      <h4 class="2xl:text-[24px] text-center">{{ props.name }}</h4>
+<!--      <h4 class="2xl:text-[24px] text-center">{{ props.name }}</h4>-->
       <p class="text-[13px] text-center mt-2 text-[#1B9DB1]">
         گروه سازندگان: {{ props.cons }}
       </p>

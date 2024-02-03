@@ -307,23 +307,6 @@
         <hr class="mt-3">
       </div>
 
-      <!---- faq question ---->
-      <div class="mt-4">
-        <div class="flex justify-start items-center gap-3">
-          <span class="block h-[20px] w-[20px] bg-sky-custom rounded-full"></span>
-          <p class="font-bold font-morabaa text-black text-right text-[22px]">
-            محدودیتی در خرید واحدهای سرمایه‌گذاری وجود دارد؟
-          </p>
-        </div>
-
-        <div class="px-10 mt-4">
-          <p class="w-full text-justify text-zinc-600 text-[17px]">
-            تنها محدودیت، خرید حداقل متراژی است که توسط لوگانو تعیین شده است.
-          </p>
-        </div>
-
-        <hr class="mt-3">
-      </div>
 
       <!---- faq question ---->
       <div class="mt-4">
@@ -345,23 +328,6 @@
         <hr class="mt-3">
       </div>
 
-      <!---- faq question ---->
-      <div class="mt-4">
-        <div class="flex justify-start items-center gap-3">
-          <span class="block h-[20px] w-[20px] bg-sky-custom rounded-full"></span>
-          <p class="font-bold font-morabaa text-black text-right text-[22px]">
-            امکان سرمایه‌گذاری در تمام پروژه‌ها وجود دارد؟
-          </p>
-        </div>
-
-        <div class="px-10 mt-4">
-          <p class="w-full text-justify text-zinc-600 text-[17px]">
-            به جز پروژه‌هایی که به طور اختصاصی برای کارکنان یک شرکت تعریف شده است، امکان سرمایه‌گذاری در تمام پروژه‌های لوگانو که برچسب "در حال سرمایه‌پذیری" دارند، وجود دارد.
-          </p>
-        </div>
-
-        <hr class="mt-3">
-      </div>
 
       <!---- faq question ---->
       <div class="mt-4">
