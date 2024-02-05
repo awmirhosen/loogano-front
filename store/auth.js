@@ -194,6 +194,10 @@ export const useAuthStore = defineStore("auth", {
             this.stepLogin = 2;
         },
         logout() {
+
+            const router = useRouter();
+            router.push("/");
+
             const layoutStore = useLayoutStore();
             localStorage.removeItem("token");
             layoutStore.isAuth = false;

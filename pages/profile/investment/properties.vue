@@ -159,6 +159,7 @@ profileStore.fetchUserProjects();
 
 
 definePageMeta({
+  middleware: "is-auth",
   layout: 'profile'
 });
 

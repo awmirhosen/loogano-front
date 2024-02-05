@@ -65,7 +65,7 @@
           </div>
 
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
-            <p>قیمت هر میلی متر مربع:</p>
+            <p>قیمت هر سانتی متر مربع:</p>
 <!--            <p> {{ projectStore.investSuccessData.project_details.prices[0].value }} ریال</p>-->
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
@@ -76,7 +76,7 @@
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>متراژ سرمایه گذاری:</p>
-            <p> {{ eArabic(parseInt(projectStore.investSuccessArea)) }} میلی متر</p>
+            <p> {{ eArabic(parseInt(projectStore.investSuccessArea)) }}  سانتی متر مربع</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">

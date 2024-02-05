@@ -355,6 +355,7 @@
 import {useProfileStore} from "~/store/profile";
 
 definePageMeta({
+  middleware: "is-auth",
   layout: 'profile'
 });
 

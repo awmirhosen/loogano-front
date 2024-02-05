@@ -151,7 +151,7 @@
 
           <div class="w-full flex justify-between items-center mt-2">
             <div class="text-zinc-700 text-sm">
-              متراژ معادل : {{ totalBoughtMeter }} سانتی متر
+              متراژ معادل : {{ totalBoughtMeter }} سانتی متر مربع
             </div>
 
 <!--            <div class="text-zinc-700 text-sm">-->
@@ -170,7 +170,7 @@
 
             <div class="w-full flex items-center">
               <input class="w-full text-center bg-zinc-100" type="number" step="10" placeholder="3" @input="onchangeMeterbox" />
-              <p class="whitespace-nowrap px-2 text-zinc-500 text-[12px]">سانتی متر</p>
+              <p class="whitespace-nowrap px-2 text-zinc-500 text-[12px]">سانتی متر مربع</p>
             </div>
 
             <div class="border-l-2 border-zinc-200 pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">

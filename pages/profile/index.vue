@@ -23,6 +23,7 @@ const profileStore = useProfileStore();
 profileStore.fetchProfileData();
 
 definePageMeta({
+  middleware: "is-auth",
   layout: 'profile'
 });
 
