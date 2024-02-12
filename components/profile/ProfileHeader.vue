@@ -32,7 +32,7 @@
 
     <div class="w-full flex justify-end cursor-pointer items-center gap-x-10">
       <!------ account wallet---------->
-      <div class="flex gap-x-2 p-2 bg-[#FFC72766] rounded-full">
+      <RouterLink to="/profile/wallet/charge" class="flex gap-x-2 p-2 bg-[#FFC72766] rounded-full">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
           <path d="M26.4132 11.0571H17.1989C15.1633 11.0571 13.5132 12.7073 13.5132 14.7429C13.5132 16.7784 15.1633 18.4286 17.1989 18.4286H26.4132M17.1989 14.7429V14.7551M5.66396 6.14286H23.8195C25.252 6.14286 26.4132 7.42631 26.4132 9.00953V20.4762C26.4132 22.0594 25.252 23.3429 23.8195 23.3429H5.66396C4.23153 23.3429 3.07031 22.0594 3.07031 20.4762V9.00953C3.07031 7.42631 4.23153 6.14286 5.66396 6.14286Z" stroke="black" stroke-width="1.22857" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -45,7 +45,7 @@
             </svg>
           </div>
         </div>
-      </div>
+      </RouterLink>
 
       <div class="flex items-center gap-2">
         <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">

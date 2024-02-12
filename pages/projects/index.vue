@@ -9,9 +9,9 @@
 
 
         <!------image---------->
-        <div class="absolute w-full top-0 -translate-y-2/3 px-6 left-0" style="z-index: 3">
+        <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute left-0 w-full top-0 -translate-y-2/3 px-6" style="z-index: 3">
           <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
-        </div>
+        </RouterLink>
 
         <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
           <!--project name-->
@@ -54,7 +54,7 @@
                 <img src="/images/home/tape_measure.png" alt="location">
               </div>
               <p class="text-zinc-600 text-[14px]">: متراژ</p>
-              <p class="text-zinc-500 text-[16px]" dir="rtl">{{ eArabic(projects.area_mm) }} سانتی متر مربع </p>
+              <p class="text-zinc-500 text-[16px]" dir="rtl">{{ eArabic(projects.area_cm) }} متر مربع </p>
             </div>
 
             <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">
@@ -120,6 +120,10 @@ definePageMeta({
 const projectStore = useProjectStore();
 projectStore.fetchProjectList();
 
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
+}
+
 const projectPercentEl = ref(null);
 
 // total project time
@@ -163,9 +167,6 @@ const monthLeft = (end) => {
   console.log(timeLeft)
 }
 
-function eArabic(x) {
-  return x.toLocaleString('ar-EG');
-}
 
 
 </script>

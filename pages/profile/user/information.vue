@@ -239,22 +239,16 @@
 
                 <p>شماره کارت</p>
                 <div class="flex justify-between items-center gap-4 flex-row-reverse">
-                  <FormKit type="text" name="first" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
-                           inputmode="numeric" validation="required|number|length:4,4"
-                           :value="profileStore.cardData.first"
-                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید', length: 'هر فیلد 4 عدد' }"/>
-                  <FormKit type="text" name="second" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
-                           inputmode="numeric" validation="required|number|length:4,4"
-                           :value="profileStore.cardData.second"
-                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
-                  <FormKit type="text" name="third" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
-                           inputmode="numeric" validation="required|number|length:4,4"
-                           :value="profileStore.cardData.third"
-                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
-                  <FormKit type="text" name="forth" dir="ltr" input-class="w-full text-center p-4" maxlength="4"
-                           inputmode="numeric" validation="required|number|length:4,4"
-                           :value="profileStore.cardData.forth"
-                           :validation-messages="{required: 'فیلد الزامیست', number:'از حروف استفاده نکنید'}"/>
+
+                    <input
+                        type="text"
+                        class="w-full px-2 py-3 bg-white text-center"
+                        @keyup="formatCreditInput"
+                        maxlength="19"
+                        inputmode="numeric"
+                        v-model="creditCardNumber"
+                    />
+
                 </div>
 
 
@@ -360,7 +354,7 @@ definePageMeta({
 });
 
 const profileStore = useProfileStore();
-console.log(profileStore.profileData);
+const creditCardNumber = ref(profileStore.cardData.creditNumber);
 
 const steps = ref(1);
 
@@ -370,24 +364,29 @@ const finalStepIcon = ref();
 const firstStepLine = ref();
 const secondStepLine = ref();
 
-const submitSecondStep = (formData) => {
+const formatCreditInput = () => {
 
-  profileStore.cardData.first = formData.first;
-  profileStore.cardData.second = formData.second;
-  profileStore.cardData.third = formData.third;
-  profileStore.cardData.forth = formData.forth;
+  if (creditCardNumber.value === "") {
+    let realNumber = creditCardNumber.value.replace(/-/gi, '');
+  }else {
+    let realNumber = creditCardNumber.value.replace(/-/gi, '');
+    let dashedNumber = realNumber.match(/.{1,4}/g);
+    creditCardNumber.value = dashedNumber.join('-');
+  }
+
+
+}
+
+const submitSecondStep = (formData) => {
+  profileStore.cardData.creditNumber = creditCardNumber.value;
   profileStore.cardData.sheba = formData.sheba;
 
-  // secondStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
-  // secondStepIcon.value.classList.remove("bg-[#E9E9E9]");
-  // secondStepIcon.value.classList.add("bg-sky-custom");
+
   finalStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
   finalStepIcon.value.classList.remove("bg-[#E9E9E9]");
   finalStepIcon.value.classList.add("bg-sky-custom");
-  // secondStepLine.value.classList.remove("bg-[#E9E9E9]");
-  // secondStepLine.value.classList.add("bg-sky-custom");
-  steps.value = 4;
 
+  steps.value = 4;
 
 }
 
@@ -408,12 +407,12 @@ const submitFirstStep = (formData) => {
   firstStepLine.value.classList.add("bg-sky-custom");
   steps.value = 2;
 
-  console.log(formData)
+
 
 }
 
 const backTofirst = () => {
-  console.log(firstStepIcon.value.childNodes[0].childNodes[0])
+
   firstStepIcon.value.childNodes[0].childNodes[0].style.stroke = "white"
   firstStepIcon.value.childNodes[0].childNodes[0].style.stroke = "#858585"
   firstStepIcon.value.classList.add("bg-[#E9E9E9]");
@@ -436,8 +435,7 @@ const backToSecond = () => {
 
 
 const submitFiles = (formData) => {
-  console.log("hello")
-  console.log(formData);
+
 }
 
 </script>

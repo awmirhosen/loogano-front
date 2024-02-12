@@ -42,9 +42,9 @@
                           v-for="projects in projectStore.projectListSlider">
 
               <!------image---------->
-              <div class="absolute w-full top-0 -translate-y-2/3 px-6" style="z-index: 3333">
+              <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute w-full top-0 -translate-y-2/3 px-6" style="z-index: 3333">
                 <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
-              </div>
+              </RouterLink>
 
               <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
                 <!--project name-->
@@ -87,7 +87,7 @@
                       <img src="/images/home/tape_measure.png" alt="location">
                     </div>
                     <p class="text-zinc-600 text-[14px]">: متراژ</p>
-                    <p class="text-zinc-500 text-[16px]" dir="rtl">{{ projects.area_mm }} سانتی متر مربع </p>
+                    <p class="text-zinc-500 text-[16px]" dir="rtl">{{ eArabic(projects.area_cm) }} متر مربع </p>
                   </div>
 
                   <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">
@@ -97,12 +97,12 @@
                       </div>
                       <p class="text-zinc-600 text-[14px]">: تعداد سرمایه گذار ها</p>
                       <p dir="rtl" class="text-zinc-500 text-[16px]">{{
-                          projects.project_user_completed_count
+                          eArabic(projects.project_user_completed_count)
                         }} نفر </p>
                     </div>
 
                     <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                      سود تا امروز : %{{ projects.progresses[1]?.value }}
+                      %سود تا امروز : {{ eArabic(projects.progresses[1]?.value) }}
                     </div>
 
                   </div>
@@ -168,6 +168,10 @@ import {useProjectStore} from "~/store/projects";
 
 const projectStore = useProjectStore();
 projectStore.fetchSliderProjectList();
+
+function eArabic(x) {
+  return x.toLocaleString('ar-EG');
+}
 
 // total project time
 const totalMonth = (start, end) => {

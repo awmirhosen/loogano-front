@@ -79,6 +79,55 @@
                 />
               </div>
 
+
+
+              <div>
+                <p class="w-full text-right mt-4">*تاریخ تولد</p>
+                <div class="flex justify-center w-full gap-4 mt-4" dir="rtl">
+
+                  <FormKit class="w-full" outer-class="w-full" type="text" name="bDay" label=""
+                           input-class="w-full border-2 text-center border-zinc-300 transition-all p-2 rounded-md"
+                           maxlength="2"
+                           placeholder="روز تولد"
+                           inputmode="numeric"
+                           validation="required"
+                           :validation-messages="{required: 'این فیلد الزامیست'}"
+                           messages-class="text-[14px] text-red-500"
+                  />
+                  <FormKit
+                      type="select"
+                      outer-class="w-full"
+                      input-class="w-full border-2 border-zinc-300 transition-all p-2 rounded-md text-center"
+                      label=""
+                      name="bMonth"
+                      placeholder="ماه تولد"
+                      :options="[
+    { label: 'فروردین', value: '1' },
+    { label: 'اردیبهشت', value: '2' },
+    { label: 'خرداد', value: '3' },
+    { label: 'تیر', value: '4' },
+    { label: 'مرداد', value: '5' },
+    { label: 'شهریور', value: '6' },
+    { label: 'مهر', value: '7' },
+    { label: 'آبان', value: '8' },
+    { label: 'آذر', value: '9' },
+    { label: 'دی', value: '10' },
+    { label: 'بهمن', value: '11' },
+    { label: 'اسفند', value: '12' },
+  ]"
+                  />
+                  <FormKit class="w-full" outer-class="w-full" type="text" name="bYear" label=""
+                           placeholder="سال تولد"
+                           input-class="w-full border-2 transition-all text-center border-zinc-300 p-2 rounded-md"
+                           validation="required"
+                           :validation-messages="{required: 'این فیلد الزامیست' }"
+                           messages-class="text-[14px] text-red-500"
+                  />
+                </div>
+              </div>
+
+
+
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="text" name="nationalCode" label="کدملی*"
                          inputmode="numeric"
@@ -90,10 +139,11 @@
               </div>
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
-                <FormKit class="w-full" outer-class="w-full" type="text" name="email" label="ایمیل*"
+                <FormKit class="w-full" outer-class="w-full" type="text" name="email" label="ایمیل"
                          input-class="w-full transition-all border-2 border-zinc-300 p-2 rounded-md"
-                         validation="required|email"
-                         :validation-messages="{ email: 'ایمیل وارد شده صحیح نمیباشد', required: 'فیلد ایمیل الزامیست'}"
+                         validation="email"
+                         placeholder=""
+                         :validation-messages="{ email: 'ایمیل وارد شده صحیح نمیباشد'}"
                          messages-class="text-[14px] text-red-500"
                 />
               </div>
@@ -103,20 +153,10 @@
                 <FormKit class="w-full" outer-class="w-full" type="password" name="password" label="رمز عبور*"
                          input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"
                          help="رمز عبور شما باید شامل حروف بزرگ، کوچک و ارقام باشد و بین 8 تا 16 کاراکتر باشد"
-                         validation="required|contains_alpha|contains_numeric|length:8,16"
-                         :validation-messages="{ length: 'رمز عبور شما باید بین 8 تا 16 کاراکتر باشد', contains_numeric: 'رمز عبور شما باید شامل اعداد هم باشد', contains_alpha: 'رمز عبور انتخاب شده حتما باید شامل حروف هم باشد', required: 'فیلد رمز عبور الزامیست'}"
+                         validation="required|length:6,16"
+                         :validation-messages="{ length: 'رمز عبور شما باید بین 6 تا 16 کاراکتر باشد', required: 'فیلد رمز عبور الزامیست'}"
                          messages-class="text-[14px] text-red-500"
                          help-class="text-[12px] text-zinc-500"
-                />
-              </div>
-
-              <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
-                <FormKit class="w-full" outer-class="w-full" type="password" name="password_confirm"
-                         label="تکرار رمز عبور*"
-                         input-class="transition-all w-full border-2 border-zinc-300 p-2 rounded-md"
-                         validation="required|confirm"
-                         :validation-messages="{ confirm: 'رمز عبور ها با هم تطابق ندارند', required: 'فیلد تکرار رمز عبور الزامیست'}"
-                         messages-class="text-[14px] text-red-500"
                 />
               </div>
 
@@ -339,14 +379,73 @@ function eArabic(x) {
   return x.toLocaleString('ar-EG');
 }
 
-const mobile = ref("")
+const mobile = ref("");
+
+
+var JalaliDate = {
+  g_days_in_month: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+  j_days_in_month: [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29]
+};
+
+JalaliDate.jalaliToGregorian = function(j_y, j_m, j_d) {
+  j_y = parseInt(j_y);
+  j_m = parseInt(j_m);
+  j_d = parseInt(j_d);
+  var jy = j_y - 979;
+  var jm = j_m - 1;
+  var jd = j_d - 1;
+
+  var j_day_no = 365 * jy + parseInt(jy / 33) * 8 + parseInt((jy % 33 + 3) / 4);
+  for (var i = 0; i < jm; ++i) j_day_no += JalaliDate.j_days_in_month[i];
+
+  j_day_no += jd;
+
+  var g_day_no = j_day_no + 79;
+
+  var gy = 1600 + 400 * parseInt(g_day_no / 146097); /* 146097 = 365*400 + 400/4 - 400/100 + 400/400 */
+  g_day_no = g_day_no % 146097;
+
+  var leap = true;
+  if (g_day_no >= 36525) /* 36525 = 365*100 + 100/4 */
+  {
+    g_day_no--;
+    gy += 100 * parseInt(g_day_no / 36524); /* 36524 = 365*100 + 100/4 - 100/100 */
+    g_day_no = g_day_no % 36524;
+
+    if (g_day_no >= 365) g_day_no++;
+    else leap = false;
+  }
+
+  gy += 4 * parseInt(g_day_no / 1461); /* 1461 = 365*4 + 4/4 */
+  g_day_no %= 1461;
+
+  if (g_day_no >= 366) {
+    leap = false;
+
+    g_day_no--;
+    gy += parseInt(g_day_no / 365);
+    g_day_no = g_day_no % 365;
+  }
+
+  for (var i = 0; g_day_no >= JalaliDate.g_days_in_month[i] + (i == 1 && leap); i++)
+    g_day_no -= JalaliDate.g_days_in_month[i] + (i == 1 && leap);
+  var gm = i + 1;
+  var gd = g_day_no + 1;
+
+  gm = gm < 10 ? "0" + gm : gm;
+  gd = gd < 10 ? "0" + gd : gd;
+
+  return [gy, gm, gd];
+}
 
 const registerDataSubmit = (formData) => {
 
   mobile.value = authStore.signupPhoneNumber
 
-  console.log(formData);
-  authStore.registerUser(formData, mobile.value);
+  const jD = JalaliDate.jalaliToGregorian(formData.bYear, formData.bMonth, formData.bDay);
+  const jResult = jD[0] + "-" + jD[1] + "-" + jD[2];
+  console.log(jResult)
+  authStore.registerUser(formData, mobile.value, jResult);
 }
 
 

@@ -59,7 +59,7 @@
                 <div class="w-3 h-3 bg-white rounded-full mt-1"></div>
               </div>
               <div class="flex items-center gap-2 justify-end mt-3">
-                <p class=" text-white text-md opacity-[60%]">021-47738333</p>
+                <p class=" text-white text-md opacity-[60%]">021-47708333</p>
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
               <div class="flex items-center gap-2 justify-end">

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     app: {
         head: {
             link: [
-                { rel: "icon", type: "image/x-icon", href: "/images/favicon.svg" },
+                {rel: "icon", type: "image/x-icon", href: "/images/favicon.svg"},
             ]
         },
     },
@@ -19,9 +19,6 @@ export default defineNuxtConfig({
         "@pinia/nuxt",
         "@pinia-plugin-persistedstate/nuxt",
         'nuxt3-leaflet',
-        // '@alireza-ab/persian-date/nuxt',
-        // '@alireza-ab/vue-persian-datepicker/nuxt',
-        ["nuxt-plotly", {inject: true}],
     ],
     vite: {
         optimizeDeps: {

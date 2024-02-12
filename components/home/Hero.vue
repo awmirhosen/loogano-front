@@ -79,9 +79,9 @@
                 </NuxtLink>
               </div>
 
-              <div class="md:mt-16 mt-4 md:block hidden">
-                <img src="/images/home/hero_project_count.png" alt="hero_count">
-              </div>
+<!--              <div class="md:mt-16 mt-4 md:block hidden">-->
+<!--                <img src="/images/home/hero_project_count.png" alt="hero_count">-->
+<!--              </div>-->
 
             </div>
 

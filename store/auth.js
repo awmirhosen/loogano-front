@@ -137,7 +137,7 @@ export const useAuthStore = defineStore("auth", {
             })
 
         },
-        async registerUser(data, mobile) {
+        async registerUser(data, mobile, birthday) {
             const toast = useToast();
             const router = useRouter();
 
@@ -151,7 +151,8 @@ export const useAuthStore = defineStore("auth", {
                 national_code: data.nationalCode,
                 token: data.token,
                 password: data.password,
-                password_confirmation: data.password
+                password_confirmation: data.password,
+                birth_date: birthday,
             }).then(res => {
                 console.log(res);
                 layoutStore.isAuth = true;

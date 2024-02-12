@@ -79,15 +79,18 @@
             <p> {{ eArabic(parseInt(projectStore.investSuccessArea)) }}  سانتی متر مربع</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
+
+
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
-            <p>مالیات:</p>
-            <p> {{ eArabic(projectStore.investSuccessData.vat_tax_rate) }} درصد</p>
+            <p>کارمزد مبلغ سرمایه گذاری({{eArabic(2)}}%):</p>
+            <p> {{ eArabic(projectStore.investSuccessData.commission_amount) }} تومان</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
+
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
-            <p>کارمزد:</p>
-            <p> {{ eArabic(projectStore.investSuccessData.commission_sale_rate) }} درصد</p>
+            <p>مالیات بر ارزش بر افزوده کارمزد({{ eArabic(9) }}%):</p>
+            <p> {{ eArabic(projectStore.investSuccessData.vat_tax_amount) }} تومان</p>
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
