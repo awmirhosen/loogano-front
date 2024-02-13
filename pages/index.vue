@@ -51,6 +51,15 @@ definePageMeta({
 })
 
 
+useHead({
+  meta: [
+    {
+      name: "samandehi",
+      content: "628466450"
+    }
+  ]
+})
+
 const layoutStore = useLayoutStore();
 
 const projectStore = useProjectStore();

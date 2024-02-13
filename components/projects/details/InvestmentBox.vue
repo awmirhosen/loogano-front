@@ -453,12 +453,10 @@ const meterMinus = () => {
     if (projectStore.projectDetails.prices[0].value <= priceBoxInput.value.value) {
       priceBoxInput.value.value = parseInt(priceBoxInput.value.value) -  projectStore.projectDetails.prices[0].value;
 
-
       const thisElement = priceBoxInput.value;
       let thisElementValue = thisElement.value;
 
       thisElementValue = thisElementValue.replace(/,/g, "");
-
 
       totalBoughtMeter.value = Math.floor(thisElementValue / projectStore.projectDetails.prices[0].value);
 
