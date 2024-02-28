@@ -116,7 +116,7 @@
 
                   <div class="w-full relative" dir="rtl">
                     <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-                    <div class="w-8/12 h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
+                    <div class="w-[26%] h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
                   </div>
 
                   <div class="w-full flex justify-between mt-2" dir="rtl">
@@ -212,6 +212,32 @@ const monthLeft = (end) => {
   }
 
   console.log(timeLeft)
+}
+
+
+const today = Date.now();
+
+function getDateFormat(uDate, option) {
+  let date = new Intl.DateTimeFormat('fa-IR', option).format(uDate);
+  return date;
+}
+
+
+const projectEndingDate = (end) => {
+  end = end.split(" ")
+
+  const endDate = new Date(end[0]);
+  const endDateTimestapms = endDate.getTime()
+
+  const endingFa = reactive({
+    "day": getDateFormat(endDateTimestapms, {"day": "2-digit"}),
+    "month": getDateFormat(endDateTimestapms, {"month": "numeric"}),
+    "monthTitle": getDateFormat(endDateTimestapms, {"month": "long"}),
+    "year": getDateFormat(endDateTimestapms, {"year": "numeric"}),
+    "dayWeek": getDateFormat(endDateTimestapms, {"weekday": "long"}),
+  })
+  return `${endingFa.year}/${endingFa.month}/${endingFa.day}`
+
 }
 
 

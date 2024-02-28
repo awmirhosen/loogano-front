@@ -27,7 +27,7 @@
             <NuxtLink to="/" @click="closeMobileMenu">خانه</NuxtLink>
             <!--          <NuxtLink to="/services">خدمات</NuxtLink>-->
             <NuxtLink to="/projects" @click="closeMobileMenu">سرمایه گذاری</NuxtLink>
-            <NuxtLink :external="true" to="https:/blog.loogano.com" @click="closeMobileMenu">بلاگ </NuxtLink>
+            <NuxtLink to="https://blog.loogano.com" @click="closeMobileMenu">بلاگ </NuxtLink>
             <!--          <NuxtLink to="/projects">سوالات متداول</NuxtLink>-->
           </div>
 
@@ -89,7 +89,7 @@
 <!--          <NuxtLink to="/">خانه</NuxtLink>-->
           <!--          <NuxtLink to="/services">خدمات</NuxtLink>-->
           <NuxtLink to="/projects">سرمایه گذاری</NuxtLink>
-          <NuxtLink to="https:/blog.loogano.com">بلاگ</NuxtLink>
+          <NuxtLink to="https://blog.loogano.com">بلاگ</NuxtLink>
           <!--          <NuxtLink to="/projects">سوالات متداول</NuxtLink>-->
         </div>
 

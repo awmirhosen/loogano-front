@@ -1,7 +1,7 @@
 <template>
   <transition name="fadeHeight">
-    <div class="w-[300px] bg-white pt-4 pb-8 px-6 rounded">
-      <div class="flex justify-center">
+    <div :class="['w-full md:w-[300px] bg-white pt-4 pb-8 px-6 rounded md:relative md:block fixed right-0 top-0 min-h-full', profileStore.mobileHeaderFlag ? 'block' : 'hidden']">
+      <div class="flex justify-center mt-24 md:mt-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
           <circle cx="27.5" cy="27.5" r="27.5" fill="#1B9EB2" fill-opacity="0.3"/>
           <path d="M32.75 32H22.25C19.3505 32 17 34.3878 17 37.3333V40H38V37.3333C38 34.3878 35.6495 32 32.75 32Z"

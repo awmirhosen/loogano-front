@@ -147,7 +147,7 @@
                          messages-class="text-[14px] text-red-500"
                 />
               </div>
-              
+
 
               <div class="flex justify-center items-center w-full gap-4 mt-4" dir="rtl">
                 <FormKit class="w-full" outer-class="w-full" type="password" name="password" label="رمز عبور*"
@@ -444,7 +444,7 @@ const registerDataSubmit = (formData) => {
 
   const jD = JalaliDate.jalaliToGregorian(formData.bYear, formData.bMonth, formData.bDay);
   const jResult = jD[0] + "-" + jD[1] + "-" + jD[2];
-  console.log(jResult)
+
   authStore.registerUser(formData, mobile.value, jResult);
 }
 

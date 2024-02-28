@@ -8,11 +8,17 @@ export const useProfileStore = defineStore("profile", {
     state: () => {
         return {
             profileData: {},
+            profileDataLoading: true,
             userProjects: {},
+            sumNewPrice: 0,
+            propertyLoading: true,
             cardData: {
                 creditNumber: "",
                 sheba: "",
             },
+            mobileHeaderFlag: false,
+            informationStep: 1,
+            stepsLoading: false,
         }
     },
     actions: {
@@ -39,12 +45,29 @@ export const useProfileStore = defineStore("profile", {
         },
         async fetchProfileData () {
 
-            const toast = useToast()
+            const toast = useToast();
 
             $axios.get("/user/me").then(res => {
                 this.profileData = res.data.data;
+                this.profileDataLoading = false;
+                console.log(res.data.data);
             }).catch(err => {
                 console.log(err);
+                toast.error("مشکلی در ارتباط با سرور پیش آمده");
+            })
+
+        },
+        async fetchBankAccount() {
+
+            const toast = useToast();
+
+            $axios.get("/user/bank-account").then(res => {
+                console.log(res);
+                this.cardData.creditNumber = res.data[0].card_number;
+                this.cardData.sheba = res.data[0].iban_number;
+            }).catch(err => {
+                toast.error("مشکلی در ارتباط با سرور پیش آمده");
+                console.log(err)
             })
 
         },
@@ -54,13 +77,63 @@ export const useProfileStore = defineStore("profile", {
 
             $axios.get("/panel/assets").then(res => {
                 this.userProjects = res.data.data;
-                console.log("پروژه ها دریافت شد")
-                console.log(res);
+
+                var sumNewPrice = 0
+                res.data.data.projects.forEach((item) => {
+                    sumNewPrice += item.newest_price;
+                })
+                this.sumNewPrice = sumNewPrice;
+                this.propertyLoading = false;
+
+                console.log("پروژه ها دریافت شد", res.data.data)
             }).catch(err => {
                 console.log(err);
                 toast.error("مشکلی در ارتباط با سرور پیش آمده")
             })
+        },
+        async sendPersonalData(data, birth, city) {
+
+            const toast = useToast();
+
+            this.stepsLoading = true;
+
+            $axios.patch("/user/me", {
+                first_name: data.firstName,
+                last_name: data.lastName,
+                national_code: this.profileData.national_code,
+                father_name: "",
+                birth_date: birth,
+                province: data.province,
+                city: city,
+                postal_code: data.postalCode,
+                address: data.address,
+            }).then(res => {
+                console.log(res);
+                toast.success("اطلاعات جدید شما با موفقیت صبت شد!")
+                this.stepsLoading = false;
+            }).catch(err => {
+                toast.error("مشکلی در ارتباط با سرور پیش آمده");
+                console.log(err);
+                this.stepsLoading = false;
+            })
+
+        },
+
+        async sendCardData(cardNumber, sheba) {
+
+            const toast = useToast();
+
+            $axios.post("/user/bank-account", {
+                card_number: cardNumber,
+                iban_number: sheba,
+            }).then(res => {
+                console.log(res);
+                toast.success("اطلاعات جدید بانکی شما با موفقیت صبت شد!")
+            }).catch(err => {
+                console.log(err);
+            })
         }
+
     },
 
 })

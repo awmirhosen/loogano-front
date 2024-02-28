@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full px-8">
+  <div class="text-center flex items-center justify-center mt-10" v-if="profileStore.propertyLoading">
+    <Loader />
+  </div>
+  <div v-else class="w-full px-0 md:px-8">
     <div class="w-full">
       <!------ page title ----->
       <div class="w-full" dir="rtl">
@@ -7,33 +10,67 @@
         <span class="block w-full mt-3 h-[2px] bg-sky-custom"></span>
       </div>
       <!------ title cards ------>
-      <div class="w-full flex justify-center mt-12 gap-4">
+      <div class="w-full flex justify-center mt-12 gap-4 flex-wrap md:flex-nowrap">
         <div class="w-full text-center flex justify-between items-center rounded-[5px] bg-white p-6" dir="rtl">
-          <p class="text-[20px] whitespace-nowrap">سود کل دارایی ها</p>
-          <div class="w-full flex items-center justify-end gap-2">
-            <p class="py-1 px-4 bg-green-500 rounded-[5px] text-white">36%</p>
-            <p class="text-blue-custom">31,120,000 </p>
-            <p class="text-blue-custom text-[14px]"> تومان </p>
+          <p class="text-[15px] md:text-[20px] whitespace-nowrap">سود کل دارایی ها</p>
+          <div class="w-full flex items-center justify-end gap-2 mr-1">
+            <p class="py-1 px-1 md:px-4 bg-green-500 text-[10px] md:text-[16px] rounded-[5px] text-white" v-if="profileStore.userProjects.total_transactions === 0">
+              0%
+            </p>
+            <p class="py-1 px-1 md:px-4 bg-green-500 text-[10px] md:text-[16px] rounded-[5px] text-white" v-else>
+              {{ eArabic(parseFloat(( 100 * (profileStore.sumNewPrice - profileStore.userProjects.total_transactions) / profileStore.userProjects.total_transactions ).toFixed(1))) }}
+              %
+            </p>
+            <p class="text-blue-custom text-[12px] md:text-[16px]"> {{ eArabic(profileStore.sumNewPrice) }} </p>
+            <p class="text-blue-custom text-[12px] md:text-[14px]"> تومان </p>
           </div>
         </div>
         <div class="w-full text-center flex justify-between items-center rounded-[5px] bg-white p-6" dir="rtl">
-          <p class="text-[20px]">ارزش کل سرمایه ها</p>
-          <p class="text-blue-custom">{{ profileStore.userProjects.total_transactions }} تومان</p>
+          <p class="text-[15px] md:text-[20px]">ارزش کل دارایی ها</p>
+          <p class="text-blue-custom text-[15px] md:text-[20px]">{{ eArabic(parseInt(profileStore.userProjects.total_transactions)) }} تومان</p>
         </div>
         <div class="w-full text-center flex justify-between items-center rounded-[5px] bg-white p-6" dir="rtl">
-          <p class="text-[20px]">تعداد دارایی ها</p>
-          <p class="text-blue-custom">{{ profileStore.userProjects.total_assets }}</p>
+          <p class="text-[15px] md:text-[20px]">تعداد دارایی ها</p>
+          <p class="text-blue-custom text-[15px] md:text-[20px]">{{ eArabic(profileStore.userProjects.total_assets) }}</p>
         </div>
       </div>
 
       <!------ project details card -------->
-      <div :key="index" class="w-full mt-12 bg-white p-10" v-for="(projects, index) in profileStore.userProjects.projects">
+      <div :key="index" class="w-full mt-12 bg-white p-2 md:p-10" v-for="(projects, index) in profileStore.userProjects.projects">
         <!------ project title ------->
-        
 
-        <h3 class="w-full text-right text-[24px]">{{ projects.project.title }}</h3>
 
-        <div class="w-full gap-4 flex flex-row-reverse items-center justify-center">
+        <h3 class="w-full text-right text-[24px] my-2 mb-4">{{ projects.title }}</h3>
+
+        <div class="w-full gap-4 flex flex-col md:flex-row flex-row-reverse items-center justify-center">
+
+          <!----- project steps --->
+          <div class="w-full lg:w-[640px] text-center">
+            <div class="w-full">
+              <div class="w-full p-5 bg-zinc-200 rounded-md relative mt-[230px]" dir="rtl">
+                <p class="font-bold text-right w-full">روند پیشرفت پروژه :</p>
+                <div class="mt-2">
+                  <!----- develope percent ------->
+                  <div class="w-full bg-zinc-100 h-2 rounded mt-5">
+                    <div class="w-10/12 h-full bg-green-400 rounded" style="width: 28%"></div>
+                  </div>
+
+                  <!----- develope times ------>
+                  <div class="w-full flex justify-between">
+                    <p class="text-[13px] text-zinc-500 mt-2"></p>
+                    <p class="text-[13px] text-zinc-500 mt-2">{{ projectEndingDate(projects.project.project_end) }}</p>
+                  </div>
+                  <!------absolute style for project image ------>
+                  <img :src="'https://loogano.com/endpoints/'+projects.project.files[0].url" alt="project" class="w-full md:h-[240px] rounded-t-[25px] absolute left-0 -top-[190%]">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!---------line border--------->
+          <div class="left-border hidden md:block"></div>
+
           <!------- investment details------>
           <div class="w-full text-center">
             <!----- project investment details ---->
@@ -42,7 +79,7 @@
                 <div class="w-full flex justify-between">
                   <div class="flex items-center gap-2">
                     <p class="text-blue-custom text-[12px]">تومان</p>
-                    <p class="text-[18px] text-blue-custom">{{ eArabic(projects.area * projects.project.prices[0].value) }}</p>
+                    <p class="text-[18px] text-blue-custom">{{ eArabic(projects.area * projects.newest_price) }}</p>
                   </div>
                   <p dir="rtl" class="text-[18px] text-blue-custom">ارزش فعلی:</p>
                 </div>
@@ -51,8 +88,10 @@
               <div class="w-full flex items-center mt-4" dir="rtl">
                 <p class="text-[20px] whitespace-nowrap text-green-500">سود:</p>
                 <div class="w-full flex items-center justify-end gap-2">
-                  <p class="py-1 px-4 bg-green-500 rounded-[5px] text-white">{{ eArabic(32) }}%</p>
-                  <p class="text-green-500">{{ eArabic(120000000) }}</p>
+                  <p class="py-1 px-4 bg-green-500 rounded-[5px] text-white">
+                    {{ eArabic( (100 * ( ((projects.area * projects.newest_price) - (projects.area * projects.buy_price)) / (projects.area * projects.buy_price))) ) }}%
+                  </p>
+                  <p class="text-green-500">{{ eArabic((projects.area * projects.newest_price) - (projects.area * projects.buy_price) ) }}</p>
                   <p class="text-green-500 text-[14px]"> تومان </p>
                 </div>
               </div>
@@ -60,13 +99,23 @@
               <!------ pricing------>
               <div class="w-full mt-8">
 
+
                 <div class="w-full flex items-center mt-3">
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">تومان</p>
-                      <p class="text-[18px] text-zinc-700">{{ eArabic(JSON.parse(projects.invoice_details).total_amount) }}</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.area * projects.buy_price) }}</p>
                     </div>
                     <p dir="rtl" class="text-[18px] text-zinc-700">مبلغ سرمایه گذاری:</p>
+                  </div>
+                </div>
+                <div class="w-full flex items-center mt-3">
+                  <div class="w-full flex justify-between">
+                    <div class="flex items-center gap-2">
+                      <p class="text-[12px] text-zinc-700">تومان</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.buy_price) }}</p>
+                    </div>
+                    <p dir="rtl" class="text-[18px] text-zinc-700">قیمت خریداری شده هر سانتی متر مربع:</p>
                   </div>
                 </div>
                 <div class="w-full flex items-center mt-3">
@@ -82,9 +131,9 @@
                   <div class="w-full flex justify-between">
                     <div class="flex items-center gap-2">
                       <p class="text-[12px] text-zinc-700">تومان</p>
-                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.project.prices[0].value) }}</p>
+                      <p class="text-[18px] text-zinc-700">{{ eArabic(projects.newest_price) }}</p>
                     </div>
-                    <p dir="rtl" class="text-[18px] text-zinc-700">قیمت هر سانتی متر مربع:</p>
+                    <p dir="rtl" class="text-[18px] text-zinc-700">قیمت فعلی هر سانتی متر مربع:</p>
                   </div>
                 </div>
               </div>
@@ -100,9 +149,11 @@
 
             </div>
           </div>
-<!--          &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;line border-&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+
+<!--          &lt;!&ndash;-------line border-------&ndash;&gt;-->
 <!--          <div class="left-border"></div>-->
-<!--          &lt;!&ndash;-&#45;&#45; cahrt -&#45;&#45;&ndash;&gt;-->
+<!--          &lt;!&ndash;--- cahrt ---&ndash;&gt;-->
 <!--          <div class="w-full text-center">-->
 <!--            <div class="flex justify-center w-full">-->
 <!--              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">-->
@@ -112,34 +163,13 @@
 <!--            <p>              بخش نمودار ها به زودی در دسترس خواهند بود</p>-->
 
 <!--          </div>-->
-          <!---------line border--------->
-          <div class="left-border"></div>
-          <!----- project steps --->
-          <div class="w-[640px] text-center">
-            <div class="w-full">
-              <div class="w-full p-5 bg-zinc-200 rounded-md relative mt-[230px]" dir="rtl">
-                <p class="font-bold text-right w-full">روند پیشرفت پروژه :</p>
-                <div class="mt-2">
-                  <!----- develope percent ------->
-                  <div class="w-full bg-zinc-100 h-2 rounded mt-5">
-                    <div class="w-10/12 h-full bg-green-400 rounded"></div>
-                  </div>
-                  <!----- develope times ------>
-                  <div class="w-full flex justify-between">
-                    <p class="text-[13px] text-zinc-500 mt-2">زمان کل پروژه: 9 ماه</p>
-                    <p class="text-[13px] text-zinc-500 mt-2">2 ماه تا پایان</p>
-                  </div>
-                  <!------absolute style for project image ------>
-                  <img :src="'https://loogano.com/endpoints/'+projects.project.files[0].url" alt="project" class="w-full h-[240px] rounded-t-[25px] absolute left-0 -top-[190%]">
-
-                </div>
-              </div>
-            </div>
-          </div>
 
         </div>
 
+        <div class="w-full h-[1px] bg-zinc-200 mt-4 md:hidden block"></div>
+
       </div>
+
 
     </div>
   </div>
@@ -153,13 +183,15 @@ import {useToast} from "vue-toastification";
 
 const layoutStore = useLayoutStore();
 const profileStore = useProfileStore();
+profileStore.mobileHeaderFlag = false;
+
 
 profileStore.fetchUserProjects();
 
 
 definePageMeta({
   middleware: "is-auth",
-  layout: 'profile'
+  layout: 'profile',
 });
 
 function eArabic(x) {
@@ -170,6 +202,29 @@ const sellProperty = () => {
   const toast = useToast();
 
   toast.error("بخش فروش درحال حاضر در دسترس نیست");
+}
+
+const today = Date.now();
+
+function getDateFormat(uDate, option) {
+  let date = new Intl.DateTimeFormat('fa-IR', option).format(uDate);
+  return date;
+}
+
+const projectEndingDate = (end) => {
+  end = end.split(" ")
+
+  const endDate = new Date(end[0]);
+  const endDateTimestapms = endDate.getTime()
+
+  const endingFa = reactive({
+    "day": getDateFormat(endDateTimestapms, {"day": "2-digit"}),
+    "month": getDateFormat(endDateTimestapms, {"month": "numeric"}),
+    "monthTitle": getDateFormat(endDateTimestapms, {"month": "long"}),
+    "year": getDateFormat(endDateTimestapms, {"year": "numeric"}),
+    "dayWeek": getDateFormat(endDateTimestapms, {"weekday": "long"}),
+  })
+  return `${endingFa.year}/${endingFa.month}/${endingFa.day}`
 
 }
 

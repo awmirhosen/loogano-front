@@ -9,7 +9,7 @@
 
 
         <!------image---------->
-        <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute left-0 w-full top-0 -translate-y-2/3 px-6" style="z-index: 3">
+        <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute w-full top-0 left-0 -translate-y-2/3 px-6" style="z-index: 3333">
           <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
         </RouterLink>
 
@@ -64,12 +64,12 @@
                 </div>
                 <p class="text-zinc-600 text-[14px]">: تعداد سرمایه گذار ها</p>
                 <p dir="rtl" class="text-zinc-500 text-[16px]">{{
-                    projects.project_user_completed_count
+                    eArabic(projects.project_user_completed_count)
                   }} نفر </p>
               </div>
 
               <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                سود تا امروز : %{{ projects.progresses[1]?.value }}
+                %سود تا امروز : {{ eArabic(projects.progresses[1]?.value) }}
               </div>
 
             </div>
@@ -83,7 +83,7 @@
 
             <div class="w-full relative" dir="rtl">
               <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-              <div class="w-8/12 h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
+              <div class="w-[26%] h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
             </div>
 
             <div class="w-full flex justify-between mt-2" dir="rtl">

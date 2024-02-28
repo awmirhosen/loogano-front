@@ -3,7 +3,7 @@
     <!--    header-->
     <ProfileHeader/>
 
-    <div class="flex items-start pt-36 px-10">
+    <div class="flex items-start pt-36 px-4 md:px-10">
       <div class="w-full">
         <slot />
       </div>

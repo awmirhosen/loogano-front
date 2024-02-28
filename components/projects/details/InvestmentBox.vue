@@ -112,7 +112,8 @@
       <div class="w-full relative" dir="rtl">
         <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
         <div class="h-[8px] absolute bg-[#5BCE90] top-0  rounded-full"
-             :style="`width: ${projectStore.projectDetails.progressss_percent}% `"></div>
+             :style="`width: ${projectStore.projectDetails.progress_percent}% `">
+        </div>
       </div>
 
       <div class="w-full flex justify-between mt-2" dir="rtl">

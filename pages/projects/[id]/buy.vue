@@ -87,7 +87,6 @@
           </div>
           <hr class="mt-2 border-zinc-100 px-4">
 
-
           <div class="flex px-4 items-center mt-2 justify-between mt-4 text-[18px] text-zinc-700" dir="rtl">
             <p>مالیات بر ارزش بر افزوده کارمزد({{ eArabic(9) }}%):</p>
             <p> {{ eArabic(projectStore.investSuccessData.vat_tax_amount) }} تومان</p>
