@@ -51,9 +51,9 @@
                 <div class="text-[18px] text-center mt-24 flex items-center flex-row-reverse justify-between flex-wrap">
                   <p class="font-[500]">{{ projects.title }}</p>
                   <!---investment status---->
-<!--                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[12px] rounded-lg">-->
-<!--                    توقف سرمایه پذیری-->
-<!--                  </div>-->
+                  <!--                  <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[12px] rounded-lg">-->
+                  <!--                    توقف سرمایه پذیری-->
+                  <!--                  </div>-->
                   <div class="text-center px-3 py-2 bg-zinc-400 text-white text-[11px] rounded-[4px] hover:bg-white hover:text-zinc-500 transition-all">
                     پذیرش سرمایه گذار
                   </div>
@@ -116,13 +116,13 @@
 
                   <div class="w-full relative" dir="rtl">
                     <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-                    <div class="w-[26%] h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
+                    <div class="h-[8px] absolute bg-[#12788F] top-0  rounded-full" :style="`width: ${parseInt(projects.progress_percent)}%`"></div>
                   </div>
 
                   <div class="w-full flex justify-between mt-2" dir="rtl">
-                    <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">
-                      زمان کل پروژه : {{ totalMonth(projects.project_start, projects.project_end) }}
-                    </div>
+<!--                    <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">-->
+<!--                      زمان کل پروژه : {{ totalMonth(projects.project_start, projects.project_end) }}-->
+<!--                    </div>-->
                     <div class="w-full text-zinc-400 text-left text-[12px]">
                       {{ monthLeft(projects.project_end) }}
                     </div>

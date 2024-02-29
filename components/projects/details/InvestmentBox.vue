@@ -17,12 +17,11 @@
       <!--        <p class="text-zinc-600 text-sm">فروش رفته</p>-->
       <!--      </div>-->
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">{{ projectStore.projectDetails?.progresses[0].value }}%</p>
-        <p class="text-[#12788F]">{{ projectStore.projectDetails?.progresses[0].value }}%</p>
+        <p class="text-[#12788F]"> {{ eArabic(36) }}% </p>
         <p class="text-zinc-600 text-sm">پیش بینی سود</p>
       </div>
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">{{ projectStore.projectDetails?.progresses[1].value }}%</p>
+        <p class="text-[#12788F]">{{ parseFloat(((projectStore.projectDetails?.prices[projectStore.projectDetails?.prices.length - 1].value - projectStore.projectDetails?.prices[0].value) / projectStore.projectDetails?.prices[0].value) * 100).toFixed(2) }}%</p>
         <p class="text-zinc-600 text-sm">سود تا امروز</p>
       </div>
     </div>
@@ -54,7 +53,7 @@
 
         <p class="text-right text-sm">
 
-          {{ `${eArabic(projectStore.projectDetails.prices[0].value)}` }}
+          {{ `${eArabic(projectStore.projectDetails.prices[projectStore.projectDetails.prices.length - 1].value)}` }}
 
           تومان
         </p>
@@ -301,9 +300,9 @@ const buyBaseOnMeter = (e) => {
 const priceInput = ref("");
 const meterInput = ref("");
 
-const lastPrice = (prices) => {
-  return prices[0].value;
-}
+
+
+const lastPrice = ref(projectStore.projectDetails.prices[projectStore.projectDetails.prices.length - 1].value)
 
 
 // functions
@@ -324,11 +323,9 @@ const onchangePricePriceBox = (e) => {
   }
 
 
+  totalBoughtMeter.value = Math.floor(thisElementValue / lastPrice.value);
 
-  const priceArray = ref(projectStore.projectDetails.prices.length)
-  totalBoughtMeter.value = Math.floor(thisElementValue / projectStore.projectDetails.prices[0].value);
-
-  const purePrice = totalBoughtMeter.value * projectStore.projectDetails.prices[0].value;
+  const purePrice = totalBoughtMeter.value * lastPrice.value;
   const comPrice = (purePrice * 102) / 100;
   const comissionNumber = comPrice - purePrice;
   const taxPrice = (comissionNumber * 109) / 100;
@@ -347,7 +344,7 @@ const onchangeMeterbox = (e) => {
   const thisElement = e.target;
   let thisElementValue = thisElement.value;
 
-  totalBoughtPrice.value = projectStore.projectDetails.prices[0].value * thisElementValue;
+  totalBoughtPrice.value = lastPrice.value * thisElementValue;
   totalBoughtMeter.value = thisElementValue
 
   const comPrice = (totalBoughtPrice.value * 102) / 100;
@@ -417,7 +414,7 @@ projectStore.walletNeed = false;
 const meterPlus = () => {
 
   if (priceBoxInput.value.value === "") {
-    priceBoxInput.value.value = projectStore.projectDetails.prices[0].value;
+    priceBoxInput.value.value = lastPrice.value;
   }else {
 
     const priceInputArray = priceBoxInput.value.value.split(",");
@@ -425,7 +422,7 @@ const meterPlus = () => {
 
 
     // console.log(parseInt(priceBoxInput.value.value))
-    priceBoxInput.value.value = parseInt(priceBoxInput.value.value) + parseInt(projectStore.projectDetails.prices[0].value);
+    priceBoxInput.value.value = parseInt(priceBoxInput.value.value) + parseInt(lastPrice.value);
 
     const thisElement = priceBoxInput.value;
     let thisElementValue = thisElement.value;
@@ -433,9 +430,9 @@ const meterPlus = () => {
     thisElementValue = thisElementValue.replace(/,/g, "");
 
 
-    totalBoughtMeter.value = Math.floor(thisElementValue / projectStore.projectDetails.prices[0].value);
+    totalBoughtMeter.value = Math.floor(thisElementValue / lastPrice.value);
 
-    const purePrice = totalBoughtMeter.value * projectStore.projectDetails.prices[0].value;
+    const purePrice = totalBoughtMeter.value * lastPrice.value;
     const comPrice = (purePrice * 102) / 100;
     const comissionNumber = comPrice - purePrice;
     const taxPrice = (comissionNumber * 109) / 100;
@@ -448,20 +445,20 @@ const meterPlus = () => {
 const meterMinus = () => {
 
   if (priceBoxInput.value.value === "") {
-    priceBoxInput.value.value = projectStore.projectDetails.prices[0].value;
+    priceBoxInput.value.value = lastPrice.value;
   }else {
 
-    if (projectStore.projectDetails.prices[0].value <= priceBoxInput.value.value) {
-      priceBoxInput.value.value = parseInt(priceBoxInput.value.value) -  projectStore.projectDetails.prices[0].value;
+    if (lastPrice.value <= priceBoxInput.value.value) {
+      priceBoxInput.value.value = parseInt(priceBoxInput.value.value) -  lastPrice.value;
 
       const thisElement = priceBoxInput.value;
       let thisElementValue = thisElement.value;
 
       thisElementValue = thisElementValue.replace(/,/g, "");
 
-      totalBoughtMeter.value = Math.floor(thisElementValue / projectStore.projectDetails.prices[0].value);
+      totalBoughtMeter.value = Math.floor(thisElementValue / lastPrice.value);
 
-      const purePrice = totalBoughtMeter.value * projectStore.projectDetails.prices[0].value;
+      const purePrice = totalBoughtMeter.value * lastPrice.value;
       const comPrice = (purePrice * 102) / 100;
       const comissionNumber = comPrice - purePrice;
       const taxPrice = (comissionNumber * 109) / 100;

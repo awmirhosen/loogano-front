@@ -27,6 +27,7 @@ export const useProjectStore = defineStore("projects", {
             investSuccessArea: "",
             sliderProjectPercent: [],
             walletNeed: false,
+            policyCheck: false,
             buyProjectLoading: false,
         }
     },
@@ -79,7 +80,7 @@ export const useProjectStore = defineStore("projects", {
                 if (this.countdownEnd === "") {
                     this.countdownEnd = res.data.data.investment_end;
                 }
-
+                console.log("single project:", res.data.data)
                 console.log("Z Payan :", this.investmentEndingTime);
 
                 let detailsImage = [];
@@ -155,68 +156,75 @@ export const useProjectStore = defineStore("projects", {
             this.buyProjectLoading = true;
             const profileStore = useProfileStore();
 
-            if (method === 1) {
-                localStorage.setItem("amount", amount)
-                localStorage.setItem("id", this.projectId)
-                localStorage.setItem("area", this.investSuccessArea)
+            if (this.policyCheck === false) {
+                toast.error("شما قوانین لوگانو را تایید نکردید!")
+                this.buyProjectLoading = false;
+            }else {
 
-                profileStore.chargeWallet(amount);
-                //// اینجا باید مبلغو ورودی بگیره
-                // profileStore.chargeWallet()
-            } else {
+                if (method === 1) {
+                    localStorage.setItem("amount", amount)
+                    localStorage.setItem("id", this.projectId)
+                    localStorage.setItem("area", this.investSuccessArea)
 
-                if (process.client) {
-                    if (localStorage.getItem("area")) {
-                        localStorage.removeItem("area");
-                        localStorage.removeItem("id");
-                        localStorage.removeItem("maount");
-                    }
-                }
+                    profileStore.chargeWallet(amount);
+                    //// اینجا باید مبلغو ورودی بگیره
+                    // profileStore.chargeWallet()
+                } else {
 
-                $axios.post("/panel/buy", {
-                    project_id: this.projectId,
-                    area: this.investSuccessArea,
-                }).then(res => {
-                    if (layoutStore.isAuth === false) {
-                        toast.error("لطفا اول وارد حساب کاربری خود شوید");
-                    } else {
-                        if (res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
-                            toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
-                        } else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
-                            toast.error("موجودی کیف پول شما کافی نیست")
-                            this.walletNeed = true;
-                        } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
-                            toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
-                        } else if (res.data.code === 100) {
-
-                            $axios.post("/panel/buy/verify", {
-                                project_id: this.projectId,
-                                area: this.investSuccessArea,
-                                invoice: res.data.data.invoice,
-                                block: res.data.data.block
-                            }).then(res => {
-                                console.log(res);
-                                profileStore.fetchProfileData();
-                                this.buyProjectLoading = false;
-                                router.push("/payment/success")
-                            }).catch(err => {
-                                console.log(err);
-                                router.push("/payment/error")
-                                toast.error("خطا در ارسال اطلاعات")
-                            })
-
+                    if (process.client) {
+                        if (localStorage.getItem("area")) {
+                            localStorage.removeItem("area");
+                            localStorage.removeItem("id");
+                            localStorage.removeItem("maount");
                         }
                     }
-                }).catch(err => {
-                    console.log(err.response.status);
 
-                    if (err.response.status === 401) {
-                        toast.error("لطفا وارد حساب کاربری خود شوید")
-                    }
+                    $axios.post("/panel/buy", {
+                        project_id: this.projectId,
+                        area: this.investSuccessArea,
+                    }).then(res => {
+                        if (layoutStore.isAuth === false) {
+                            toast.error("لطفا اول وارد حساب کاربری خود شوید");
+                        } else {
+                            if (res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
+                                toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
+                            } else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
+                                toast.error("موجودی کیف پول شما کافی نیست")
+                                this.walletNeed = true;
+                                this.buyProjectLoading = false;
+                            } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
+                                toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
+                            } else if (res.data.code === 100) {
 
-                })
+                                $axios.post("/panel/buy/verify", {
+                                    project_id: this.projectId,
+                                    area: this.investSuccessArea,
+                                    invoice: res.data.data.invoice,
+                                    block: res.data.data.block
+                                }).then(res => {
+                                    console.log(res);
+                                    profileStore.fetchProfileData();
+                                    this.buyProjectLoading = false;
+                                    router.push("/payment/success")
+                                }).catch(err => {
+                                    console.log(err);
+                                    router.push("/payment/error")
+                                    toast.error("خطا در ارسال اطلاعات")
+                                })
+
+                            }
+                        }
+                    }).catch(err => {
+                        console.log(err.response.status);
+
+                        if (err.response.status === 401) {
+                            toast.error("لطفا وارد حساب کاربری خود شوید")
+                        }
+
+                    })
+                }
+
             }
-
         },
         async buyProjectOnline(id, area) {
 

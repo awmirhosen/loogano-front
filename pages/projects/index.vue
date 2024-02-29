@@ -9,7 +9,7 @@
 
 
         <!------image---------->
-        <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute w-full top-0 left-0 -translate-y-2/3 px-6" style="z-index: 3333">
+        <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute w-full top-0 left-0 -translate-y-2/3 px-6" style="z-index: 3">
           <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
         </RouterLink>
 
@@ -83,13 +83,13 @@
 
             <div class="w-full relative" dir="rtl">
               <div class="w-full h-[8px] bg-zinc-300 mt-4 rounded-full"></div>
-              <div class="w-[26%] h-[8px] absolute bg-[#12788F] top-0  rounded-full"></div>
+              <div class="h-[8px] absolute bg-[#12788F] top-0  rounded-full" :style="`width: ${parseInt(projects.progress_percent)}%`"></div>
             </div>
 
             <div class="w-full flex justify-between mt-2" dir="rtl">
-              <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">
-                زمان کل پروژه : {{ totalMonth(projects.project_start, projects.project_end) }}
-              </div>
+<!--              <div class="w-full text-zinc-400 text-right text-[12px]" dir="rtl">-->
+<!--                زمان کل پروژه : {{ totalMonth(projects.project_start, projects.project_end) }}-->
+<!--              </div>-->
               <div class="w-full text-zinc-400 text-left text-[12px]">
                 {{ monthLeft(projects.project_end) }}
               </div>

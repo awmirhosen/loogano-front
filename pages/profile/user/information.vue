@@ -142,7 +142,10 @@
                            placeholder=""
                   />
 
-                  <FormKit class="w-full" outer-class="w-full" type="text" name="birthDate" label="سال تولد"
+                  <div v-if="profileStore.profileData.birth_date === null ">
+
+                  </div>
+                  <FormKit v-else class="w-full" outer-class="w-full" type="text" name="birthDate" label="سال تولد"
                            input-class="w-full transition-all p-2 rounded-md bg-zinc-200"
                            validation="required"
                            disabled="true"
@@ -276,14 +279,20 @@
             <div class="p-4 border border-1 border-zinc-300 rounded-[6px] mt-10">
               <div class="w-full flex justify-between px-4 items-center" dir="rtl">
                 <p class="text-lg">شماره کارت :</p>
-                <p class="text-blue-custom">
+                <p class="text-blue-custom" v-if="profileStore.cardData.creditNumber">
                   {{ `${profileStore.cardData.creditNumber.slice(0, 4)}-${profileStore.cardData.creditNumber.slice(4, 8)}-${profileStore.cardData.creditNumber.slice(8, 12)}-${profileStore.cardData.creditNumber.slice(12, 16)}` }}
+                </p>
+                <p class="text-blue-custom" v-else>
+                  شما هنوز شماره کارت خود را ثبت نکردید
                 </p>
               </div>
 
               <div class="w-full flex justify-between px-4 items-center mt-4" dir="rtl">
                 <p>شماره شبا :</p>
-                <p class="text-blue-custom">{{ ` IR -  ${profileStore.cardData.sheba}` }}</p>
+                <p v-if="profileStore.cardData.sheba" class="text-blue-custom">{{ ` IR -  ${profileStore.cardData.sheba}` }}</p>
+                <p v-else class="text-blue-custom">
+                  شما هنوز شماره شبا خود را ثبت نکردید
+                </p>
               </div>
             </div>
 

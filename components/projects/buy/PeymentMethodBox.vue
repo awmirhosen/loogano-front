@@ -39,11 +39,11 @@
   </div>
 
   <!---roles check----->
-  <div class="flex justify-start gap-3 text-zinc-600 mt-4" dir="rtl">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M19.0039 3H5.00391C3.89934 3 3.00391 3.89543 3.00391 5V19C3.00391 20.1046 3.89934 21 5.00391 21H19.0039C20.1085 21 21.0039 20.1046 21.0039 19V5C21.0039 3.89543 20.1085 3 19.0039 3Z" stroke="#44475C" stroke-width="1.5" stroke-miterlimit="10"/>
-      <path d="M17.5039 8.5L10.4639 15.5L6.50391 11.64" stroke="#44475C" stroke-width="1.5" stroke-miterlimit="10"/>
-    </svg>
+
+  <RouterLink to="/policy" target="_blank" class="w-full text-right block text-underlined mt-2 text-blue-500" dir="rtl">برای مطالعه شرایط و قوانین لوگانو کلیک کنید.</RouterLink>
+
+  <div class="flex justify-start gap-3 text-zinc-600 mt-2" dir="rtl">
+    <input type="checkbox" class="w-[18px]" name="policy" @change="policychange" value="24" />
     <p>قوانین لوگانو را مطالعه کردم و با آنها موافقت میکنم</p>
   </div>
 
@@ -73,6 +73,17 @@ const onlineCircle = ref(null)
 const projectStore = useProjectStore();
 const profileStore = useProfileStore();
 const paymentMethod = ref(1)
+
+
+const policychange = (e) => {
+  console.log(e.target.checked)
+  if (e.target.checked === false) {
+    projectStore.policyCheck = false;
+  }else {
+    projectStore.policyCheck = true;
+  }
+}
+
 
 const props = defineProps([
     "amount"
