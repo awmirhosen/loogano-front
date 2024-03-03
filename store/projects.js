@@ -108,43 +108,45 @@ export const useProjectStore = defineStore("projects", {
             const toast = useToast();
             this.projectId = id;
 
-            $axios.post("/panel/invoice", {
-                project_id: id,
-                area: area,
-            }).then(res => {
+            if (area >= 1 ) {
+                $axios.post("/panel/invoice", {
+                    project_id: id,
+                    area: area,
+                }).then(res => {
 
-                const layoutStore = useLayoutStore();
+                    const layoutStore = useLayoutStore();
 
-                if (layoutStore.isAuth === false) {
-                    toast.error("لطفا اول وارد حساب کاربری خود شوید");
-                } else {
-                    if (res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
-                        toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
-                    } else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
-                        toast.error("موجودی کیف پول شما کافی نیست")
-                        this.walletNeed = true;
-                    } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
-                        toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
-                    } else if (res.data.code === 100) {
-                        console.log("this is for test")
-                        console.log(res.data.data);
-                        this.investSuccessArea = area;
-                        this.investSuccessData = res.data.data.invoice;
-                        router.push(`/projects/${id}/buy`);
+                    if (layoutStore.isAuth === false) {
+                        toast.error("لطفا اول وارد حساب کاربری خود شوید");
+                    } else {
+                        if (res.data.errors === "STAGE_MIN_AREA_PER_USER_INVALID") {
+                            toast.error("شما باید از حداقل متراژ تعریف شده بیشتر خریداری کنید")
+                        } else if (res.data.errors === "NO_ENOUGH_BALANCE_TO_BLOCK") {
+                            toast.error("موجودی کیف پول شما کافی نیست")
+                            this.walletNeed = true;
+                        } else if (res.data.errors === "STAGE_MAX_AREA_EXCEED") {
+                            toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
+                        } else if (res.data.code === 100) {
+                            this.investSuccessArea = area;
+                            this.investSuccessData = res.data.data.invoice;
+                            router.push(`/projects/${id}/buy`);
+                        }
                     }
-                }
-                // router.push(`/projects/${id}/buy`);
-                // this.investSuccessData = invest.value.data;
-                // this.investSuccessArea = area;
-                console.log(res);
-            }).catch(err => {
-                console.log(err.response.status);
+                    // router.push(`/projects/${id}/buy`);
+                    // this.investSuccessData = invest.value.data;
+                    // this.investSuccessArea = area;
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err.response.status);
 
-                if (err.response.status === 401) {
-                    toast.error("لطفا وارد حساب کاربری خود شوید")
-                }
+                    if (err.response.status === 401) {
+                        toast.error("لطفا وارد حساب کاربری خود شوید")
+                    }
 
-            })
+                })
+            }else {
+                toast.error("شما حداقل خرید برای سرمایه گذاری را رعایت نکردید!")
+            }
 
         },
         async buyProject(method, amount) {
