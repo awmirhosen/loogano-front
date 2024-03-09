@@ -91,9 +91,9 @@
         </div>
       </div>
 
-      <div class="md:mt-16 mt-4 block md:hidden w-10/12 mx-auto md:w-auto">
-        <img src="/images/home/hero_project_count.png" alt="hero_count">
-      </div>
+<!--      <div class="md:mt-16 mt-4 block md:hidden w-10/12 mx-auto md:w-auto">-->
+<!--        <img src="/images/home/hero_project_count.png" alt="hero_count">-->
+<!--      </div>-->
 
     </div>
 

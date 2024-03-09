@@ -48,13 +48,11 @@
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">
         <div class="flex items-center gap-2 flex-row-reverse">
           <img src="/images/projects/images/currency.svg" class="w-6" alt="measure_tape">
-          <p class="text-zinc-500 text-sm">: قیمت هر سانتی متر متر مربع</p>
+          <p class="text-zinc-500 text-sm">: قیمت هر سانتی متر مربع</p>
         </div>
 
         <p class="text-right text-sm">
-
           {{ `${eArabic(projectStore.projectDetails.prices[projectStore.projectDetails.prices.length - 1].value)}` }}
-
           تومان
         </p>
       </div>

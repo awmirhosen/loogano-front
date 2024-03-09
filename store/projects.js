@@ -145,7 +145,7 @@ export const useProjectStore = defineStore("projects", {
 
                 })
             }else {
-                toast.error("شما حداقل خرید برای سرمایه گذاری را رعایت نکردید!")
+                toast.error("شما حداقل خرید برای سرمایه گذاری را رعایت نکردید!");
             }
 
         },

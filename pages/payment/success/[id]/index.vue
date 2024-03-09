@@ -28,26 +28,32 @@
 
       <!----- datas table ---->
       <div class="w-full mt-5">
-        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">
-          <p>تاریخ / زمان :</p>
-          <p>1402/8/10 / 15:24:35</p>
-        </div>
-        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">
-          <p>تاریخ / زمان :</p>
-          <p>1402/8/10 / 15:24:35</p>
-        </div>
-        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">
-          <p>تاریخ / زمان :</p>
-          <p>1402/8/10 / 15:24:35</p>
-        </div>
-        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">
-          <p>تاریخ / زمان :</p>
-          <p>1402/8/10 / 15:24:35</p>
-        </div>
-        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">
-          <p>تاریخ / زمان :</p>
-          <p>1402/8/10 / 15:24:35</p>
-        </div>
+
+
+
+
+<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+<!--          <p>تاریخ / زمان :</p>-->
+<!--          <p>1402/8/10 / 15:24:35</p>-->
+<!--        </div>-->
+<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+<!--          <p>تاریخ / زمان :</p>-->
+<!--          <p>1402/8/10 / 15:24:35</p>-->
+<!--        </div>-->
+<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+<!--          <p>تاریخ / زمان :</p>-->
+<!--          <p>1402/8/10 / 15:24:35</p>-->
+<!--        </div>-->
+<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+<!--          <p>تاریخ / زمان :</p>-->
+<!--          <p>1402/8/10 / 15:24:35</p>-->
+<!--        </div>-->
+<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+<!--          <p>تاریخ / زمان :</p>-->
+<!--          <p>1402/8/10 / 15:24:35</p>-->
+<!--        </div>-->
+
+        <iframe id="pdf" />
 
       </div>
 
@@ -56,9 +62,9 @@
           <RouterLink to="/profile/investment/properties" class="bg-sky-custom text-white p-3 w-full text-center">
             مدیریت دارایی ها
           </RouterLink>
-          <div class="bg-[#C0ECF2] text-[#005B70] text-white p-3 w-full text-center">
+          <RouterLink to="/" class="bg-[#C0ECF2] text-[#005B70] text-white p-3 w-full text-center">
             صفحه ی اصلی
-          </div>
+          </RouterLink>
         </div>
         <div class="w-full border border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2">
           <p class=" text-[#0093A9]">دانلود گواهی سرمایه گذاری</p>
@@ -77,26 +83,13 @@
 
 <script setup>
 
-import {useProfileStore} from "~/store/profile";
 import {useProjectStore} from "~/store/projects";
+import {ref} from "vue";
+import { useNuxtApp } from '#app';
 
 definePageMeta({
   layout: 'default',
 })
-
-const projectStore = useProjectStore();
-
-if (process.client) {
-
-  if (localStorage.getItem("area") && localStorage.getItem("id")) {
-    const area = localStorage.getItem("area");
-    const id = localStorage.getItem("id");
-    projectStore.buyProjectOnline(id, area);
-  }
-
-
-}
-
 
 </script>
 

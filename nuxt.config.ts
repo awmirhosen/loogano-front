@@ -19,6 +19,8 @@ export default defineNuxtConfig({
         "@pinia/nuxt",
         "@pinia-plugin-persistedstate/nuxt",
         'nuxt3-leaflet',
+        '@sidebase/nuxt-pdf',
+        'nuxt-pdfeasy',
     ],
     vite: {
         optimizeDeps: {
