@@ -9,6 +9,8 @@
       <h4 class="2xl:text-[16px] text-right">{{ projectStore.projectDetails?.title }}</h4>
     </div>
 
+    <p class="text-center w-full text-[14px] mt-6" dir="rtl"> این پروژه در حال حاضر در فاز اول سرمایه گذاری میباشد. </p>
+
     <hr class="mt-5 hidden lg:block">
 
     <div class="flex justify-around flex-wrap lg:mt-4 mt-6">

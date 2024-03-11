@@ -426,16 +426,13 @@
         <div class="flex justify-start items-center gap-3">
           <span class="block h-[20px] w-[20px] bg-sky-custom rounded-full"></span>
           <p class="font-bold font-morabaa text-black text-right text-[22px]" dir="rtl">
-            ماده 8 - حفاظت از حریم خصوصی
+            ماده 9 - مرجع حل اختالف
           </p>
         </div>
 
         <div class="px-10 mt-4">
 
           <div class="mt-4">
-            <p class="w-full text-justify text-zinc-600 text-[15px]">
-              ماده 9- مرجع حل اختالف
-            </p>
             <p class="w-full text-justify text-zinc-600 text-[15px]">
               در صورت بروز هرگونه اختالف فیمابین کاربر و لوگانو،طرفین مساعی نموده که موضوع حتی االمکان از طریق مذاکره حل و فصل شود.در
               این خصوص کاربر متعهد به همکاری با لوگانو و ارائه اطالعات الزم و عنداللزوم حضور در جلسات حضوری یا آنالین می باشد.در صورت عدم
