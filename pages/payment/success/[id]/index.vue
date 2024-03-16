@@ -30,8 +30,15 @@
       <div class="w-full mt-5">
 
 
+        <div class="w-ful flex justify-center w-[1200px] mx-auto" id="container" style="display: none" v-if="!projectStore.certificateFlag">
+          <Certificate />
+        </div>
+        <div class="flex justify-center mt-5" dir="rtl" v-else>
+          <p class="text-[34px] text-zinc-500 font-bold">در حال دریافت گواهی...</p>
+        </div>
 
 
+
 <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
 <!--          <p>تاریخ / زمان :</p>-->
 <!--          <p>1402/8/10 / 15:24:35</p>-->
@@ -53,7 +60,6 @@
 <!--          <p>1402/8/10 / 15:24:35</p>-->
 <!--        </div>-->
 
-        <iframe id="pdf" />
 
       </div>
 
@@ -66,7 +72,7 @@
             صفحه ی اصلی
           </RouterLink>
         </div>
-        <div class="w-full border border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2">
+        <div class="w-full border cursor-pointer border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2" @click.prevent="downloadCerti" >
           <p class=" text-[#0093A9]">دانلود گواهی سرمایه گذاری</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
             <path d="M25.8307 19.3749V23.2499C25.8307 24.6766 24.6741 25.8332 23.2474 25.8332H7.7474C6.32066 25.8332 5.16406 24.6766 5.16406 23.2499L5.16406 19.3749M10.3307 14.2082L15.4974 19.3749M15.4974 19.3749L20.6641 14.2082M15.4974 19.3749V3.87488" stroke="#0093A9" stroke-width="1.9375" stroke-linecap="round" stroke-linejoin="round"/>
@@ -84,12 +90,37 @@
 <script setup>
 
 import {useProjectStore} from "~/store/projects";
-import {ref} from "vue";
-import { useNuxtApp } from '#app';
+
+
+const { $html2canvas } = useNuxtApp();
+
+const downloadCerti =  () => {
+
+   $html2canvas(document.getElementById("container"), {
+    onclone: function (clonedDoc) {
+      clonedDoc.getElementById('container').style.display = 'block';
+    }
+  }).then(function (canvas) {
+    var a = document.createElement("a");
+    a.href = canvas.toDataURL("image/png");
+    a.download = 'certificate.jpg';
+    a.click();
+  })
+
+}
+
+const projectStore = useProjectStore();
+
+
+const route = useRoute();
+
+projectStore.successPaymentDetails(route.params.id);
 
 definePageMeta({
   layout: 'default',
 })
+
+
 
 </script>
 

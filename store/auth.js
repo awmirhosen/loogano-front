@@ -35,8 +35,6 @@ export const useAuthStore = defineStore("auth", {
             } = await useFetch(() => `/auth/check-mobile?mobile=${mobile}`, {
                 baseURL: this.baseUrl,
             });
-            console.log(error.value);
-            console.log(verified.value);
             if (verified.value.code === -1) {
                 this.loginLoading = false;
                 toast.error("حسابی با این تلفن همراه وجود ندارد")
@@ -58,14 +56,12 @@ export const useAuthStore = defineStore("auth", {
                 mobile: this.loginPhoneNumber,
                 token: token,
             }).then(res => {
-                console.log(res);
                 layoutStore.isAuth = true;
                 localStorage.setItem("token", res.data.data.token);
                 router.push("/");
                 location.reload();
                 this.loginLoading = false;
             }).catch(err => {
-                console.log(err.response.data.errors)
                 if (err.response.data.code === 99) {
                     toast.error("مشکلی در ارسال پیامک ایجاد شده")
                 } else if (err.response.data.errors.message === "invalid_token") {
@@ -79,7 +75,6 @@ export const useAuthStore = defineStore("auth", {
             $axios.post("/auth/forget", {
                 mobile: this.loginPhoneNumber,
             }).then(res => {
-                console.log(res);
                 this.stepLogin = 3;
                 this.otpLoading = false;
             }).catch(err => {
@@ -123,7 +118,6 @@ export const useAuthStore = defineStore("auth", {
                 mobile: this.loginPhoneNumber,
                 password: password
             }).then(res => {
-                console.log(res);
                 layoutStore.isAuth = true;
                 localStorage.setItem("token", res.data.data.token);
                 router.push("/");
@@ -133,7 +127,6 @@ export const useAuthStore = defineStore("auth", {
                 if (err.response.data.code === 99) {
                     toast.error("رمز عبور شما صحیح نیست");
                 }
-                this.loginLoading = false;
             })
 
         },
@@ -154,14 +147,11 @@ export const useAuthStore = defineStore("auth", {
                 password_confirmation: data.password,
                 birth_date: birthday,
             }).then(res => {
-                console.log(res);
                 layoutStore.isAuth = true;
-                console.log(res.data);
                 localStorage.setItem("token", res.data.data);
                 router.push("/");
                 location.reload();
             }).catch(err => {
-                console.log(err.response.data.message)
                 if (err.response.data.message) {
                     if (err.response.data.message.match('The national code has already been taken.')) {
                         toast.error("کد ملی وارد شده قبلا استفاده شده!")
@@ -187,11 +177,9 @@ export const useAuthStore = defineStore("auth", {
 
         },
         loginSmsOtp(data) {
-            console.log(data);
             this.stepLogin = 3;
         },
         backToPassword(data) {
-            console.log(data)
             this.stepLogin = 2;
         },
         logout() {

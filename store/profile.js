@@ -40,7 +40,7 @@ export const useProfileStore = defineStore("profile", {
                     }
                 }
                 toast.error("مشکلی در ارتباط با سرور پیش آمده");
-                console.log(err);
+
             })
         },
         async fetchProfileData () {
@@ -50,9 +50,7 @@ export const useProfileStore = defineStore("profile", {
             $axios.get("/user/me").then(res => {
                 this.profileData = res.data.data;
                 this.profileDataLoading = false;
-                console.log(res.data.data);
             }).catch(err => {
-                console.log(err);
                 toast.error("مشکلی در دریافت اطلاعات شخصی پیش آمده");
             })
 
@@ -62,12 +60,10 @@ export const useProfileStore = defineStore("profile", {
             const toast = useToast();
 
             $axios.get("/user/bank-account").then(res => {
-                console.log(res);
                 this.cardData.creditNumber = res.data[0]?.card_number;
                 this.cardData.sheba = res.data[0]?.iban_number;
             }).catch(err => {
                 toast.error("مشکلی در دریافت اطلاعات بانکی پیش آمده");
-                console.log("ارور بانکی", err)
             })
 
         },
@@ -86,7 +82,6 @@ export const useProfileStore = defineStore("profile", {
                 this.propertyLoading = false;
 
             }).catch(err => {
-                console.log(err);
                 toast.error("مشکلی در دریافت پروژه های شخصی شما پیش آمده")
             })
         },
@@ -107,12 +102,10 @@ export const useProfileStore = defineStore("profile", {
                 postal_code: data.postalCode,
                 address: data.address,
             }).then(res => {
-                console.log(res);
                 toast.success("اطلاعات جدید شما با موفقیت ثبت شد!")
                 this.stepsLoading = false;
             }).catch(err => {
                 toast.error("مشکلی در ارتباط با سرور پیش آمده");
-                console.log(err);
                 this.stepsLoading = false;
             })
 
@@ -126,7 +119,6 @@ export const useProfileStore = defineStore("profile", {
                 card_number: cardNumber,
                 iban_number: sheba,
             }).then(res => {
-                console.log(res);
                 toast.success("اطلاعات جدید بانکی شما با موفقیت ثبت شد!")
             }).catch(err => {
                 console.log(err);

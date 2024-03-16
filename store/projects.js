@@ -29,6 +29,19 @@ export const useProjectStore = defineStore("projects", {
             walletNeed: false,
             policyCheck: false,
             buyProjectLoading: false,
+            certificateFlag: false,
+            certificateData : {
+                id: '',
+                area: '',
+                transactionId: '',
+                totalAmount: 2,
+                date: '',
+                address: '',
+                title: '',
+                meter: '',
+                fName: '',
+                lName: '',
+            }
         }
     },
     actions: {
@@ -39,49 +52,39 @@ export const useProjectStore = defineStore("projects", {
             const {data: project, error, refresh, pending} = await useFetch("/projects?page=1&count=8", {
                 baseURL: this.baseUrl
             });
-            console.log(error);
             this.projectLists = project.value.data.data;
+            console.log(this.projectLists)
 
-            console.log("project slider list:", project);
 
         },
         async fetchSliderProjectList() {
             const {data: sliderProjects, error, refresh, pending} = await useFetch("/projects?page=1&count=3", {
                 baseURL: this.baseUrl
             });
-            console.log(error.value);
             this.projectListSlider = sliderProjects.value.data.data;
 
             sliderProjects.value.data.data.forEach(item => {
                 var projectStart = new Date(item.project_start).getTime();
                 var projectEnd = new Date(item.project_end).getTime();
                 var now = new Date().getTime();
-                console.log("now : ", now)
 
                 var totalTime = projectEnd - projectStart;
                 var timeSpent = now - projectStart;
 
                 let percent = (timeSpent / timeSpent) * 100;
-                console.log(percent)
 
             })
 
-            console.log("project slider list:", this.projectListSlider)
         },
         async fetchProjectById(id) {
-
-            console.log("Z Payan :", this.countdownEnd);
 
             const toast = useToast();
 
             $axios.get(`/projects/${id}`).then(res => {
-                console.log(res.data.data);
                 this.projectDetails = res.data.data;
                 if (this.countdownEnd === "") {
-                    this.countdownEnd = res.data.data.investment_end;
+                    this.countdownEnd = res.data.data.investment_start;
                 }
-                console.log("single project:", res.data.data)
-                console.log("Z Payan :", this.investmentEndingTime);
 
                 let detailsImage = [];
                 let detailsPDF = [];
@@ -135,9 +138,7 @@ export const useProjectStore = defineStore("projects", {
                     // router.push(`/projects/${id}/buy`);
                     // this.investSuccessData = invest.value.data;
                     // this.investSuccessArea = area;
-                    console.log(res);
                 }).catch(err => {
-                    console.log(err.response.status);
 
                     if (err.response.status === 401) {
                         toast.error("لطفا وارد حساب کاربری خود شوید")
@@ -148,6 +149,29 @@ export const useProjectStore = defineStore("projects", {
                 toast.error("شما حداقل خرید برای سرمایه گذاری را رعایت نکردید!");
             }
 
+        },
+
+        async successPaymentDetails(id) {
+
+            const toast = useToast();
+
+            this.certificateFlag = true;
+            $axios.get(`/panel/assets/${id}`).then(res => {
+                this.certificateFlag = false;
+                this.certificateData.area = res.data.data.area;
+                this.certificateData.date = res.data.data.created_at;
+                this.certificateData.id = res.data.data.id;
+                this.certificateData.totalAmount = JSON.parse(res.data.data.invoice_details).total_amount;
+                this.certificateData.transactionId = res.data.data.transaction_id;
+                this.certificateData.address = res.data.data.project.address;
+                this.certificateData.title = res.data.data.project.title;
+                this.certificateData.meter = res.data.data.project.area_cm;
+                this.certificateData.fName = res.data.data.user.first_name;
+                this.certificateData.lName = res.data.data.user.last_name;
+
+            }).catch(err => {
+                toast.error("مشکلی در دریافت گواهی بوجود آمد")
+            })
         },
         async buyProject(method, amount) {
 
@@ -204,12 +228,10 @@ export const useProjectStore = defineStore("projects", {
                                     invoice: res.data.data.invoice,
                                     block: res.data.data.block
                                 }).then(res => {
-                                    console.log(res);
                                     profileStore.fetchProfileData();
                                     this.buyProjectLoading = false;
-                                    router.push("/payment/success")
+                                    router.push(`/payment/success/${res.data.data.id}`)
                                 }).catch(err => {
-                                    console.log(err);
                                     router.push("/payment/error")
                                     toast.error("خطا در ارسال اطلاعات")
                                 })
@@ -217,7 +239,6 @@ export const useProjectStore = defineStore("projects", {
                             }
                         }
                     }).catch(err => {
-                        console.log(err.response.status);
 
                         if (err.response.status === 401) {
                             toast.error("لطفا وارد حساب کاربری خود شوید")
@@ -267,7 +288,6 @@ export const useProjectStore = defineStore("projects", {
                             invoice: res.data.data.invoice,
                             block: res.data.data.block
                         }).then(res => {
-                            console.log(res)
                             this.buyProjectLoading = false;
                             profileStore.fetchProfileData();
                             router.push("/payment/success");
@@ -283,7 +303,6 @@ export const useProjectStore = defineStore("projects", {
                             toast.error("کیف پول شما به اندازه ی مبلغ سرمایه گذاری شارژ شد اما خطایی در خرید پروژه رخ داد!")
                             profileStore.fetchProfileData();
 
-                            console.log(err);
                             router.push("/payment/error")
                             toast.error("خطا در ارسال اطلاعات")
                         })
@@ -320,7 +339,6 @@ export const useProjectStore = defineStore("projects", {
                     area: 3,
                 }
             })
-            console.log(error.value);
 
         },
 

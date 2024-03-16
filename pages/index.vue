@@ -32,6 +32,7 @@
 
   </div>
   <!----- gray wrapper End ---->
+  <div class="mt-10"></div>
 
 
 </template>

@@ -69,7 +69,7 @@
               </div>
 
               <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                %سود تا امروز : {{ eArabic(projects.progresses[1]?.value) }}
+                پیش بینی سود :  %{{ eArabic(36) }}
               </div>
 
             </div>
@@ -119,6 +119,7 @@ definePageMeta({
 
 const projectStore = useProjectStore();
 projectStore.fetchProjectList();
+console.log(projectStore.projectLists)
 
 function eArabic(x) {
   return x.toLocaleString('ar-EG');

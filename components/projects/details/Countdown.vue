@@ -42,13 +42,31 @@ const days = ref(0);
 const hours = ref(0);
 const minutes = ref(0);
 const seconds = ref(0);
-const launchDate = new Date(projectStore.countdownEnd);
+var launchDate = new Date(projectStore.countdownEnd);
+var investmentEnd = new Date(projectStore.projectDetails.investment_end)
 const currentDate = new Date();
 
 
 if (launchDate.getTime() < currentDate.getTime() ) {
-  console.log(launchDate.getTime())
-  projectStore.investmentTimeFlag = false;
+
+  if (investmentEnd.getTime() < currentDate.getTime()) {
+    projectStore.investmentTimeFlag = false;
+  }else {
+    console.log("investment END", investmentEnd);
+
+    setInterval(() => {
+      const currDate = new Date();
+      const launchTime = investmentEnd - currDate;
+
+      seconds.value = parseInt(launchTime / 1000);
+      minutes.value = parseInt(seconds.value / 60);
+      hours.value = parseInt(minutes.value / 60);
+      days.value = parseInt(hours.value / 24);
+
+    }, 1000)
+
+  }
+
 }else {
   console.log(launchDate.getTime())
   setInterval(() => {
