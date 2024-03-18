@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="px-4 py-2 bg-[#D4F3CC] text-[10px] rounded-lg">
-                      پیش بینی سود :  %{{ eArabic(36) }}
+                      پیش بینی سود :  %{{ eArabic(48) }}
                     </div>
 
                   </div>
@@ -124,7 +124,7 @@
 <!--                      زمان کل پروژه : {{ totalMonth(projects.project_start, projects.project_end) }}-->
 <!--                    </div>-->
                     <div class="w-full text-zinc-400 text-left text-[12px]">
-                      {{ monthLeft(projects.project_end) }}
+                      {{ projectEndingDate(projects.project_end) }}
                     </div>
                   </div>
 
@@ -173,46 +173,6 @@ function eArabic(x) {
   return x.toLocaleString('ar-EG');
 }
 
-// total project time
-const totalMonth = (start, end) => {
-
-  start = start.split(" ")[0];
-  const startTime = new Date(start);
-  end = end.split(" ")[0];
-  const endTime = new Date(end);
-
-  const monthsLeft = new Date(endTime - startTime);
-
-  if (monthsLeft.getMonth() < 1) {
-    const daysLeft = monthsLeft.getDay();
-    return `${daysLeft} روز`
-    if (daysLeft < 1) {
-      const daysLeft = monthsLeft.getDay();
-      return `${daysLeft} روز `
-    }
-  }
-
-  return `${monthsLeft.getMonth()} ماه `
-}
-
-// how much times left?
-const monthLeft = (end) => {
-
-  end = end.split(" ")[0];
-  const endTime = new Date(end);
-  // current time
-  const currentTime = Date.now()
-  // times left
-  const timeLeft = new Date(endTime - currentTime);
-  // calculating month or day
-  if (timeLeft.getMonth() < 1) {
-
-  } else {
-    return `${timeLeft.getMonth()} ماه تا پایان`
-  }
-
-  console.log(timeLeft)
-}
 
 
 const today = Date.now();

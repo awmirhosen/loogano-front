@@ -48,6 +48,9 @@ export const useProjectStore = defineStore("projects", {
         onchangeModalStatus() {
             this.galleryModalFlag = this.galleryModalFlag === false;
         },
+        // showErshad() {
+        //     $axios.get()
+        // },
         async fetchProjectList() {
             const {data: project, error, refresh, pending} = await useFetch("/projects?page=1&count=8", {
                 baseURL: this.baseUrl

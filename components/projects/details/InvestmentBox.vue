@@ -19,7 +19,7 @@
       <!--        <p class="text-zinc-600 text-sm">فروش رفته</p>-->
       <!--      </div>-->
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]"> {{ eArabic(36) }}% </p>
+        <p class="text-[#12788F]"> {{ eArabic(48) }}% </p>
         <p class="text-zinc-600 text-sm">پیش بینی سود</p>
       </div>
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
