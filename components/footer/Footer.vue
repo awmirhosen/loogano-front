@@ -48,7 +48,6 @@
               <img src="public/images/ershad.svg" class="cursor-pointer" alt="ershad" style="width: 64px !important;">
             </NuxtLink>
 
-
           </div>
 
         </div>
@@ -103,7 +102,6 @@
                 </nuxt-link>
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
-
             </div>
 
           </div>
@@ -180,7 +178,6 @@
 
           </div>
 
-
           <div class="flex flex-col w-full">
 
             <div class="w-full text-right">
@@ -239,6 +236,26 @@
 
             </div>
 
+          </div>
+
+          <hr class="my-2">
+
+          <div class="flex items-center justify-center flex-wrap">
+            <a referrerpolicy="origin" target="_blank"
+               href="https://trustseal.enamad.ir/?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd"><img referrerpolicy="origin"
+                                                                                                src="https://Trustseal.eNamad.ir/logo.aspx?id=364419&amp;Code=famE1evKQ2jNA9Bhl8Hd"
+                                                                                                alt=""
+                                                                                                style="cursor:pointer"
+                                                                                                id="famE1evKQ2jNA9Bhl8Hd">
+            </a>
+            <nuxt-link to="https://tehran.irannsr.org/fa/trade_unit/2504716/swd_id/104366/%D8%A7%D8%B9%D8%B6%D8%A7%DB%8C-%D8%AD%D9%82%D9%88%D9%82%DB%8C-%D8%A7%DB%8C%D8%AF%D9%87-%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%D8%A7%D9%86-%D8%B3%D8%A7%D8%B2%D9%87-%DA%AF%D8%B3%D8%AA%D8%B1-%D8%B3%D9%88%D9%85%D8%A7.html">
+              <img src="/images/senfi.png" alt="rayane_senf_logo" class="w-[64px] h-[56px]" style="width: 64px !important;">
+            </nuxt-link>
+            <img referrerpolicy='origin' id = 'rgvjfukzapfufukzfukzesgt' style = 'cursor:pointer; width: 64px !important; ' onclick = 'window.open("https://logo.samandehi.ir/Verify.aspx?id=365660&p=xlaogvkadshwgvkagvkaobpd", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=64, height=64, top=30")' alt = 'logo-samandehi' src = 'https://logo.samandehi.ir/logo.aspx?id=365660&p=qftiwlbqujynwlbqwlbqlyma' />
+
+            <NuxtLink to="https://loogano.com/endpoints/ups/loogano_cert.pdf" target="_blank" :external="true">
+              <img src="public/images/ershad.svg" class="cursor-pointer" alt="ershad" style="width: 64px !important;">
+            </NuxtLink>
           </div>
 
         </div>
