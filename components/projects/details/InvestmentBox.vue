@@ -35,7 +35,7 @@
           <p class="text-zinc-500 text-sm">: متراژ پروژه مسکونی </p>
         </div>
 
-        <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.area_cm) }} مترمربع </p>
+        <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.area_cm) }} سانتی متر مربع </p>
       </div>
 
       <div class="w-full flex justify-between items-center flex-row-reverse mt-3">

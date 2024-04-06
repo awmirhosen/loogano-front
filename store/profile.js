@@ -74,9 +74,12 @@ export const useProfileStore = defineStore("profile", {
             $axios.get("/panel/assets").then(res => {
                 this.userProjects = res.data.data;
 
-                var sumNewPrice = 0
+                var sumNewPrice = 0;
                 res.data.data.projects.forEach((item) => {
-                    sumNewPrice += item.newest_price;
+
+                    var sumTotalPrice = 0;
+                    sumTotalPrice = item.newest_price * item.area;
+                    sumNewPrice = sumTotalPrice + sumNewPrice;
                 })
                 this.sumNewPrice = sumNewPrice;
                 this.propertyLoading = false;
