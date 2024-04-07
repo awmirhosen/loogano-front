@@ -26,6 +26,7 @@
     <div class="w-full">
       <p class="w-full text-zinc-400 mt-4 text-[34px] text-center font-morabaa" dir="rtl">تبریک! شماهم صاحب این ملک شدید</p>
 
+
       <!----- datas table ---->
       <div class="w-full mt-5">
 

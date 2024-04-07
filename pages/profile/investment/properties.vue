@@ -18,10 +18,10 @@
               0%
             </p>
             <p class="py-1 px-1 md:px-4 bg-green-500 text-[10px] md:text-[16px] rounded-[5px] text-white" v-else>
-              {{ eArabic(parseFloat(( 100 * ( profileStore.sumNewPrice - profileStore.userProjects.total_transactions) / profileStore.userProjects.total_transactions ).toFixed(1))) }}
+              {{ eArabic(parseFloat(( 100 * ( profileStore.sumNewPrice - profileStore.userProjects.total_transactions ) / profileStore.userProjects.total_transactions ).toFixed(1))) }}
               %
             </p>
-            <p class="text-blue-custom text-[12px] md:text-[16px]"> {{ eArabic(profileStore.sumNewPrice) }} </p>
+            <p class="text-blue-custom text-[12px] md:text-[16px]"> {{ eArabic( parseFloat(profileStore.sumNewPrice - profileStore.userProjects.total_transactions) ) }} </p>
             <p class="text-blue-custom text-[12px] md:text-[14px]"> تومان </p>
           </div>
         </div>

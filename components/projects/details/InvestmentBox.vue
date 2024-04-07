@@ -328,7 +328,7 @@ const onchangePricePriceBox = (e) => {
   const purePrice = totalBoughtMeter.value * lastPrice.value;
   const comPrice = (purePrice * 102) / 100;
   const comissionNumber = comPrice - purePrice;
-  const taxPrice = (comissionNumber * 109) / 100;
+  const taxPrice = (comissionNumber * 110) / 100;
   finalPrice.value = taxPrice + purePrice;
 
 
@@ -349,7 +349,7 @@ const onchangeMeterbox = (e) => {
 
   const comPrice = (totalBoughtPrice.value * 102) / 100;
   const comissionNumber = comPrice - totalBoughtPrice.value;
-  const taxPrice = (comissionNumber * 109) / 100;
+  const taxPrice = (comissionNumber * 110) / 100;
   finalPrice.value = taxPrice + totalBoughtPrice.value;
 
 
@@ -386,27 +386,6 @@ const projectEndingDate = (end) => {
 
 }
 
-// total project time
-
-
-// how much times left?
-const monthLeft = (end) => {
-
-  end = end.split(" ")[0];
-  const endTime = new Date(end);
-  // current time
-  const currentTime = Date.now()
-  // times left
-  const timeLeft = new Date(endTime - currentTime);
-  // calculating month or day
-  if (timeLeft.getMonth() < 1) {
-
-  } else {
-    return `${timeLeft.getMonth()} ماه تا پایان`
-  }
-
-
-}
 
 projectStore.walletNeed = false;
 
@@ -435,7 +414,7 @@ const meterPlus = () => {
     const purePrice = totalBoughtMeter.value * lastPrice.value;
     const comPrice = (purePrice * 102) / 100;
     const comissionNumber = comPrice - purePrice;
-    const taxPrice = (comissionNumber * 109) / 100;
+    const taxPrice = (comissionNumber * 110) / 100;
     finalPrice.value = taxPrice + purePrice;
 
 
@@ -461,7 +440,7 @@ const meterMinus = () => {
       const purePrice = totalBoughtMeter.value * lastPrice.value;
       const comPrice = (purePrice * 102) / 100;
       const comissionNumber = comPrice - purePrice;
-      const taxPrice = (comissionNumber * 109) / 100;
+      const taxPrice = (comissionNumber * 110) / 100;
       finalPrice.value = taxPrice + purePrice;
     } else {
       priceBoxInput.value.value = "0"
