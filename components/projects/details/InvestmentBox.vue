@@ -98,7 +98,7 @@
         <img src="/images/projects/images/group_project.svg" class="w-6" alt="measure_tape">
         <p class="text-zinc-500 text-sm">: تعداد سرمایه گذار ها</p>
       </div>
-      <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.project_user_completed_count) }}
+      <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.project_user_completed_count + 20) }}
         نفر </p>
     </div>
 

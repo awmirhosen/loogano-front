@@ -50,7 +50,7 @@
               <p>{{ eArabic(projectStore.certificateData.totalAmount) }}</p>
             </div>
             <div class="flex items-center gap-2">
-              <p>متراژ سرمایه گذاری(سرمایه گذاری) : </p>
+              <p>متراژ سرمایه گذاری(سانتی متر مربع) : </p>
               <p>{{ eArabic(projectStore.certificateData.area) }}</p>
             </div>
           </div>

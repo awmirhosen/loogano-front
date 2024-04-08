@@ -54,7 +54,7 @@
                 <img src="/images/home/tape_measure.png" alt="location">
               </div>
               <p class="text-zinc-600 text-[14px]">: متراژ</p>
-              <p class="text-zinc-500 text-[16px]" dir="rtl">{{ eArabic(projects.area_cm) }} متر مربع </p>
+              <p class="text-zinc-500 text-[16px]" dir="rtl">{{ eArabic(projects.area_cm) }} سانتی متر مربع </p>
             </div>
 
             <div class="w-full flex justify-between gap-3 flex-row-reverse items-center">
