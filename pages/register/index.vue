@@ -79,8 +79,6 @@
                 />
               </div>
 
-
-
               <div>
                 <p class="w-full text-right mt-4">*تاریخ تولد</p>
                 <div class="flex justify-center w-full gap-4 mt-4" dir="rtl">

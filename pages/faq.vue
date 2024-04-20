@@ -637,25 +637,6 @@
         <hr class="mt-3">
       </div>
 
-      <!---- faq question ---->
-      <div class="mt-4">
-        <div class="flex justify-start items-center gap-3">
-          <span class="block h-[20px] w-[20px] bg-sky-custom rounded-full"></span>
-          <p class="font-bold font-morabaa text-black text-right text-[22px]">
-            سود من چگونه محاسبه می‌شود؟
-          </p>
-        </div>
-
-        <div class="px-10 mt-4">
-          <p class="w-full text-justify text-zinc-600 text-[17px]">
-            سود سرمایه‌گذاری در لوگانو از طریق مشارکت در ساخت پروژه‌ها به دست می‌آید، به همین دلیل با پیشرفت هر پروژه، قیمت آن نیز افزایش پیدا می‌کند. این افزایش قیمت تا هنگام تکمیل پروژه ادامه دارد و معمولا در پایان پروژه، قیمت نهایی، بیشتر از قیمت برآوردی اولیه خواهد بود. همچنین باید تورم را نیز به این سود اضافه کرد.
-          </p>
-        </div>
-
-        <hr class="mt-3">
-      </div>
-
-
 
     </div>
 

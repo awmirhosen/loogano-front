@@ -8,7 +8,6 @@
 
     <div class="w-full p-4 min-h-[500px] bg-[#002D4B] hidden lg:block"
          style="clip-path: polygon(0 18%, 100% 0, 100% 100%, 0% 100%);">
-
     </div>
 
 
