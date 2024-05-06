@@ -239,6 +239,15 @@
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
 
+              <div class="flex items-center gap-2 justify-end my-2">
+                <nuxt-link to=#>
+                  <p class=" text-white text-md opacity-[60%]">
+                    021-47708333
+                  </p>
+                </nuxt-link>
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+              </div>
+
             </div>
 
           </div>

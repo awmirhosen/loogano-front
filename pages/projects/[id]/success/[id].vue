@@ -13,7 +13,7 @@
                 <path d="M40.8281 66.0975L59.7156 87.5593L90.6082 43.7947" stroke="#00596E" stroke-width="5.51878" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <p class="w-full text-center font-morabaa text-[28px] text-[#455A64]" dir="rtl">پرداخت موفق!</p>
+            <p class="w-full text-center font-morabaa text-[28px] text-[#455A64]" dir="rtl">خرید موفق!</p>
           </div>
         </div>
       </div>
@@ -41,26 +41,26 @@
 
 
 
-<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
-<!--          <p>تاریخ / زمان :</p>-->
-<!--          <p>1402/8/10 / 15:24:35</p>-->
-<!--        </div>-->
-<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
-<!--          <p>تاریخ / زمان :</p>-->
-<!--          <p>1402/8/10 / 15:24:35</p>-->
-<!--        </div>-->
-<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
-<!--          <p>تاریخ / زمان :</p>-->
-<!--          <p>1402/8/10 / 15:24:35</p>-->
-<!--        </div>-->
-<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
-<!--          <p>تاریخ / زمان :</p>-->
-<!--          <p>1402/8/10 / 15:24:35</p>-->
-<!--        </div>-->
-<!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
-<!--          <p>تاریخ / زمان :</p>-->
-<!--          <p>1402/8/10 / 15:24:35</p>-->
-<!--        </div>-->
+        <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+        <!--          <p>تاریخ / زمان :</p>-->
+        <!--          <p>1402/8/10 / 15:24:35</p>-->
+        <!--        </div>-->
+        <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+        <!--          <p>تاریخ / زمان :</p>-->
+        <!--          <p>1402/8/10 / 15:24:35</p>-->
+        <!--        </div>-->
+        <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+        <!--          <p>تاریخ / زمان :</p>-->
+        <!--          <p>1402/8/10 / 15:24:35</p>-->
+        <!--        </div>-->
+        <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+        <!--          <p>تاریخ / زمان :</p>-->
+        <!--          <p>1402/8/10 / 15:24:35</p>-->
+        <!--        </div>-->
+        <!--        <div class="flex justify-between p-4 border-b-2 mx-auto border-zinc-200 w-full md:w-6/12" dir="rtl">-->
+        <!--          <p>تاریخ / زمان :</p>-->
+        <!--          <p>1402/8/10 / 15:24:35</p>-->
+        <!--        </div>-->
 
 
 
@@ -104,7 +104,7 @@ const profileStore = useProfileStore();
 
 const downloadCerti =  () => {
 
-   $html2canvas(document.getElementById("container"), {
+  $html2canvas(document.getElementById("container"), {
     onclone: function (clonedDoc) {
       clonedDoc.getElementById('container').style.display = 'block';
     }
@@ -122,7 +122,7 @@ const projectStore = useProjectStore();
 
 const route = useRoute();
 
-projectStore.successPaymentDetails(route.params.id);
+projectStore.successBuyDetails(route.params.id);
 
 definePageMeta({
   layout: 'default',

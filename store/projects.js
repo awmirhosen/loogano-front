@@ -138,9 +138,7 @@ export const useProjectStore = defineStore("projects", {
                             router.push(`/projects/${id}/buy`);
                         }
                     }
-                    // router.push(`/projects/${id}/buy`);
-                    // this.investSuccessData = invest.value.data;
-                    // this.investSuccessArea = area;
+
                 }).catch(err => {
 
                     if (err.response.status === 401) {
@@ -156,9 +154,46 @@ export const useProjectStore = defineStore("projects", {
 
         async successPaymentDetails(id) {
 
+            if (process.client) {
+                if (localStorage.getItem("area")) {
+                    localStorage.removeItem("area");
+                    localStorage.removeItem("id");
+                    localStorage.removeItem("amount");
+
+                    console.log("Online buy");
+
+                }else {
+                    console.log("Wallet buy");
+                }
+            }
+
             const toast = useToast();
 
-            this.certificateFlag = true;
+            this.certificateFlag = true
+            $axios.get(`user/check-charge/${id}`).then(res => {
+                // this.certificateFlag = false;
+                // this.certificateData.area = res.data.data.area;
+                // this.certificateData.date = res.data.data.created_at;
+                // this.certificateData.id = res.data.data.id;
+                // this.certificateData.totalAmount = JSON.parse(res.data.data.invoice_details).pure_amount;
+                // this.certificateData.transactionId = res.data.data.transaction_id;
+                // this.certificateData.address = res.data.data.project.address;
+                // this.certificateData.title = res.data.data.project.title;
+                // this.certificateData.meter = res.data.data.project.area_cm;
+                // this.certificateData.fName = res.data.data.user.first_name;
+                // this.certificateData.lName = res.data.data.user.last_name;
+
+                console.log(res.data)
+
+            }).catch(err => {
+                toast.error("مشکلی در دریافت گواهی بوجود آمد");
+            })
+        },
+        async successBuyDetails(id) {
+
+            const toast = useToast();
+
+            this.certificateFlag = true
             $axios.get(`/panel/assets/${id}`).then(res => {
                 this.certificateFlag = false;
                 this.certificateData.area = res.data.data.area;
@@ -173,7 +208,7 @@ export const useProjectStore = defineStore("projects", {
                 this.certificateData.lName = res.data.data.user.last_name;
 
             }).catch(err => {
-                toast.error("مشکلی در دریافت گواهی بوجود آمد")
+                toast.error("مشکلی در دریافت گواهی بوجود آمد");
             })
         },
         async buyProject(method, amount) {
@@ -181,30 +216,34 @@ export const useProjectStore = defineStore("projects", {
             const router = useRouter();
             const toast = useToast();
             const layoutStore = useLayoutStore();
+            this.certificateFlag = true;
 
             this.buyProjectLoading = true;
             const profileStore = useProfileStore();
 
             if (this.policyCheck === false) {
-                toast.error("شما قوانین لوگانو را تایید نکردید!")
+                toast.error("شما قوانین لوگانو را تایید نکردید!");
                 this.buyProjectLoading = false;
             }else {
 
                 if (method === 1) {
-                    localStorage.setItem("amount", amount)
-                    localStorage.setItem("id", this.projectId)
-                    localStorage.setItem("area", this.investSuccessArea)
 
-                    profileStore.chargeWallet(amount);
+                    toast.error("در حال حاضر امکان پرداخت آنلاین وجود ندارد، لطفا کیف پول خود را شارژ کرده و اقدام به خرید کنید");
+                    this.buyProjectLoading = false;
+
+                    // localStorage.setItem("amount", amount)
+                    // localStorage.setItem("id", this.projectId)
+                    // localStorage.setItem("area", this.investSuccessArea)
                     //// اینجا باید مبلغو ورودی بگیره
-                    // profileStore.chargeWallet()
+                    // await profileStore.chargeWallet(amount);
+
                 } else {
 
                     if (process.client) {
                         if (localStorage.getItem("area")) {
                             localStorage.removeItem("area");
                             localStorage.removeItem("id");
-                            localStorage.removeItem("maount");
+                            localStorage.removeItem("amount");
                         }
                     }
 
@@ -225,15 +264,36 @@ export const useProjectStore = defineStore("projects", {
                                 toast.error("شما از حداکثر متراژ تعریف شده بیشتر خریداری کردید");
                             } else if (res.data.code === 100) {
 
+                                console.log("panel buy", res.data.data);
+                                this.certificateData.area = this.investSuccessArea
+                                // this.certificateData.totalAmount = JSON.parse(res.data.data.invoice_details).pure_amount;
+                                this.certificateData.address = res.data.data.project_details.address;
+                                this.certificateData.title = res.data.data.project_details.title;
+                                this.certificateData.meter = res.data.data.project_details.area_cm;
+                                this.certificateFlag = false;
+
+
                                 $axios.post("/panel/buy/verify", {
                                     project_id: this.projectId,
                                     area: this.investSuccessArea,
                                     invoice: res.data.data.invoice,
                                     block: res.data.data.block
                                 }).then(res => {
+                                    console.log("panel buy 2", res.data.data);
+                                    // fetch profile data
                                     profileStore.fetchProfileData();
+
+                                    // Certificate data
+                                    // this.certificateData.date = res.data.data;
+                                    this.certificateData.id = res.data.data.id;
+                                    this.certificateData.transactionId = res.data.data.transaction_id;
+                                    this.certificateData.fName = res.data.data.user.first_name;
+                                    this.certificateData.lName = res.data.data.user.last_name;
+
+
+
                                     this.buyProjectLoading = false;
-                                    router.push(`/payment/success/${res.data.data.id}`)
+                                    router.push(`/projects/${this.projectId}/success/${res.data.data.id}`);
                                 }).catch(err => {
                                     router.push("/payment/error")
                                     toast.error("خطا در ارسال اطلاعات")
@@ -245,6 +305,8 @@ export const useProjectStore = defineStore("projects", {
 
                         if (err.response.status === 401) {
                             toast.error("لطفا وارد حساب کاربری خود شوید")
+                        }else {
+                            toast.error("مشکلی در ارتباط بوجود آمده لطفا در زمانی دیگر امتحان کنید!")
                         }
 
                     })

@@ -19,6 +19,7 @@ export const useProfileStore = defineStore("profile", {
             mobileHeaderFlag: false,
             informationStep: 1,
             stepsLoading: false,
+            walletChargeFlag: false
         }
     },
     actions: {
@@ -31,14 +32,16 @@ export const useProfileStore = defineStore("profile", {
                 gateway: 1,
             }).then(res => {
                 navigateTo(res.data.data.url, {external: true});
+                this.walletChargeFlag = true;
             }).catch(err => {
-                if (process.client) {
-                    if (localStorage.getItem("area")) {
-                        localStorage.removeItem("area");
-                        localStorage.removeItem("id");
-                        localStorage.removeItem("maount");
-                    }
-                }
+                // if (process.client) {
+                //     if (localStorage.getItem("area")) {
+                //         localStorage.removeItem("area");
+                //         localStorage.removeItem("id");
+                //         localStorage.removeItem("amount");
+                //     }
+                // }
+                this.walletChargeFlag = true;
                 toast.error("مشکلی در ارتباط با سرور پیش آمده");
 
             })

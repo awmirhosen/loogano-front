@@ -119,7 +119,7 @@ definePageMeta({
 
 const projectStore = useProjectStore();
 projectStore.fetchProjectList();
-console.log(projectStore.projectLists)
+
 
 function eArabic(x) {
   return x.toLocaleString('ar-EG');
