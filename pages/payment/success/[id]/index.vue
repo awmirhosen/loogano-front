@@ -36,7 +36,7 @@
           <Certificate />
         </div>
         <div class="flex justify-center mt-5" dir="rtl" v-else>
-          <p class="text-[34px] text-zinc-500 font-bold">در حال دریافت گواهی...</p>
+          <p class="text-[34px] text-zinc-500 font-bold">کیف پول شما شارژ شد!</p>
         </div>
 
 
@@ -75,12 +75,18 @@
             صفحه ی اصلی
           </RouterLink>
         </div>
-        <div class="w-full border cursor-pointer border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2" @click.prevent="downloadCerti" v-if="!profileStore.walletChargeFlag" >
-          <p class=" text-[#0093A9]">دانلود گواهی سرمایه گذاری</p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
-            <path d="M25.8307 19.3749V23.2499C25.8307 24.6766 24.6741 25.8332 23.2474 25.8332H7.7474C6.32066 25.8332 5.16406 24.6766 5.16406 23.2499L5.16406 19.3749M10.3307 14.2082L15.4974 19.3749M15.4974 19.3749L20.6641 14.2082M15.4974 19.3749V3.87488" stroke="#0093A9" stroke-width="1.9375" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
+
+        <RouterLink to="/projects" class="w-full border cursor-pointer border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2" @click.prevent="downloadCerti" v-if="!profileStore.walletChargeFlag" >
+          <p class=" text-[#0093A9]">سرمایه گذاری</p>
+        </RouterLink>
+
+
+<!--        <div class="w-full border cursor-pointer border-2 transition-all hover:border-zinc-500 mt-4 border-[#0093A9] flex items-center justify-center p-2" @click.prevent="downloadCerti" v-if="!profileStore.walletChargeFlag" >-->
+<!--          <p class=" text-[#0093A9]">دانلود گواهی سرمایه گذاری</p>-->
+<!--          <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">-->
+<!--            <path d="M25.8307 19.3749V23.2499C25.8307 24.6766 24.6741 25.8332 23.2474 25.8332H7.7474C6.32066 25.8332 5.16406 24.6766 5.16406 23.2499L5.16406 19.3749M10.3307 14.2082L15.4974 19.3749M15.4974 19.3749L20.6641 14.2082M15.4974 19.3749V3.87488" stroke="#0093A9" stroke-width="1.9375" stroke-linecap="round" stroke-linejoin="round"/>-->
+<!--          </svg>-->
+<!--        </div>-->
 
       </div>
 
