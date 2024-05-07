@@ -244,6 +244,7 @@
                   <p class=" text-white text-md opacity-[60%]">
                     021-47708333
                   </p>
+
                 </nuxt-link>
                 <div class="w-3 h-3 bg-white rounded-full"></div>
               </div>
