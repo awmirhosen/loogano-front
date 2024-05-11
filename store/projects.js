@@ -12,6 +12,7 @@ export const useProjectStore = defineStore("projects", {
         return {
             baseUrl: "https://loogano.com/endpoints/api/",
             galleryModalFlag: false,
+            mainBanner: [],
             projectLists: [],
             countdownEnd: "",
             projectId: "",
@@ -56,7 +57,7 @@ export const useProjectStore = defineStore("projects", {
                 baseURL: this.baseUrl
             });
             this.projectLists = project.value.data.data;
-            console.log(this.projectLists)
+            console.log(this.projectLists);
 
 
         },
@@ -93,12 +94,17 @@ export const useProjectStore = defineStore("projects", {
                 let detailsPDF = [];
 
                 res.data.data.files.forEach(item => {
+
+                    if (item.is_main == 1) {
+                        this.mainBanner.push(item);
+                    }
+
                     if (item.type === 'image') {
                         detailsImage.push(item);
                     } else {
                         detailsPDF.push(item);
                     }
-                })
+                });
                 this.projectImages = detailsImage;
                 this.projectPDF = detailsPDF;
 

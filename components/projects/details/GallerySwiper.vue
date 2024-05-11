@@ -2,8 +2,8 @@
   <div class="w-full relative lg:max-w-[1000px]">
 
     <div  class="w-full flex justify-center lg:rounded-xl rounded-md" v-if="projectStore.projectImages[0]?.url">
-      <img :src="'https://loogano.com/endpoints/'+projectStore.projectImages[0]?.url"
-           class="w-full object-fit lg:rounded-xl rounded-md" alt="mm">
+      <img :src="'https://loogano.com/endpoints/'+projectStore.mainBanner[0]?.url"
+           class="w-full object-fit lg:rounded-xl rounded-md max-h-[700px] object-cover" alt="mm">
     </div>
 
     <div class="w-full lg:max-h-[90px] lg:h-[90px] mt-3 lg:mb-24">

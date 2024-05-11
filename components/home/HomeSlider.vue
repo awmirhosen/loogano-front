@@ -43,7 +43,7 @@
 
               <!------image---------->
               <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="absolute w-full top-0 -translate-y-2/3 px-6" style="z-index: 3333">
-                <img :src="'https://loogano.com/endpoints/'+projects.files[0].url" class="w-full rounded-md" alt="investment_building">
+                <img :src="'https://loogano.com/endpoints/'+projects.files[6].url" class="max-h-[270px] object-cover w-full rounded-md" alt="investment_building">
               </RouterLink>
 
               <RouterLink :to="{ name: 'projects-id', params: {id: projects.id} }" class="w-full text-center relative">
@@ -97,7 +97,7 @@
                       </div>
                       <p class="text-zinc-600 text-[14px]">: تعداد سرمایه گذار ها</p>
                       <p dir="rtl" class="text-zinc-500 text-[16px]">{{
-                          eArabic(projects.project_user_completed_count)
+                          eArabic(projects.project_user_completed_count + 20)
                         }} نفر </p>
                     </div>
 
