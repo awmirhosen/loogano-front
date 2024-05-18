@@ -259,7 +259,7 @@
           </div>
 
           <h4 class="text-center w-full mt-10 pe-12 text-[40px] text-white font-morabaa">
-            فرصت هایی بی انتهایی
+            فرصت هایی بی انتها
             <br>
             برای <span class="text-sky-200">معاملات</span> هوشمند ملکی
           </h4>

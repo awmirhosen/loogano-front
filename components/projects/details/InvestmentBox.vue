@@ -23,7 +23,9 @@
         <p class="text-zinc-600 text-sm">پیش بینی سود</p>
       </div>
       <div class="lg:w-[117px] w-[100px] bg-zinc-100 text-center rounded-md py-2">
-        <p class="text-[#12788F]">{{ parseFloat(((projectStore.projectDetails?.prices[projectStore.projectDetails?.prices.length - 1].value - projectStore.projectDetails?.prices[0].value) / projectStore.projectDetails?.prices[0].value) * 100).toFixed(2) }}%</p>
+        <p class="text-[#12788F]">{{
+            parseFloat(((projectStore.projectDetails?.prices[projectStore.projectDetails?.prices.length - 1].value - projectStore.projectDetails?.prices[0].value) / projectStore.projectDetails?.prices[0].value) * 100).toFixed(2)
+          }}%</p>
         <p class="text-zinc-600 text-sm">سود تا امروز</p>
       </div>
     </div>
@@ -98,7 +100,9 @@
         <img src="/images/projects/images/group_project.svg" class="w-6" alt="measure_tape">
         <p class="text-zinc-500 text-sm">: تعداد سرمایه گذار ها</p>
       </div>
-      <p class="text-right text-sm" dir="rtl">{{ eArabic(projectStore.projectDetails?.project_user_completed_count + 20) }}
+      <p class="text-right text-sm" dir="rtl">{{
+          eArabic(projectStore.projectDetails?.project_user_completed_count + 20)
+        }}
         نفر </p>
     </div>
 
@@ -154,7 +158,8 @@
             </div>
 
             <div class="w-full flex justify-center items-center">
-              <input class=" text-center bg-zinc-100" type="text" placeholder="0" @input="onchangePricePriceBox" ref="priceBoxInput" value="0"/>
+              <input class=" text-center bg-zinc-100" type="text" placeholder="0" @input="onchangePricePriceBox"
+                     ref="priceBoxInput" value="0"/>
               <p class="text-zinc-400 text-[12px]">تومان</p>
             </div>
 
@@ -171,11 +176,11 @@
               متراژ معادل : {{ totalBoughtMeter }} سانتی متر مربع
             </div>
 
-                        <div class="text-zinc-700 text-sm">
-                          مبلغ نهایی :
-                          {{ eArabic(Math.floor(finalPrice)) }}
-                          تومان
-                        </div>
+            <div class="text-zinc-700 text-sm">
+              مبلغ نهایی :
+              {{ eArabic(Math.floor(finalPrice)) }}
+              تومان
+            </div>
           </div>
 
         </div>
@@ -198,13 +203,13 @@
               قیمت معادل : {{ eArabic(totalBoughtPrice) }} تومان
             </div>
 
-                        <div class="text-zinc-700 text-sm">
-                          <div class="text-zinc-700 text-sm">
-                            مبلغ نهایی :
-                            {{ eArabic(Math.floor(finalPrice)) }}
-                            تومان
-                          </div>
-                        </div>
+            <div class="text-zinc-700 text-sm">
+              <div class="text-zinc-700 text-sm">
+                مبلغ نهایی :
+                {{ eArabic(Math.floor(finalPrice)) }}
+                تومان
+              </div>
+            </div>
 
 
           </div>
@@ -301,7 +306,6 @@ const priceInput = ref("");
 const meterInput = ref("");
 
 
-
 const lastPrice = ref(projectStore.projectDetails.prices[projectStore.projectDetails.prices.length - 1].value)
 
 
@@ -332,7 +336,6 @@ const onchangePricePriceBox = (e) => {
   finalPrice.value = taxPrice + purePrice;
 
 
-
   // thisElement.value = seperatedNumber;
 
 
@@ -351,7 +354,6 @@ const onchangeMeterbox = (e) => {
   const comissionNumber = comPrice - totalBoughtPrice.value;
   const taxPrice = (comissionNumber * 110) / 100;
   finalPrice.value = taxPrice + totalBoughtPrice.value;
-
 
 
 }
@@ -394,7 +396,7 @@ const meterPlus = () => {
 
   if (priceBoxInput.value.value === "") {
     priceBoxInput.value.value = lastPrice.value;
-  }else {
+  } else {
 
     const priceInputArray = priceBoxInput.value.value.split(",");
     console.log(priceInputArray)
@@ -425,10 +427,10 @@ const meterMinus = () => {
 
   if (priceBoxInput.value.value === "") {
     priceBoxInput.value.value = lastPrice.value;
-  }else {
+  } else {
 
     if (lastPrice.value <= priceBoxInput.value.value) {
-      priceBoxInput.value.value = parseInt(priceBoxInput.value.value) -  lastPrice.value;
+      priceBoxInput.value.value = parseInt(priceBoxInput.value.value) - lastPrice.value;
 
       const thisElement = priceBoxInput.value;
       let thisElementValue = thisElement.value;

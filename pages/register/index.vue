@@ -195,7 +195,7 @@
       <div class="flex w-full p-5">
         <div class="w-full h-full bg-[#000F2D] rounded-[20px] relative">
 
-          <div class="w-full flex justify-start items-center mt-12 pe-12 flex-row-reverse">
+          <div class="w-full flex justify-center items-center mt-12 pe-12 flex-row-reverse">
             <!----- loogano logo svg------->
             <svg xmlns="http://www.w3.org/2000/svg" width="126" height="61" viewBox="0 0 126 61" fill="none">
               <mask id="mask0_873_14784" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="126"
@@ -308,11 +308,13 @@
             <p class="text-white text-[34px] font-bold pt-5">LOOGANO</p>
           </div>
 
-          <h4 class="text-right w-full mt-10 pe-12 text-[40px] text-white font-morabaa">
-            فرصت هایی بی انتهایی
-            <br>
-            برای <span class="text-sky-200">معاملات</span> هوشمند ملکی
-          </h4>
+          <div class="">
+            <h4 class="text-center w-full mt-10 pe-12 text-[40px] text-white font-morabaa">
+              فرصت هایی بی انتها
+              <br>
+              برای <span class="text-sky-200">معاملات</span> هوشمند ملکی
+            </h4>
+          </div>
 
           <!----- bottom image---->
           <img src="/images/login/login_building.png" class="absolute left-1/2 -translate-x-1/2 -bottom-5"
